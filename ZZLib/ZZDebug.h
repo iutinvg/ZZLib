@@ -1,5 +1,5 @@
 /**
- * Debugging tools, inspired by Three20.
+ * Debugging tools.
  *
  * ZZLOG(@"formatted log text %d", param1);
  * Print the given formatted text to the log.

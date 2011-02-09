@@ -10,11 +10,14 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		DD6EC590130241F400FE744A /* ZZDemoCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC58F130241F400FE744A /* ZZDemoCatalog.m */; };
+		DD6EC5AC130245D900FE744A /* ZZTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC5AB130245D900FE744A /* ZZTableController.m */; };
+		DD6EC5B11302471D00FE744A /* ZZDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */; };
 		DD82A31312EAAA0200A980DB /* ZZCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A30F12EAAA0200A980DB /* ZZCommon.m */; };
 		DD82A31412EAAA0200A980DB /* ZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A31212EAAA0200A980DB /* ZZViewController.m */; };
 		DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */; };
 		DD92CE8512D5D8E8001872F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8412D5D8E8001872F6 /* main.m */; };
-		DD92CEE812D5DC5F001872F6 /* ZZDemoMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CEE712D5DC5F001872F6 /* ZZDemoMainViewController.m */; };
+		DD92CEE812D5DC5F001872F6 /* ZZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,12 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* ZZ_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZ_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ZZ-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZZ-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DD6EC58E130241F400FE744A /* ZZDemoCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoCatalog.h; sourceTree = "<group>"; };
+		DD6EC58F130241F400FE744A /* ZZDemoCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoCatalog.m; sourceTree = "<group>"; };
+		DD6EC5AA130245D900FE744A /* ZZTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTableController.h; sourceTree = "<group>"; };
+		DD6EC5AB130245D900FE744A /* ZZTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTableController.m; sourceTree = "<group>"; };
+		DD6EC5AF1302471D00FE744A /* ZZDemoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoTableController.h; sourceTree = "<group>"; };
+		DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoTableController.m; sourceTree = "<group>"; };
 		DD82A30D12EAAA0200A980DB /* ZZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZ.h; sourceTree = "<group>"; };
 		DD82A30E12EAAA0200A980DB /* ZZCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCommon.h; sourceTree = "<group>"; };
 		DD82A30F12EAAA0200A980DB /* ZZCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCommon.m; sourceTree = "<group>"; };
@@ -33,8 +42,8 @@
 		DD92CE7F12D5D8AB001872F6 /* ZZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
 		DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAppDelegate.m; sourceTree = "<group>"; };
 		DD92CE8412D5D8E8001872F6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DD92CEE612D5DC5F001872F6 /* ZZDemoMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoMainViewController.h; sourceTree = "<group>"; };
-		DD92CEE712D5DC5F001872F6 /* ZZDemoMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoMainViewController.m; sourceTree = "<group>"; };
+		DD92CEE612D5DC5F001872F6 /* ZZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoViewController.h; sourceTree = "<group>"; };
+		DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +109,8 @@
 				DD82A31012EAAA0200A980DB /* ZZDebug.h */,
 				DD82A31112EAAA0200A980DB /* ZZViewController.h */,
 				DD82A31212EAAA0200A980DB /* ZZViewController.m */,
+				DD6EC5AA130245D900FE744A /* ZZTableController.h */,
+				DD6EC5AB130245D900FE744A /* ZZTableController.m */,
 			);
 			path = ZZLib;
 			sourceTree = "<group>";
@@ -117,8 +128,12 @@
 			children = (
 				DD92CE7F12D5D8AB001872F6 /* ZZAppDelegate.h */,
 				DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */,
-				DD92CEE612D5DC5F001872F6 /* ZZDemoMainViewController.h */,
-				DD92CEE712D5DC5F001872F6 /* ZZDemoMainViewController.m */,
+				DD6EC58E130241F400FE744A /* ZZDemoCatalog.h */,
+				DD6EC58F130241F400FE744A /* ZZDemoCatalog.m */,
+				DD92CEE612D5DC5F001872F6 /* ZZDemoViewController.h */,
+				DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */,
+				DD6EC5AF1302471D00FE744A /* ZZDemoTableController.h */,
+				DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -184,9 +199,12 @@
 			files = (
 				DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */,
 				DD92CE8512D5D8E8001872F6 /* main.m in Sources */,
-				DD92CEE812D5DC5F001872F6 /* ZZDemoMainViewController.m in Sources */,
+				DD92CEE812D5DC5F001872F6 /* ZZDemoViewController.m in Sources */,
 				DD82A31312EAAA0200A980DB /* ZZCommon.m in Sources */,
 				DD82A31412EAAA0200A980DB /* ZZViewController.m in Sources */,
+				DD6EC590130241F400FE744A /* ZZDemoCatalog.m in Sources */,
+				DD6EC5AC130245D900FE744A /* ZZTableController.m in Sources */,
+				DD6EC5B11302471D00FE744A /* ZZDemoTableController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

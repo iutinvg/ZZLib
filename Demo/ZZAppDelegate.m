@@ -7,7 +7,7 @@
 //
 
 #import "ZZAppDelegate.h"
-#import "ZZDemoMainViewController.h"
+#import "ZZDemoCatalog.h"
 
 @implementation ZZAppDelegate
 
@@ -15,9 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-	ZZDemoMainViewController* viewController = [[ZZDemoMainViewController alloc] init];	
-	UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:viewController];
-	[viewController release];
+	ZZDemoCatalog* demoCatalog = [[ZZDemoCatalog alloc] init];	
+	UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:demoCatalog];
+	[demoCatalog release];
 	
 	[_window addSubview:nc.view];    
     [_window makeKeyAndVisible];

@@ -1,9 +1,5 @@
 //
 //  ZZCommon.h
-//  MMK
-//
-//  Created by Слава Иутин on 10/25/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 BOOL ZZIsPad();
