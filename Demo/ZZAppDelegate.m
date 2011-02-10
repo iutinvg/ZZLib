@@ -1,10 +1,7 @@
-//
-//  AppDelegate_iPhone.m
-//  ZZ
-//
-//  Created by Слава Иутин on 1/6/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZAppDelegate.h"
 #import "ZZDemoCatalog.h"

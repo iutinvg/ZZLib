@@ -1,6 +1,7 @@
-//
-//  ZZDemoViewController.m
-//
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZDemoViewController.h"
 
@@ -29,7 +30,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload {
-	ZZ_RELEASE(_labelHello);
+	[_labelHello release];
 }
 
 @end

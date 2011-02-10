@@ -1,22 +1,26 @@
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
 /**
  * Debugging tools.
  *
  * ZZLOG(@"formatted log text %d", param1);
  * Print the given formatted text to the log.
  *
- * ZZLOGRECT(rect);
- * Print the rectangle.
+ * Tips:
+ * - to enable logging just define DEBUG macros for Debug configuration 
+ *   of your project: select a Target, click Info button, select Build tab,
+ *   select Debug configuration, find Preprocessor Macros, add DEBUG
+ * - thus logging will work for Debug configuration, Release/Distribution 
+ *   configurations will be silent; if you'd like to log something in
+ *   all configurations then just use NSLog()
  */
 
 // The general purpose logger. This ignores logging levels.
 #ifdef DEBUG
 	#define ZZLOG(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-	#define ZZLOGRECT(rect) ZZLOG(@"%f x %f - %f x %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
-	#define ZZLOGPOINT(point) ZZLOG(@"%f x %f", point.x, point.y)
-	#define ZZLOGSIZE(size) ZZLOG(@"%f x %f", size.width, size.height)
 #else
 	#define ZZLOG(xx, ...) ((void)0)
-	#define ZZLOGRECT(rect) ((void)0)
-	#define ZZLOGPOINT(point) ((void)0)
-	#define ZZLOGSIZE(size) ((void)0)
 #endif

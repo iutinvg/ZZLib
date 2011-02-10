@@ -1,6 +1,7 @@
-//
-//  ZZDemoTableController.m
-//
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZDemoTableController.h"
 #import "JSON.h"
@@ -25,7 +26,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[super connectionDidFinishLoading:connection];
-	ZZ_RELEASE(_conection);
+	[_conection release];
 
 	// parse data
 	NSString* json = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
