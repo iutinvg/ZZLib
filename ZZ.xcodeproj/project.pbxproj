@@ -18,6 +18,11 @@
 		DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */; };
 		DD92CE8512D5D8E8001872F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8412D5D8E8001872F6 /* main.m */; };
 		DD92CEE812D5DC5F001872F6 /* ZZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */; };
+		DDBB79FE1303A184001B5F89 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F51303A184001B5F89 /* NSObject+SBJSON.m */; };
+		DDBB79FF1303A184001B5F89 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F71303A184001B5F89 /* NSString+SBJSON.m */; };
+		DDBB7A001303A184001B5F89 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F91303A184001B5F89 /* SBJsonBase.m */; };
+		DDBB7A011303A184001B5F89 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79FB1303A184001B5F89 /* SBJsonParser.m */; };
+		DDBB7A021303A184001B5F89 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,17 @@
 		DD92CE8412D5D8E8001872F6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD92CEE612D5DC5F001872F6 /* ZZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoViewController.h; sourceTree = "<group>"; };
 		DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoViewController.m; sourceTree = "<group>"; };
+		DDBB79F31303A184001B5F89 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		DDBB79F41303A184001B5F89 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		DDBB79F51303A184001B5F89 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		DDBB79F61303A184001B5F89 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		DDBB79F71303A184001B5F89 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		DDBB79F81303A184001B5F89 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		DDBB79F91303A184001B5F89 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		DDBB79FA1303A184001B5F89 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		DDBB79FB1303A184001B5F89 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		DDBB79FC1303A184001B5F89 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +142,7 @@
 		DD92CE7E12D5D8AB001872F6 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				DDBB79F11303A184001B5F89 /* Deps */,
 				DD92CE7F12D5D8AB001872F6 /* ZZAppDelegate.h */,
 				DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */,
 				DD6EC58E130241F400FE744A /* ZZDemoCatalog.h */,
@@ -136,6 +153,32 @@
 				DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		DDBB79F11303A184001B5F89 /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				DDBB79F21303A184001B5F89 /* SBJSON */,
+			);
+			path = Deps;
+			sourceTree = "<group>";
+		};
+		DDBB79F21303A184001B5F89 /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				DDBB79F31303A184001B5F89 /* JSON.h */,
+				DDBB79F41303A184001B5F89 /* NSObject+SBJSON.h */,
+				DDBB79F51303A184001B5F89 /* NSObject+SBJSON.m */,
+				DDBB79F61303A184001B5F89 /* NSString+SBJSON.h */,
+				DDBB79F71303A184001B5F89 /* NSString+SBJSON.m */,
+				DDBB79F81303A184001B5F89 /* SBJsonBase.h */,
+				DDBB79F91303A184001B5F89 /* SBJsonBase.m */,
+				DDBB79FA1303A184001B5F89 /* SBJsonParser.h */,
+				DDBB79FB1303A184001B5F89 /* SBJsonParser.m */,
+				DDBB79FC1303A184001B5F89 /* SBJsonWriter.h */,
+				DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */,
+			);
+			path = SBJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +248,11 @@
 				DD6EC590130241F400FE744A /* ZZDemoCatalog.m in Sources */,
 				DD6EC5AC130245D900FE744A /* ZZTableController.m in Sources */,
 				DD6EC5B11302471D00FE744A /* ZZDemoTableController.m in Sources */,
+				DDBB79FE1303A184001B5F89 /* NSObject+SBJSON.m in Sources */,
+				DDBB79FF1303A184001B5F89 /* NSString+SBJSON.m in Sources */,
+				DDBB7A001303A184001B5F89 /* SBJsonBase.m in Sources */,
+				DDBB7A011303A184001B5F89 /* SBJsonParser.m in Sources */,
+				DDBB7A021303A184001B5F89 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

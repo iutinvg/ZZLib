@@ -3,7 +3,18 @@
 //
 
 #import "ZZCommon.h"
+#import "ZZDebug.h"
 #import "ZZTableController.h"
+
+/*
+ * ZZTableController work flow
+ *
+ * 1. implement createConection, it should look like that:
+ *		_connection = [[NSURLConnection alloc] init....]
+ * Please note, you created the connection and you are responsible it,
+ * don't forget to release it in connectionDidFinishLoading/conn
+ *
+ */
 
 @implementation ZZTableController
 
@@ -11,7 +22,6 @@
 - (id)init {
 	if (self=[super init]) {
 		_data = [[NSMutableData alloc] init];
-		_loaded = NO;
 	}
 	return self;
 }
@@ -19,14 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadView {
 	[super loadView];
-	
-	_tableView = [[UITableView alloc] init];
-	_tableView.dataSource = self;
-	_tableView.delegate = self;
-	_tableView.autoresizesSubviews = YES;
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	
-	[self.view addSubview:_tableView];
+	[self createTable];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,15 +40,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
-	[self showActivity:YES];
-	_loaded = NO;
-	_loading = YES;
-	
-	// begin request
-	NSURL* url = [NSURL URLWithString:_URLString];
-	NSURLRequest* request = [NSURLRequest requestWithURL:url];
-	_conection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	[self refreshData];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +55,9 @@
 #pragma mark NSURLConnection delegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	ZZLOG(@"get response from %@", _URLString);
+	NSURL* url = [response URL];
+	
+	ZZLOG(@"get response from %@", [url absoluteString]);
 	[_data setLength:0];
 }
 
@@ -72,7 +69,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	ZZ_RELEASE(connection);
 	[self showActivity:NO];
 }
 
@@ -110,7 +106,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showActivity:(BOOL)show {
 	if (!show) {
-		self.navigationItem.rightBarButtonItem = nil;
+		self.navigationItem.rightBarButtonItem = 
+		[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+													   target:self
+													   action:@selector(refreshData)] autorelease];	
 		return;
 	}
 	
@@ -123,6 +122,26 @@
 	
 	[activity startAnimating];
 	[activity release];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)createConnection {
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)createTable {
+	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+	_tableView.dataSource = self;
+	_tableView.delegate = self;
+	_tableView.autoresizesSubviews = YES;
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;	
+	[self.view addSubview:_tableView];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)refreshData {
+	[self createConnection];
+	[self showActivity:YES];
 }
 
 @end
