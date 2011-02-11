@@ -17,6 +17,7 @@
 
 @property (nonatomic, assign) UITableViewStyle tableViewStyle;
 @property (nonatomic, assign) BOOL loaded;
+@property (nonatomic, retain) UITableView* tableView;
 
 - (void)showActivity:(BOOL)show;
 - (void)createConnection;

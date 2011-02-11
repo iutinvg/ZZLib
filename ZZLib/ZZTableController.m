@@ -21,6 +21,7 @@
 
 @synthesize tableViewStyle = _tableViewStyle;
 @synthesize loaded = _loaded;
+@synthesize tableView = _tableView;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {

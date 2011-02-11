@@ -40,7 +40,7 @@
 	_searchResults = [[NSArray alloc] initWithArray:[hash objectForKey:@"results"]];
 	
 	// reload table
-	[_tableView reloadData];
+	[self.tableView reloadData];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
