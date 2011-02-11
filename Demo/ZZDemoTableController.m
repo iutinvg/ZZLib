@@ -11,7 +11,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
 	if (self=[super init]) {
-		self.title = @"ZZTableController";		
+		self.title = @"ZZTableController";
+		
+		// refresh button
+		self.navigationItem.rightBarButtonItem = 
+		[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+													   target:self
+													   action:@selector(refreshData)] autorelease];		
 	}
 	return self;
 }
@@ -38,6 +44,14 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)showActivity:(BOOL)show {
+	[super showActivity:show];
+	
+	// enable/disable refresh button
+	self.navigationItem.rightBarButtonItem.enabled = !show;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
 	[_searchResults release];
 	[super dealloc];
@@ -57,7 +71,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (_loaded) {
+	if (!_loaded) {
 		return 0;
 	}
     return [_searchResults count];

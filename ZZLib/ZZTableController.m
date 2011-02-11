@@ -19,10 +19,15 @@
 
 @implementation ZZTableController
 
+@synthesize tableViewStyle = _tableViewStyle;
+@synthesize loaded = _loaded;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
 	if (self=[super init]) {
 		_data = [[NSMutableData alloc] init];
+		_loaded = NO;
+		_tableViewStyle = UITableViewStylePlain;
 	}
 	return self;
 }
@@ -71,6 +76,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[self showActivity:NO];
+	_loaded = YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,23 +112,8 @@
 #pragma mark Private Methods
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showActivity:(BOOL)show {
-	if (!show) {
-		self.navigationItem.rightBarButtonItem = 
-		[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-													   target:self
-													   action:@selector(refreshData)] autorelease];	
-		return;
-	}
-	
-	UIActivityIndicatorView* activity = 
-	[[UIActivityIndicatorView alloc] 
-	 initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	
-	self.navigationItem.rightBarButtonItem = 
-	[[[UIBarButtonItem alloc] initWithCustomView:activity] autorelease];	
-	
-	[activity startAnimating];
-	[activity release];
+	UIApplication * app = [UIApplication sharedApplication];
+	app.networkActivityIndicatorVisible = show;	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -131,7 +122,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createTable {
-	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
 	_tableView.dataSource = self;
 	_tableView.delegate = self;
 	_tableView.autoresizesSubviews = YES;

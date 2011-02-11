@@ -11,7 +11,12 @@
 	NSMutableData* _data;
 	
 	BOOL _loaded;
+	
+	UITableViewStyle _tableViewStyle;
 }
+
+@property (nonatomic, assign) UITableViewStyle tableViewStyle;
+@property (nonatomic, assign) BOOL loaded;
 
 - (void)showActivity:(BOOL)show;
 - (void)createConnection;
