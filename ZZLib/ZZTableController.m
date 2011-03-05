@@ -10,24 +10,22 @@
 /*
  * ZZTableController work flow
  *
- * 1. implement createConection, it should look like that:
- *		_connection = [[NSURLConnection alloc] init....]
- * Please note, you created the connection and you are responsible it,
- * don't forget to release it in connectionDidFinishLoading/conn
+ * 1. implement createRequest, it should look like that:
+ *		_request = [[ZZJSONRequest alloc] initWithURLString:@"http://some/json" delegate:self];
  *
+ *    IMPORTANT: you must release call [_request release] in
+ *    requestDidFinishLoading: and request:didFailedWithError: 
  */
 
 @implementation ZZTableController
 
 @synthesize tableViewStyle = _tableViewStyle;
-@synthesize loaded = _loaded;
+@synthesize request = _request;
 @synthesize tableView = _tableView;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
 	if (self=[super init]) {
-		_data = [[NSMutableData alloc] init];
-		_loaded = NO;
 		_tableViewStyle = UITableViewStylePlain;
 	}
 	return self;
@@ -51,33 +49,17 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-	[_data release];
-	[super dealloc];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
-#pragma mark NSURLConnection delegate
+#pragma mark ZZJSONRequestDelegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSURL* url = [response URL];
-	
-	ZZLOG(@"get response from %@", [url absoluteString]);
-	[_data setLength:0];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	ZZLOG(@"got %d bytes", [data length]);
-	[_data appendData:data];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)request:(ZZJSONRequest*)request failedWithError:(NSError*)error {
 	[self showActivity:NO];
-	_loaded = YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidFinishLoading:(ZZJSONRequest*)request ; {
+	[self showActivity:NO];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +100,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createConnection {
+- (void)createRequest {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +115,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)refreshData {
-	[self createConnection];
+	[self createRequest];
 	[self showActivity:YES];
 }
 

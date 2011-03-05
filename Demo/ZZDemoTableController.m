@@ -4,7 +4,6 @@
  */
 
 #import "ZZDemoTableController.h"
-#import "JSON.h"
 
 @implementation ZZDemoTableController
 
@@ -23,24 +22,40 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createConnection {
-	NSURL* url = [NSURL URLWithString:@"http://search.twitter.com/search.json?q=iPhone"];
-	NSURLRequest* request = [NSURLRequest requestWithURL:url];
-	_conection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+- (void)dealloc {
+	[_searchResults release];
+	[super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	[super connectionDidFinishLoading:connection];
-	[_conection release];
+- (void)createRequest {
+	_request = [[ZZJSONRequest alloc] 
+				initWithURLString:@"http://search.twitter.com/search.json?q=iPhone"
+				delegate:self];
+}
 
-	// parse data
-	NSString* json = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
-	NSDictionary* hash = [json JSONValue];
-	_searchResults = [[NSArray alloc] initWithArray:[hash objectForKey:@"results"]];
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)requestDidFinishLoading:(ZZJSONRequest*)request {
+	[super requestDidFinishLoading:request];
+	
+	// put necessary part of response in instance variable
+	NSDictionary* tmp = (NSDictionary*)_request.response;
+	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
+	
+	// must be done: release request 
+	[_request release];
+	
+	ZZLOG(@"results: %d", [_searchResults count]);
 	
 	// reload table
 	[self.tableView reloadData];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)request:(ZZJSONRequest *)request failedWithError:(NSError *)error {
+	[super request:request failedWithError:error];
+	// must be done: release request 
+	[_request release];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,26 +67,17 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-	[_searchResults release];
-	[super dealloc];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark Table view data source
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	if (!_loaded) {
-		return 1;
-	}
 	return 1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (!_loaded) {
+	if (!_request.loaded) {
 		return 0;
 	}
     return [_searchResults count];

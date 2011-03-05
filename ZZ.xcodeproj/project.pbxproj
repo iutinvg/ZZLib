@@ -15,6 +15,8 @@
 		DD6EC5B11302471D00FE744A /* ZZDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */; };
 		DD82A31312EAAA0200A980DB /* ZZCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A30F12EAAA0200A980DB /* ZZCommon.m */; };
 		DD82A31412EAAA0200A980DB /* ZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A31212EAAA0200A980DB /* ZZViewController.m */; };
+		DD8F9ADF1321D45000CEDB4E /* ZZJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F9ADE1321D45000CEDB4E /* ZZJSONRequest.m */; };
+		DD8F9BDF1321E99400CEDB4E /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = DD8F9BDE1321E99400CEDB4E /* README.markdown */; };
 		DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */; };
 		DD92CE8512D5D8E8001872F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8412D5D8E8001872F6 /* main.m */; };
 		DD92CEE812D5DC5F001872F6 /* ZZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */; };
@@ -44,6 +46,10 @@
 		DD82A31012EAAA0200A980DB /* ZZDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDebug.h; sourceTree = "<group>"; };
 		DD82A31112EAAA0200A980DB /* ZZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZViewController.h; sourceTree = "<group>"; };
 		DD82A31212EAAA0200A980DB /* ZZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZViewController.m; sourceTree = "<group>"; };
+		DD8F9ADD1321D45000CEDB4E /* ZZJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJSONRequest.h; sourceTree = "<group>"; };
+		DD8F9ADE1321D45000CEDB4E /* ZZJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZJSONRequest.m; sourceTree = "<group>"; };
+		DD8F9B761321DA4E00CEDB4E /* ZZJSONRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJSONRequestDelegate.h; sourceTree = "<group>"; };
+		DD8F9BDE1321E99400CEDB4E /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		DD92CE7F12D5D8AB001872F6 /* ZZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
 		DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAppDelegate.m; sourceTree = "<group>"; };
 		DD92CE8412D5D8E8001872F6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +133,9 @@
 				DD82A31212EAAA0200A980DB /* ZZViewController.m */,
 				DD6EC5AA130245D900FE744A /* ZZTableController.h */,
 				DD6EC5AB130245D900FE744A /* ZZTableController.m */,
+				DD8F9ADD1321D45000CEDB4E /* ZZJSONRequest.h */,
+				DD8F9ADE1321D45000CEDB4E /* ZZJSONRequest.m */,
+				DD8F9B761321DA4E00CEDB4E /* ZZJSONRequestDelegate.h */,
 			);
 			path = ZZLib;
 			sourceTree = "<group>";
@@ -134,6 +143,7 @@
 		DD92CE7612D5D70A001872F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DD8F9BDE1321E99400CEDB4E /* README.markdown */,
 				8D1107310486CEB800E47090 /* ZZ-Info.plist */,
 			);
 			name = Resources;
@@ -230,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD8F9BDF1321E99400CEDB4E /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +264,7 @@
 				DDBB7A001303A184001B5F89 /* SBJsonBase.m in Sources */,
 				DDBB7A011303A184001B5F89 /* SBJsonParser.m in Sources */,
 				DDBB7A021303A184001B5F89 /* SBJsonWriter.m in Sources */,
+				DD8F9ADF1321D45000CEDB4E /* ZZJSONRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
