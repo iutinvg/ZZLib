@@ -8,7 +8,9 @@
  * full screen and with support of all orientations.
  */
 @interface ZZViewController : UIViewController {
-
+	UIView* _loadingView;
 }
+
+- (void)showLoading:(BOOL)flag;
 
 @end

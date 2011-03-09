@@ -1,12 +1,14 @@
 ZZLib
 =====
 
-ZZLib is a collection of iPhone UI classes.
+ZZLib is a collection of iPhone classes and macros.
 
 ZZTableController
 -----------------
 This class is useful to create a table to display some remote data.
 It uses ZZJSONRequest to do it.
+
+If data is not remote then you could use UITableViewContoller.
 
 ZZJSONRequest
 -------------

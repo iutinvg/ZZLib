@@ -23,4 +23,32 @@
     return YES;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)showLoading:(BOOL)flag {
+	if (!flag) {
+		_loadingView.hidden = YES;
+		[_loadingView removeFromSuperview];
+		[_loadingView release];
+		_loadingView = nil;
+		return;
+	}
+	
+	_loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
+	_loadingView.backgroundColor = ZZRGBA(255, 255, 255, 0.8);
+	_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
+	UIActivityIndicatorView* activity = 
+	[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	[activity startAnimating];
+	
+	activity.center = _loadingView.center;
+	activity.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+	UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+	
+	[_loadingView addSubview:activity];
+	[activity release];
+	
+	[self.view addSubview:_loadingView];
+}
+
 @end
