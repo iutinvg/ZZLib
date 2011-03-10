@@ -4,6 +4,7 @@
  */
 
 #import "ZZViewController.h"
+#import "ZZCommon.h"
 #import "ZZDebug.h"
 
 @implementation ZZViewController
@@ -16,6 +17,12 @@
 	self.view.autoresizesSubviews = YES;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.view.backgroundColor = [UIColor whiteColor];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)viewDidUnload {
+	[self showLoading:NO];
+	[super viewDidUnload];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +41,7 @@
 	}
 	
 	_loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-	_loadingView.backgroundColor = ZZRGBA(255, 255, 255, 0.8);
+	_loadingView.backgroundColor = ZZRGBA(255, 255, 255, 1);
 	_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
 	UIActivityIndicatorView* activity = 

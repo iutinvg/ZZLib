@@ -40,6 +40,7 @@
 	
 	// put necessary part of response in instance variable
 	NSDictionary* tmp = (NSDictionary*)_request.response;
+	[_searchResults release];
 	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
 	
 	// must be done: release request 
@@ -77,7 +78,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (!_request.loaded) {
+	if (_searchResults==nil) {
 		return 0;
 	}
     return [_searchResults count];
