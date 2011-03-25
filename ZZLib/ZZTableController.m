@@ -67,7 +67,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)requestDidFinishLoading:(ZZJSONRequest*)request ; {
+- (void)requestDidFinishLoading:(ZZJSONRequest*)request {
 	[self showActivity:NO];
 	[self showLoading:NO];
 }
