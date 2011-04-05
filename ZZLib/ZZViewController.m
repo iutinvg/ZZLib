@@ -10,13 +10,23 @@
 @implementation ZZViewController
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
-	[super loadView];
+- (id)init {
+	if (self = [self initWithNibName:nil bundle:nil]) {
+	}
+	
+	return self;
+}
 
-	self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
-	self.view.autoresizesSubviews = YES;
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	self.view.backgroundColor = [UIColor whiteColor];
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loadView {
+	if (nil != self.nibName) {
+		[super loadView];		
+	} else {		
+		self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+		self.view.autoresizesSubviews = YES;
+		self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		self.view.backgroundColor = [UIColor whiteColor];
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

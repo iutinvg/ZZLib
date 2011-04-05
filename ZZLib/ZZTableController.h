@@ -14,7 +14,7 @@
 
 @property (nonatomic, assign) UITableViewStyle tableViewStyle;
 @property (nonatomic, retain) ZZJSONRequest* request;
-@property (nonatomic, retain) UITableView* tableView;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
 
 - (void)showActivity:(BOOL)show;
 - (void)createRequest;

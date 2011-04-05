@@ -25,16 +25,26 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-	if (self=[super init]) {
+	if (self = [self initWithNibName:nil bundle:nil]) {
 		_tableViewStyle = UITableViewStylePlain;
 	}
+	
 	return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadView {
+	// calling of ZZViewController's method
+	// it'll do correct creations in case we don't use nib
 	[super loadView];
-	[self createTable];
+	if (self.nibName==nil) {
+		[self createTable];
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)viewDidLoad {
+	[super viewDidLoad];
 	[self showLoading:YES];
 	[self refreshData];
 }
