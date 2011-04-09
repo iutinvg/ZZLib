@@ -4,7 +4,8 @@
  */
 
 /**
- * Return YES if current device is iPad.
+ Check if current device is iPad.
+ @return `YES` if it is iPad, `NO` otherwise.
  */
 BOOL ZZIsPad();
 

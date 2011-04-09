@@ -32,10 +32,17 @@
  Depending on the JSON you get it can be NSArray or NSDictionary.
  Just use casting to access it:
  
- `NSArray* items = (NSArray*)self.request.response;
- NSArray* a = a;`
+	- (void)requestDidFinishLoading:(ZZJSONRequest*)request {
+		...
+		NSArray* items = (NSArray*)_request.response;
+		NSArray* a = a;
+		...
+	}
  
  @warning You must retain it for futher usage in your methods.
+ @see ZZTableController requestDidFinishLoading:]
+ @see ZZTableController
+ @see ZZJSONRequestDelegate
  */
 @property (nonatomic, retain) id response;
 
