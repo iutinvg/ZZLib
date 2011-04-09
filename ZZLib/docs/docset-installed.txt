@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/slavaiutin/Library/Developer/Shared/Documentation/DocSets/zzlib.whirix.com.ZZLib.docset
+Time: 2011-04-09 10:21:08 +0700

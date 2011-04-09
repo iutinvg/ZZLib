@@ -20,6 +20,7 @@
 		DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */; };
 		DD92CE8512D5D8E8001872F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8412D5D8E8001872F6 /* main.m */; };
 		DD92CEE812D5DC5F001872F6 /* ZZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */; };
+		DDA81AAB13500C70001FEF6A /* appledoc.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDA81AAA13500C70001FEF6A /* appledoc.plist */; };
 		DDBB79FE1303A184001B5F89 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F51303A184001B5F89 /* NSObject+SBJSON.m */; };
 		DDBB79FF1303A184001B5F89 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F71303A184001B5F89 /* NSString+SBJSON.m */; };
 		DDBB7A001303A184001B5F89 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F91303A184001B5F89 /* SBJsonBase.m */; };
@@ -55,6 +56,7 @@
 		DD92CE8412D5D8E8001872F6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD92CEE612D5DC5F001872F6 /* ZZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoViewController.h; sourceTree = "<group>"; };
 		DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoViewController.m; sourceTree = "<group>"; };
+		DDA81AAA13500C70001FEF6A /* appledoc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appledoc.plist; path = docs/appledoc.plist; sourceTree = "<group>"; };
 		DDBB79F31303A184001B5F89 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		DDBB79F41303A184001B5F89 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		DDBB79F51303A184001B5F89 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				DDA81AA913500C2D001FEF6A /* Docs */,
 				DD82A30C12EAAA0200A980DB /* ZZLib */,
 				DD92CE7E12D5D8AB001872F6 /* Demo */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -163,6 +166,14 @@
 				DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		DDA81AA913500C2D001FEF6A /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				DDA81AAA13500C70001FEF6A /* appledoc.plist */,
+			);
+			name = Docs;
 			sourceTree = "<group>";
 		};
 		DDBB79F11303A184001B5F89 /* Deps */ = {
@@ -241,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD8F9BDF1321E99400CEDB4E /* README.markdown in Resources */,
+				DDA81AAB13500C70001FEF6A /* appledoc.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
