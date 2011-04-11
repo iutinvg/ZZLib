@@ -34,7 +34,7 @@ How to Learn More
 Thanks
 ======
 
-ZZLib uses many third party open source peaces of code, libraries, tools and frameworks:
+ZZLib uses many third party open source pieces of code, libraries, tools and frameworks:
 
 - https://github.com/stig/json-framework by Stig Brautaset
 - a lot of inspiration came from [three20](https://github.com/facebook/three20)
