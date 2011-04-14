@@ -125,6 +125,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)refreshData {
+    // cancel current release 
+    [_request cancel];
+    [_request release];
+    _request = nil;
+    // create new release
 	[self createRequest];
 	[self showActivity:YES];
 }

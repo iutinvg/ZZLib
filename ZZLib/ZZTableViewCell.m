@@ -16,6 +16,17 @@
 @synthesize urlStr = _urlStr;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        CGFloat height = self.contentView.frame.size.height;
+        _asyncImage = [[ZZImageView alloc] initWithFrame:CGRectMake(0, 0, height, height)];
+        [self.contentView addSubview:_asyncImage];
+    }
+    return self;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
     [_asyncImage release];
     [_urlStr release];
