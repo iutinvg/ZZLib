@@ -8,3 +8,5 @@
 #import "ZZViewController.h"
 #import "ZZTableController.h"
 #import "ZZJSONRequest.h"
+#import "ZZImageView.h"
+#import "ZZTableViewCell.h"
