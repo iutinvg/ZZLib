@@ -1,10 +1,7 @@
-//
-//  ZZImageView.h
-//  ZZ
-//
-//  Created by Слава Иутин on 4/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import <Foundation/Foundation.h>
 
