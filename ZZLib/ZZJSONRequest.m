@@ -17,7 +17,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithURLString:(NSString*)urlstr delegate:(id<ZZJSONRequestDelegate>)delegate {
-	if (self = [super init]) {
+    self = [super init];
+	if (self) {
 		_delegate = delegate;
 		self.urlString = urlstr;
 		

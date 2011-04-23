@@ -12,8 +12,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
-    ZZLOG(@"init with frame");
-    if ((self=[super initWithFrame:frame])) {
+    self=[super initWithFrame:frame];
+    if (self) {
         [self clear];
     }
     return self;

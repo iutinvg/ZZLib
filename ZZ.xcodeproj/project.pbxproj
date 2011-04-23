@@ -307,6 +307,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				INFOPLIST_FILE = "ZZ-Info.plist";
 				PRODUCT_NAME = ZZ;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -319,6 +320,7 @@
 				GCC_PREFIX_HEADER = ZZ_Prefix.pch;
 				INFOPLIST_FILE = "ZZ-Info.plist";
 				PRODUCT_NAME = ZZ;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

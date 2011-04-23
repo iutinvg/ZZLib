@@ -9,7 +9,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-	if (self=[super init]) {
+    self=[super init];
+	if (self) {
 		self.title = @"ZZTableController";
 		
 		// refresh button
@@ -40,27 +41,22 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoading:(ZZJSONRequest*)request {
-	[super requestDidFinishLoading:request];
-	
 	// put necessary part of response in instance variable
 	NSDictionary* tmp = (NSDictionary*)_request.response;
 	[_searchResults release];
 	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
 	
-	// must be done: release request 
-	[_request release];
-	
 	ZZLOG(@"results: %d", [_searchResults count]);
 	
 	// reload table
 	[self.tableView reloadData];
-}
+    
+    // 
+    [self loadVisibleImages];
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)request:(ZZJSONRequest *)request failedWithError:(NSError *)error {
-	[super request:request failedWithError:error];
-	// must be done: release request 
-	[_request release];
+	// must be called to release request
+    // and hide loading visualizations
+	[super requestDidFinishLoading:request];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,16 +87,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ZZTableViewCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ZZTableViewCell *cell = (ZZTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[ZZTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
 	NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = [item objectForKey:@"text"];
+    cell.urlStr = [item objectForKey:@"profile_image_url"];
 	
     return cell;
 }

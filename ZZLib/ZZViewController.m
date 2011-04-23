@@ -11,7 +11,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-	if (self = [self initWithNibName:nil bundle:nil]) {
+    self = [self initWithNibName:nil bundle:nil];
+    
+	if (self) {
 	}
 	
 	return self;

@@ -51,6 +51,24 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)layoutSubviews {
+	[super layoutSubviews];
+    
+	CGFloat height = self.contentView.frame.size.height;
+	CGFloat margin = self.textLabel.frame.origin.x;
+	
+	CGRect rect = self.textLabel.frame;
+	rect.origin.x = height + margin;
+    rect.size.width -= height + margin;
+	self.textLabel.frame = rect;
+	
+	rect = self.detailTextLabel.frame;
+	rect.origin.x = height + margin;
+    rect.size.width -= height + margin;
+	self.detailTextLabel.frame = rect;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 /*+ (CGFloat)calculateHeight:(UITableView*)tableView text:(NSString*)text {
     //return 165;
     static CGFloat minimalHeight = 50;
