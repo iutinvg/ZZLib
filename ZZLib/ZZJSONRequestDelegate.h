@@ -1,10 +1,7 @@
-//
-//  ZZRequestDelegate.h
-//  ZZ
-//
-//  Created by Слава Иутин on 3/5/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import <UIKit/UIKit.h>
 
@@ -22,7 +19,7 @@
  Invocated when loading is failed with error.
  
  This method allows to show error alerts, disable loading visualizing. 
- @warning You must release request here.
+ @warning You must call super class method to release request.
  
  @param request the request used for loading
  @param error the failure reason information
@@ -32,8 +29,8 @@
 /**
  Invocated when loading successfuly finished.
  
- This method allows to show error alerts, disable loading visualizing.
- @warning You must release request here.
+ This method allows to fetch loaded data.
+ @warning You must call super class method to release request.
 
  @param request the request used for loading
  
