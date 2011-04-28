@@ -59,12 +59,12 @@
 	
 	CGRect rect = self.textLabel.frame;
 	rect.origin.x = height + margin;
-    rect.size.width -= height + margin;
+    rect.size.width = self.contentView.frame.size.width - height - margin;
 	self.textLabel.frame = rect;
 	
 	rect = self.detailTextLabel.frame;
 	rect.origin.x = height + margin;
-    rect.size.width -= height + margin;
+    rect.size.width = self.contentView.frame.size.width - height - margin;
 	self.detailTextLabel.frame = rect;
 }
 
