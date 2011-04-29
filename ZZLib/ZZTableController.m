@@ -178,8 +178,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadVisibleImages {
     NSArray* visibleCells = [_tableView visibleCells];
-    for (ZZTableViewCell* cell in visibleCells) {
-        [cell loadImage];
+    for (UITableViewCell* cell in visibleCells) {
+        if ([cell isKindOfClass:[ZZTableViewCell class]]) {
+            ZZTableViewCell* zzcell = (ZZTableViewCell*)cell;
+            [zzcell loadImage];
+        }
     }
 }
 
