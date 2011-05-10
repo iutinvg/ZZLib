@@ -68,6 +68,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewWillDisappear:(BOOL)animated {
     [self releaseRequest];
+	[self showActivity:NO];
     [super viewWillDisappear:animated];
 }
 
