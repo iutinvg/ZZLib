@@ -2,25 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>--company-id</key>
+	<string>com.whirix</string>
+	<key>--create-html</key>
+	<true/>
+	<key>--ignore</key>
+	<string>.m</string>
 	<key>--input</key>
 	<array>
 		<string>../ZZLib</string>
 	</array>
-	<key>--create-html</key>
-	<true/>
-	<key>--output</key>
-	<string>.</string>
-	<key>--project-name</key>
-	<string>ZZLib</string>
-	<key>--ignore</key>
-	<string>.m</string>
 	<key>--keep-intermediate-files</key>
 	<true/>
 	<key>--no-install-docset</key>
 	<true/>
-	<key>--company-id</key>
-	<string>com.whirix</string>
+	<key>--output</key>
+	<string>../ZZDocs</string>
 	<key>--project-company</key>
 	<string>Whirix</string>
+	<key>--project-name</key>
+	<string>ZZLib</string>
 </dict>
 </plist>
