@@ -4,6 +4,8 @@ ZZLib
 ZZLib is a collection of iPhone classes and macros cought by us on the Internet
 and integrated with each other. Our main idea is to keep the library easy to use and make it very simple.
 
+Generated documentation: http://iutinvg.github.com/ZZLib/
+
 Features
 --------
 
