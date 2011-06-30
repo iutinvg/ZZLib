@@ -20,6 +20,12 @@
 @property (nonatomic, assign) BOOL loaded;
 
 - (void)loadImageFromURL:(NSURL*)url;
+
+/**
+ Short hand call for loadImageFromURL.
+ */
+- (void)loadImageFromURLStr:(NSString*)urlStr;
+
 - (void)clear;
 
 @end

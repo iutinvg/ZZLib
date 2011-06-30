@@ -38,6 +38,17 @@
 	//TODO error handling, what if connection is nil?
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loadImageFromURLStr:(NSString*)urlStr {
+    if (urlStr==nil) {
+        NSLog(@"image url is nil");
+        return;
+    }
+    
+    NSURL* url = [NSURL URLWithString:urlStr];
+    [self loadImageFromURL:url];
+}
+
 //the URL connection calls this repeatedly as data arrives
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
