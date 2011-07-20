@@ -12,6 +12,16 @@
 #import <Foundation/Foundation.h>
 #import "ZZJSONRequestDelegate.h"
 
+/**
+ Defines global behaviour for caching.
+ You can set this variable to NSURLRequestReturnCacheDataDontLoad if you
+ detect that network is unavailable. So you application will able to
+ show at least old data.
+ Please use SDURLCache library by Grzegorz Adam Hankiewicz, https://github.com/gradha/SDURLCache
+ */
+extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
+//extern NSURLCacheStoragePolicy ZZURLCacheStoragePolicy;
+
 @interface ZZJSONRequest : NSObject {
 	NSString* _urlString;
 	NSMutableData* _data;

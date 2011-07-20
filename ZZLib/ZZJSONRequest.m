@@ -7,6 +7,9 @@
 #import "ZZDebug.h"
 #import "JSON.h"
 
+NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
+//NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
+
 @implementation ZZJSONRequest
 
 @synthesize urlString = _urlString;
@@ -23,7 +26,7 @@
 		self.urlString = urlstr;
 		
 		NSURL* url = [NSURL URLWithString:_urlString];
-		NSURLRequest* request = [NSURLRequest requestWithURL:url];
+		NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20];
 		_loaded = NO;
 		_loading = YES;
 
@@ -75,7 +78,7 @@
 
 	// parse data
 	NSString* json = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
-	ZZLOG(@"json: %@", json);
+	//ZZLOG(@"json: %@", json);
 	_response = [[json JSONValue] retain];
 	
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
@@ -90,5 +93,15 @@
 		[_delegate request:self failedWithError:error];
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/*- (NSCachedURLResponse*)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    NSCachedURLResponse* newResponse =
+    [[NSCachedURLResponse alloc] initWithResponse:cachedResponse.response
+                                             data:cachedResponse.data
+                                         userInfo:cachedResponse.userInfo
+                                    storagePolicy:ZZURLCacheStoragePolicy];
+    return [newResponse autorelease];
+}*/
 
 @end

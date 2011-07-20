@@ -3,6 +3,7 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import "ZZJSONRequest.h"
 #import "ZZImageView.h"
 #import "ZZDebug.h"
 
@@ -32,7 +33,7 @@
     //in case we are downloading a 2nd image
     [self clear];
 	
-	NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+	NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20.0];
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
     //notice how delegate set to self object
 	//TODO error handling, what if connection is nil?
@@ -75,6 +76,16 @@
     
     _loaded = YES;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/*- (NSCachedURLResponse*)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    NSCachedURLResponse* newResponse =
+    [[NSCachedURLResponse alloc] initWithResponse:cachedResponse.response
+                                             data:cachedResponse.data
+                                         userInfo:cachedResponse.userInfo
+                                    storagePolicy:ZZURLCacheStoragePolicy];
+    return [newResponse autorelease];
+}*/
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)clear {
