@@ -47,18 +47,18 @@
 	}
 	
 	_loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-	_loadingView.backgroundColor = ZZRGBA(255, 255, 255, 1);
+	_loadingView.backgroundColor = ZZRGBA(0, 0, 0, 0.5);
 	_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
 	UIActivityIndicatorView* activity = 
 	[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	[activity startAnimating];
 	
 	activity.center = _loadingView.center;
 	activity.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
 	UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	
 	[_loadingView addSubview:activity];
+	[activity startAnimating];
 	[activity release];
 	
 	[self.view addSubview:_loadingView];
