@@ -45,6 +45,10 @@
 		_loadingView = nil;
 		return;
 	}
+    
+    if (_loadingView!=nil) {
+        return;
+    }
 	
 	_loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
 	_loadingView.backgroundColor = ZZRGBA(0, 0, 0, 0.5);
