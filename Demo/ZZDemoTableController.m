@@ -34,6 +34,7 @@
 #pragma mark Request Handling
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createRequest {
+    [super createRequest];
 	_request = [[ZZJSONRequest alloc] 
 				initWithURLString:@"http://search.twitter.com/search.json?q=iPhone"
 				delegate:self];

@@ -50,10 +50,12 @@
 - (void)showActivity:(BOOL)show;
 
 /**
- Must e overriden to create relevant request for your application.
+ Must be overriden to create relevant request for your application.
+ The default method just show activity idicator.
  
  Example: 
     - (void)createRequest {
+        [super createRequest];
         _request = [[ZZJSONRequest alloc] 
                     initWithURLString:@"http://search.twitter.com/search.json?q=iPhone"
                     delegate:self];

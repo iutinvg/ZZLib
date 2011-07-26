@@ -4,6 +4,7 @@
  */
 
 #import "ZZViewController.h"
+#import "ZZActivityIndicator.h"
 #import "ZZCommon.h"
 #import "ZZDebug.h"
 
@@ -38,34 +39,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showLoading:(BOOL)flag {
-	if (!flag) {
-		_loadingView.hidden = YES;
-		[_loadingView removeFromSuperview];
-		[_loadingView release];
-		_loadingView = nil;
-		return;
-	}
-    
-    if (_loadingView!=nil) {
-        return;
+    ZZActivityIndicator* ai = [ZZActivityIndicator currentIndicator];
+    if (flag) {
+        [ai displayActivity:@"Loading..."];
+    } else {
+        [ai hide];
     }
-	
-	_loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-	_loadingView.backgroundColor = ZZRGBA(0, 0, 0, 0.5);
-	_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	
-	UIActivityIndicatorView* activity = 
-	[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	
-	activity.center = _loadingView.center;
-	activity.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
-	UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-	
-	[_loadingView addSubview:activity];
-	[activity startAnimating];
-	[activity release];
-	
-	[self.view addSubview:_loadingView];
 }
 
 @end

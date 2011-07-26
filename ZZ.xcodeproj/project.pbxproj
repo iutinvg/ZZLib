@@ -28,6 +28,7 @@
 		DDBB7A001303A184001B5F89 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79F91303A184001B5F89 /* SBJsonBase.m */; };
 		DDBB7A011303A184001B5F89 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79FB1303A184001B5F89 /* SBJsonParser.m */; };
 		DDBB7A021303A184001B5F89 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */; };
+		DDC4CB0D13DEDF4000EB7D07 /* ZZActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC4CB0C13DEDF4000EB7D07 /* ZZActivityIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,8 @@
 		DDBB79FB1303A184001B5F89 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		DDBB79FC1303A184001B5F89 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		DDC4CB0B13DEDF4000EB7D07 /* ZZActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ZZActivityIndicator.h; sourceTree = "<group>"; };
+		DDC4CB0C13DEDF4000EB7D07 /* ZZActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZActivityIndicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				DDAC1292135696E00033A7C1 /* ZZTableViewCell.m */,
 				DDAC1294135697270033A7C1 /* ZZImageView.h */,
 				DDAC1295135697270033A7C1 /* ZZImageView.m */,
+				DDC4CB0B13DEDF4000EB7D07 /* ZZActivityIndicator.h */,
+				DDC4CB0C13DEDF4000EB7D07 /* ZZActivityIndicator.m */,
 			);
 			path = ZZLib;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				DD8F9ADF1321D45000CEDB4E /* ZZJSONRequest.m in Sources */,
 				DDAC1293135696E00033A7C1 /* ZZTableViewCell.m in Sources */,
 				DDAC1296135697280033A7C1 /* ZZImageView.m in Sources */,
+				DDC4CB0D13DEDF4000EB7D07 /* ZZActivityIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
