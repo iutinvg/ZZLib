@@ -11,7 +11,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-	if (self=[super init]) {
+    self = [super init];
+	if (self) {
 		self.title = @"ZZCatalog";
 	}
 	return self;
@@ -44,7 +45,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 	
@@ -52,6 +53,7 @@
 		cell.textLabel.text = @"ZZViewVontroller";
 	} else if (indexPath.row==1) {
 		cell.textLabel.text = @"ZZTableController";
+        cell.detailTextLabel.text = @"+ ZZTableViewCell + ZZImageView";
 	}
 
     return cell;
