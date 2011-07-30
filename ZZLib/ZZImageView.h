@@ -63,7 +63,7 @@
 - (void)loadImageFromURLStr:(NSString*)urlStr;
 
 /**
- Clear image (show default uploaded state). Cancels current image loading. Set [ZZImageView.loading] property to `NO`. 
+ Clear image: cancels current image loading, set loaded property to `NO`, shows default image. 
  */
 - (void)clear;
 
