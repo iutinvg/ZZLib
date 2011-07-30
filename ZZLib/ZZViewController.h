@@ -26,7 +26,7 @@
  Usage example:
     - (void)viewDidLoad {
         [super viewDidLoad];
-        // starting load loading process here
+        // starting loading process here
         [self showLoading:YES];
     }
  
