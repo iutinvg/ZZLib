@@ -54,4 +54,4 @@ The following libraries are not used here, but you can find them useful:
 Other 
 =====
 
-iPhone client application for our [web monitoring serice](http://is2monitor.com) is built with ZZLib.
+iPhone client application for our [web monitoring service](http://is2monitor.com) is built with ZZLib.
