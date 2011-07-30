@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>ZZTableController Class Reference</title>
+		<title>ZZImageView Class Reference</title>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
@@ -11,7 +11,7 @@
 	<body>
 		<header id="top_header">
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">ZZTableController Class Reference</h1>
+				<h1 class="hideInXcode">ZZImageView Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -32,19 +32,22 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/loaded">&nbsp;&nbsp;&nbsp;&nbsp;loaded</option>
+	
+	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/createRequest">&nbsp;&nbsp;&nbsp;&nbsp;- createRequest</option>
+	<option value="//api/name/clear">&nbsp;&nbsp;&nbsp;&nbsp;- clear</option>
 	
-	<option value="//api/name/loadVisibleImages">&nbsp;&nbsp;&nbsp;&nbsp;- loadVisibleImages</option>
+	<option value="//api/name/loadImageFromURL:">&nbsp;&nbsp;&nbsp;&nbsp;- loadImageFromURL:</option>
 	
-	<option value="//api/name/releaseRequest">&nbsp;&nbsp;&nbsp;&nbsp;- releaseRequest</option>
-	
-	<option value="//api/name/requestDidFinishLoading:">&nbsp;&nbsp;&nbsp;&nbsp;- requestDidFinishLoading:</option>
+	<option value="//api/name/loadImageFromURLStr:">&nbsp;&nbsp;&nbsp;&nbsp;- loadImageFromURLStr:</option>
 	
 	
 	
@@ -68,19 +71,23 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loaded">loaded</a></span></li>
+	
+</ul></li>
+
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createRequest">createRequest</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clear">clear</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadVisibleImages">loadVisibleImages</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadImageFromURL:">loadImageFromURL:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/releaseRequest">releaseRequest</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestDidFinishLoading:">requestDidFinishLoading:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadImageFromURLStr:">loadImageFromURLStr:</a></span></li>
 	
 </ul></li>
 
@@ -89,7 +96,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="ZZTableController Class Reference" name="top"></a>
+				<a title="ZZImageView Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -98,7 +105,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">ZZTableController Class Reference</h1>
+						<h1 class="title title-header">ZZImageView Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -106,13 +113,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/ZZViewController.html">ZZViewController</a> : UIViewController</td>
-</tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">UITableViewDataSource<br />UITableViewDelegate<br /><a href="../Protocols/ZZJSONRequestDelegate.html">ZZJSONRequestDelegate</a></td>
+	<td class="specification-value">UIImageView</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">ZZTableController.h</td>
+	<td class="specification-value">ZZImageView.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -122,9 +126,15 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Table loaded with remote data.</p>
+						<p>Image-view for remote images. The image loading is async.</p>
 
-<p>Loading is visualized in this controller.</p>
+<p>Please see Demo part of ZZLib project as a best example of the usage:</p>
+
+<ul>
+<li><a href="https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.h">https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.h</a></li>
+<li><a href="https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.m">https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.m</a></li>
+</ul>
+
 					</div>
 					
 					
@@ -142,32 +152,29 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/requestDidFinishLoading:">&ndash;&nbsp;requestDidFinishLoading:</a></code>
-		<span class="tooltip"><p>Default implementation of <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a></p></span>
+		<code><a href="#//api/name/loaded">&nbsp;&nbsp;loaded</a></code>
+		<span class="tooltip"><p>Indicates whether image is <a href="#//api/name/loaded">loaded</a> or not.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadImageFromURL:">&ndash;&nbsp;loadImageFromURL:</a></code>
+		<span class="tooltip"><p>Set remote image URL and start loading.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/createRequest">&ndash;&nbsp;createRequest</a></code>
-		<span class="tooltip"><p>Must be overriden to create relevant request for your application.
-The default method just show activity idicator.</p></span>
+		<code><a href="#//api/name/loadImageFromURLStr:">&ndash;&nbsp;loadImageFromURLStr:</a></code>
+		<span class="tooltip"><p>Shorthand call for <a href="#//api/name/loadImageFromURL:">[ZZImageView loadImageFromURL:]</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/releaseRequest">&ndash;&nbsp;releaseRequest</a></code>
-		<span class="tooltip"><p>It cancel and release the current request. It is called by
-<a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/loadVisibleImages">&ndash;&nbsp;loadVisibleImages</a></code>
-		<span class="tooltip"><p>You have to call this method from <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>
-in order to load remote images for visible cells.</p></span>
+		<code><a href="#//api/name/clear">&ndash;&nbsp;clear</a></code>
+		<span class="tooltip"><p>Clear image: cancels current image loading, set <a href="#//api/name/loaded">loaded</a> property to <code>NO</code>, shows default image.</p></span>
 	</span>
 	
 	
@@ -180,6 +187,49 @@ in order to load remote images for visible cells.</p></span>
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/loaded" title="loaded"></a>
+	<h3 class="subsubtitle method-title">loaded</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Indicates whether image is <a href="#//api/name/loaded">loaded</a> or not.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL loaded</code></div>
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Indicates whether image is <a href="#//api/name/loaded">loaded</a> or not.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZImageView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
 					
 					
 					
@@ -189,18 +239,17 @@ in order to load remote images for visible cells.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/createRequest" title="createRequest"></a>
-	<h3 class="subsubtitle method-title">createRequest</h3>
+	<a name="//api/name/clear" title="clear"></a>
+	<h3 class="subsubtitle method-title">clear</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Must be overriden to create relevant request for your application.
-The default method just show activity idicator.</p>
+		<p>Clear image: cancels current image loading, set <a href="#//api/name/loaded">loaded</a> property to <code>NO</code>, shows default image.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)createRequest</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)clear</code></div>
 	
 	
 	
@@ -209,16 +258,67 @@ The default method just show activity idicator.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Must be overriden to create relevant request for your application.
-The default method just show activity idicator.</p>
+		<p>Clear image: cancels current image loading, set <a href="#//api/name/loaded">loaded</a> property to <code>NO</code>, shows default image.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZImageView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadImageFromURL:" title="loadImageFromURL:"></a>
+	<h3 class="subsubtitle method-title">loadImageFromURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set remote image URL and start loading.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)loadImageFromURL:(NSURL *)<em>url</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>remote image URL</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set remote image URL and start loading.</p>
 
-<p>Example:</p>
+<p>Have to be called in order to start remote image loading.</p>
 
-<pre><code>- (void)createRequest {
-    [super createRequest];
-    _request = [[ZZJSONRequest alloc] 
-                initWithURLString:@"http://search.twitter.com/search.json?q=iPhone"
-                delegate:self];
+<p>Usage example:</p>
+
+<pre><code>- (void)loadView {
+    [super loadView];
+
+    image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
+    NSURL* url = [NSURL URLWithString:@"https://github.com/iutinvg/ZZLib/raw/master/Demo/monkey.jpg"];
+    [image loadImageFromURL:url];
+
+    [self.view addSubview:image];
 }
 </code></pre>
 	</div>
@@ -231,110 +331,32 @@ The default method just show activity idicator.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZTableController.h</code><br />
+		<code class="declared-in-ref">ZZImageView.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/loadVisibleImages" title="loadVisibleImages"></a>
-	<h3 class="subsubtitle method-title">loadVisibleImages</h3>
+	<a name="//api/name/loadImageFromURLStr:" title="loadImageFromURLStr:"></a>
+	<h3 class="subsubtitle method-title">loadImageFromURLStr:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>You have to call this method from <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>
-in order to load remote images for visible cells.</p>
+		<p>Shorthand call for <a href="#//api/name/loadImageFromURL:">[ZZImageView loadImageFromURL:]</a></p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)loadVisibleImages</code></div>
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>You have to call this method from <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>
-in order to load remote images for visible cells.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZTableController.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/releaseRequest" title="releaseRequest"></a>
-	<h3 class="subsubtitle method-title">releaseRequest</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>It cancel and release the current request. It is called by
-<a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)releaseRequest</code></div>
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>It cancel and release the current request. It is called by
-<a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZTableController.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/requestDidFinishLoading:" title="requestDidFinishLoading:"></a>
-	<h3 class="subsubtitle method-title">requestDidFinishLoading:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Default implementation of <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a></p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (void)requestDidFinishLoading:(ZZJSONRequest *)<em>request</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)loadImageFromURLStr:(NSString *)<em>urlStr</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>request</em></dt>
-			<dd><p>request @see <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a></p></dd>
+			<dt><em>urlStr</em></dt>
+			<dd><p>URL string</p></dd>
 		</dl>
 		
 	</div>
@@ -345,24 +367,18 @@ in order to load remote images for visible cells.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Default implementation of <a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a></p>
+		<p>Shorthand call for <a href="#//api/name/loadImageFromURL:">[ZZImageView loadImageFromURL:]</a></p>
 
-<p>Must be overriden in order to get loaded data. The super class method must
-be invoked at the end of overriden method. Example:</p>
+<p>Usage example:</p>
 
-<pre><code>NSDictionary* tmp = (NSDictionary*)_request.response;
-[_searchResults release];
-_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
+<pre><code>- (void)loadView {
+    [super loadView];
 
-// reload table
-[self.tableView reloadData];
+    image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
+    [image loadImageFromURLStr:@"https://github.com/iutinvg/ZZLib/raw/master/Demo/monkey.jpg"];
 
-// in case you use ZZTableViewCell 
-[self loadVisibleImages];
-
-// must be called to release request
-// and hide loading visualizations
-[super requestDidFinishLoading:request];
+    [self.view addSubview:image];
+}
 </code></pre>
 	</div>
 	
@@ -374,7 +390,7 @@ _searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZTableController.h</code><br />
+		<code class="declared-in-ref">ZZImageView.h</code><br />
 	</div>				
 	
 	
