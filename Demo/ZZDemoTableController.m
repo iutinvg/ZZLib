@@ -61,11 +61,11 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)showActivity:(BOOL)show {
-	[super showActivity:show];
+- (void)showLoading:(BOOL)flag {
+	[super showLoading:flag];
 	
 	// enable/disable refresh button
-	self.navigationItem.rightBarButtonItem.enabled = !show;
+	self.navigationItem.rightBarButtonItem.enabled = !flag;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

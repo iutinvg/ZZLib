@@ -18,20 +18,26 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidLoad {
-	[super viewDidLoad];
+- (void)dealloc {
+    [_image release];
+    [super dealloc];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loadView {
+	[super loadView];
+    
+    _image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
+    _image.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+                                UIViewAutoresizingFlexibleBottomMargin;
 	
-	_labelHello = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-	_labelHello.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	_labelHello.textAlignment = UITextAlignmentCenter;
-	_labelHello.text = @"Hello World!!!";
-	
-	[self.view addSubview:_labelHello];
+	[self.view addSubview:_image];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload {
-	[_labelHello release];
+	[_image release];
+    _image = nil;
 }
 
 @end

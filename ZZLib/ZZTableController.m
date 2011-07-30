@@ -37,7 +37,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
     [self releaseRequest];
-    [self showActivity:NO];
+    [self showLoading:NO];
     [_tableView release];
     [super dealloc];
 }
@@ -61,7 +61,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewDidUnload {
     [self releaseRequest];
-	[self showActivity:NO];
+	[self showLoading:NO];
 	[_tableView release];
     _tableView = nil;
 	[super viewDidUnload];
@@ -77,14 +77,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)request:(ZZJSONRequest*)request failedWithError:(NSError*)error {
-	[self showActivity:NO];
 	[self showLoading:NO];
     [self releaseRequest];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoading:(ZZJSONRequest*)request {
-	[self showActivity:NO];
 	[self showLoading:NO];
     [self releaseRequest];
 }
@@ -140,10 +138,10 @@
 #pragma mark -
 #pragma mark Other Methods
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)showActivity:(BOOL)show {
+/*- (void)showActivity:(BOOL)show {
 	UIApplication * app = [UIApplication sharedApplication];
 	app.networkActivityIndicatorVisible = show;
-}
+}*/
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)releaseRequest {

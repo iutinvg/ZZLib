@@ -6,7 +6,7 @@
 #import "ZZ.h"
 
 @interface ZZDemoViewController : ZZViewController {
-	UILabel* _labelHello;
+    ZZImageView* _image;
 }
 
 @end

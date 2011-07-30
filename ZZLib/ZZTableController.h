@@ -47,8 +47,6 @@
  */
 - (void)requestDidFinishLoading:(ZZJSONRequest*)request;
 
-- (void)showActivity:(BOOL)show;
-
 /**
  Must be overriden to create relevant request for your application.
  The default method just show activity idicator.

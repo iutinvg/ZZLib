@@ -51,6 +51,7 @@
 	
 	if (indexPath.row==0) {
 		cell.textLabel.text = @"ZZViewVontroller";
+        cell.detailTextLabel.text = @"+ ZZImageView";
 	} else if (indexPath.row==1) {
 		cell.textLabel.text = @"ZZTableController";
         cell.detailTextLabel.text = @"+ ZZTableViewCell + ZZImageView";
