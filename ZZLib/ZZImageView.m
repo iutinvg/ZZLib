@@ -22,9 +22,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
-	[connection cancel]; //in case the URL is still downloading
-	[connection release];
-	[data release]; 
+	[_connection cancel]; //in case the URL is still downloading
+	[_connection release];
+	[_data release]; 
     [super dealloc];
 }
 
@@ -34,7 +34,7 @@
     [self clear];
 	
 	NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20.0];
-	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
+	_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
     //notice how delegate set to self object
 	//TODO error handling, what if connection is nil?
 }
@@ -42,7 +42,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImageFromURLStr:(NSString*)urlStr {
     if (urlStr==nil) {
-        NSLog(@"image url is nil");
+        ZZLOG(@"image url is nil");
         return;
     }
     
@@ -50,29 +50,25 @@
     [self loadImageFromURL:url];
 }
 
-//the URL connection calls this repeatedly as data arrives
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
-	if (data==nil) { 
-        data = [[NSMutableData alloc] initWithCapacity:2048]; 
+	if (_data==nil) { 
+        _data = [[NSMutableData alloc] initWithCapacity:2048]; 
     } 
-	[data appendData:incrementalData];
+	[_data appendData:incrementalData];
 }
 
-//the URL connection calls this once all the data has downloaded
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
-	//so self data now has the complete image 
-	[connection release];
-	connection = nil;
+	[_connection release];
+	_connection = nil;
 	
-	//make an image view for the image
-    UIImage* image = [UIImage imageWithData:data];
+    UIImage* image = [UIImage imageWithData:_data];
     self.image = image;
 	[self setNeedsLayout];
     
-	[data release];
-	data = nil;
+	[_data release];
+	_data = nil;
     
     _loaded = YES;
 }
@@ -89,15 +85,14 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)clear {
-    if (connection!=nil) {
-        
-        [connection cancel];
-        [connection release];
-        connection = nil;
+    if (_connection!=nil) {
+        [_connection cancel];
+        [_connection release];
+        _connection = nil;
     } 
-	if (data!=nil) { 
-        [data release]; 
-        data = nil;
+	if (_data!=nil) { 
+        [_data release]; 
+        _data = nil;
     }
     self.image = [UIImage imageNamed:@"loading.png"];
     _loaded = NO;

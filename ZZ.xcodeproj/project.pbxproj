@@ -15,8 +15,8 @@
 		DD6EC5B11302471D00FE744A /* ZZDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */; };
 		DD82A31312EAAA0200A980DB /* ZZCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A30F12EAAA0200A980DB /* ZZCommon.m */; };
 		DD82A31412EAAA0200A980DB /* ZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A31212EAAA0200A980DB /* ZZViewController.m */; };
-		DD8712B613E3CD1B004B4FD9 /* monkey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD8712B513E3CD1B004B4FD9 /* monkey.jpg */; };
 		DD8712B913E3CECA004B4FD9 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8712B813E3CECA004B4FD9 /* loading.png */; };
+		DD8712BB13E3CFCE004B4FD9 /* monkey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD8712BA13E3CFCD004B4FD9 /* monkey.jpg */; };
 		DD8F9ADF1321D45000CEDB4E /* ZZJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F9ADE1321D45000CEDB4E /* ZZJSONRequest.m */; };
 		DD8F9BDF1321E99400CEDB4E /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = DD8F9BDE1321E99400CEDB4E /* README.markdown */; };
 		DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */; };
@@ -52,8 +52,8 @@
 		DD82A31012EAAA0200A980DB /* ZZDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDebug.h; sourceTree = "<group>"; };
 		DD82A31112EAAA0200A980DB /* ZZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZViewController.h; sourceTree = "<group>"; };
 		DD82A31212EAAA0200A980DB /* ZZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZViewController.m; sourceTree = "<group>"; };
-		DD8712B513E3CD1B004B4FD9 /* monkey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monkey.jpg; sourceTree = "<group>"; };
 		DD8712B813E3CECA004B4FD9 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
+		DD8712BA13E3CFCD004B4FD9 /* monkey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monkey.jpg; sourceTree = "<group>"; };
 		DD8F9ADD1321D45000CEDB4E /* ZZJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJSONRequest.h; sourceTree = "<group>"; };
 		DD8F9ADE1321D45000CEDB4E /* ZZJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZJSONRequest.m; sourceTree = "<group>"; };
 		DD8F9B761321DA4E00CEDB4E /* ZZJSONRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJSONRequestDelegate.h; sourceTree = "<group>"; };
@@ -166,7 +166,6 @@
 		DD92CE7612D5D70A001872F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DD8712B513E3CD1B004B4FD9 /* monkey.jpg */,
 				DD8F9BDE1321E99400CEDB4E /* README.markdown */,
 				8D1107310486CEB800E47090 /* ZZ-Info.plist */,
 			);
@@ -185,6 +184,7 @@
 				DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */,
 				DD6EC5AF1302471D00FE744A /* ZZDemoTableController.h */,
 				DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */,
+				DD8712BA13E3CFCD004B4FD9 /* monkey.jpg */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -274,8 +274,8 @@
 			files = (
 				DD8F9BDF1321E99400CEDB4E /* README.markdown in Resources */,
 				DDA81AAB13500C70001FEF6A /* appledoc.plist in Resources */,
-				DD8712B613E3CD1B004B4FD9 /* monkey.jpg in Resources */,
 				DD8712B913E3CECA004B4FD9 /* loading.png in Resources */,
+				DD8712BB13E3CFCE004B4FD9 /* monkey.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

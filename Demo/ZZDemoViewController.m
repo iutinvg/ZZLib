@@ -30,6 +30,7 @@
     _image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
     _image.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
                                 UIViewAutoresizingFlexibleBottomMargin;
+    [_image loadImageFromURLStr:@"https://github.com/iutinvg/ZZLib/raw/master/Demo/monkey.jpg"];
 	
 	[self.view addSubview:_image];
 }
