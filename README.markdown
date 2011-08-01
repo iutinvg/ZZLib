@@ -30,7 +30,7 @@ How to Learn More
 
 1. ZZLib contains a demo application which you can compile and start in simulator.
    The files within Demo group of ZZLib project are great examples of library usage.
-2. Read the docs (soming soon).
+2. Read the docs: http://iutinvg.github.com/ZZLib/
 3. Read the sources. They are pretty flat, besides there are some examples of good 
    practices used by great developers all over the worlds (see Thanks section).  
 
