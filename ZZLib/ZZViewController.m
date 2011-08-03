@@ -41,7 +41,7 @@
 - (void)showLoading:(BOOL)flag {
     ZZActivityIndicator* ai = [ZZActivityIndicator currentIndicator];
     if (flag) {
-        [ai displayActivity:@"Loading..."];
+        [ai displayActivity:@"Loading"];
     } else {
         [ai hide];
     }
