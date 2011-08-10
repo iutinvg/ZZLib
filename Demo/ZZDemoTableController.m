@@ -4,6 +4,7 @@
  */
 
 #import "ZZDemoTableController.h"
+#import "ZZDemoViewController.h"
 
 @implementation ZZDemoTableController
 
@@ -91,6 +92,7 @@
     ZZTableViewCell *cell = (ZZTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[ZZTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
@@ -99,6 +101,14 @@
     cell.urlStr = [item objectForKey:@"profile_image_url"];
 	
     return cell;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
+    ZZDemoViewController* viewController = [[ZZDemoViewController alloc] initWithImageURLStr:[item objectForKey:@"profile_image_url"]];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
 }
 
 @end

@@ -8,10 +8,11 @@
 @implementation ZZDemoViewController
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
+- (id)initWithImageURLStr:(NSString*)urlStr {
     self = [super init];
 	if (self) {
-		self.title = @"ZZViewController";		
+		self.title = @"ZZViewController";
+        _urlStr = [urlStr copy];
 	}
 	return self;
 }
@@ -19,6 +20,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
     [_image release];
+    [_urlStr release];
     [super dealloc];
 }
 
@@ -29,7 +31,7 @@
     _image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
     _image.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleBottomMargin;
-    [_image loadImageFromURLStr:@"https://github.com/iutinvg/ZZLib/raw/master/Demo/monkey.jpg"];
+    [_image loadImageFromURLStr:_urlStr];
 	
 	[self.view addSubview:_image];
 }

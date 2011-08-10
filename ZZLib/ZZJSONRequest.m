@@ -46,9 +46,6 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark Public
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)cancel {
 	_loaded = _loading = NO;
 	[_connection cancel];
@@ -56,8 +53,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark NSURLConnection delegate
+#pragma mark - NSURLConnection delegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	ZZLOG(@"get response from %@", _urlString);
@@ -78,7 +74,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 
 	// parse data
 	NSString* json = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
-	//ZZLOG(@"json: %@", json);
+	ZZLOG(@"json: %@", json);
 	_response = [[json JSONValue] retain];
 	
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
@@ -88,6 +84,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    ZZLOG(@"connection failed with error: %@", [error localizedDescription]);
 	_loaded = _loading = NO;
 	if ([_delegate respondsToSelector:@selector(request:failedWithError:)]) {
 		[_delegate request:self failedWithError:error];

@@ -7,6 +7,9 @@
 
 @interface ZZDemoViewController : ZZViewController {
     ZZImageView* _image;
+    NSString* _urlStr;
 }
+
+- (id)initWithImageURLStr:(NSString*)urlStr;
 
 @end
