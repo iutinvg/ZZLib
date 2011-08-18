@@ -35,6 +35,8 @@
     //ZZLOG(@"clear cell image");
     [super prepareForReuse];
     [_asyncImage clear];
+    [_urlStr release]; 
+    _urlStr = nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
