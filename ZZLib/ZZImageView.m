@@ -42,7 +42,6 @@
         UIImage* image = [UIImage imageWithData:response.data];
         self.image = image;
         _loaded = YES;
-        [self setNeedsLayout];
         return;
     }
 	
@@ -78,7 +77,6 @@
 	
     UIImage* image = [UIImage imageWithData:_data];
     self.image = image;
-	[self setNeedsLayout];
     
 	[_data release];
 	_data = nil;
