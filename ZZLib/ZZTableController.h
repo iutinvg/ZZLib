@@ -71,10 +71,4 @@
 - (void)createTable;
 - (void)refreshData;
 
-/**
- You have to call this method from [ZZJSONRequestDelegate requestDidFinishLoading:]
- in order to load remote images for visible cells.
- */
-- (void)loadVisibleImages;
-
 @end

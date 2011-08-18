@@ -10,7 +10,6 @@
 @implementation ZZTableViewCell
 
 @synthesize asyncImage = _asyncImage;
-@synthesize urlStr = _urlStr;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -40,11 +39,9 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadImage {
-	if (_urlStr==nil || _asyncImage.loaded) {
-		ZZLOG(@"nothing to load");
-		return;
-	}
+- (void)loadImageFromURLStr:(NSString*)urlStr {
+    [_urlStr release];
+    _urlStr = [urlStr copy];
     
     ZZLOG(@"load image %@", _urlStr);
 	

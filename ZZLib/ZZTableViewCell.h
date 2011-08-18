@@ -22,19 +22,15 @@
  */
 @property (nonatomic, retain) IBOutlet ZZImageView* asyncImage;
 
-/**
- URL of remote image.
- */
-@property (nonatomic, copy) NSString* urlStr;
-
 //+ (CGFloat)calculateHeight:(UITableView*)tableView text:(NSString*)text;
 
 /**
  Start loading of remote image.
+
+ Loading starts immediately after calling this message.
  
- The cell instance do not start the loading immediately.
- Just because the cell can be invisible.
+ @param urlStr string representation of image URL
  */
-- (void)loadImage;
+- (void)loadImageFromURLStr:(NSString*)urlStr;
 
 @end

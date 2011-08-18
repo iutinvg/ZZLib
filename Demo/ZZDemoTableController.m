@@ -52,9 +52,6 @@
 	// reload table
 	[self.tableView reloadData];
     
-    // 
-    [self loadVisibleImages];
-    
 	// must be called to release request
     // and hide loading visualizations
 	[super requestDidFinishLoading:request];
@@ -98,7 +95,7 @@
 	NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = [item objectForKey:@"text"];
-    cell.urlStr = [item objectForKey:@"profile_image_url"];
+    [cell loadImageFromURLStr:[item objectForKey:@"profile_image_url"]];
 	
     return cell;
 }

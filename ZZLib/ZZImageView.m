@@ -32,8 +32,20 @@
 - (void)loadImageFromURL:(NSURL*)url {
     //in case we are downloading a 2nd image
     [self clear];
+    
+    // check the cache
+    NSURLCache* cache = [NSURLCache sharedURLCache];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20.0];
+    NSCachedURLResponse* response = [cache cachedResponseForRequest:request];
+    if (response!=nil) {
+        //ZZLOG(@"it is found in cache");
+        UIImage* image = [UIImage imageWithData:response.data];
+        self.image = image;
+        _loaded = YES;
+        [self setNeedsLayout];
+        return;
+    }
 	
-	NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20.0];
 	_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
     //notice how delegate set to self object
 	//TODO error handling, what if connection is nil?
@@ -56,6 +68,7 @@
         _data = [[NSMutableData alloc] initWithCapacity:2048]; 
     } 
 	[_data appendData:incrementalData];
+    //ZZLOG(@".");
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,15 +98,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)clear {
-    if (_connection!=nil) {
-        [_connection cancel];
-        [_connection release];
-        _connection = nil;
-    } 
-	if (_data!=nil) { 
-        [_data release]; 
-        _data = nil;
-    }
+    [_connection cancel];
+    [_connection release];
+    _connection = nil;
+    [_data release]; 
+    _data = nil;
+    
     self.image = [UIImage imageNamed:@"loading.png"];
     _loaded = NO;
     // other option to visualize not loaded image
