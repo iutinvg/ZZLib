@@ -32,6 +32,12 @@
 - (void)loadImageFromURL:(NSURL*)url {
     //in case we are downloading a 2nd image
     [self clear];
+
+    // Actually nil URL is OK, but checking it in cache can cause crash
+    if (url==nil) {
+        ZZLOG(@"image URL is nil");
+        return;
+    }
     
     // check the cache
     NSURLCache* cache = [NSURLCache sharedURLCache];
@@ -46,17 +52,10 @@
     }
 	
 	_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
-    //notice how delegate set to self object
-	//TODO error handling, what if connection is nil?
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImageFromURLStr:(NSString*)urlStr {
-    if (urlStr==nil) {
-        ZZLOG(@"image url is nil");
-        return;
-    }
-    
     NSURL* url = [NSURL URLWithString:urlStr];
     [self loadImageFromURL:url];
 }
