@@ -10,7 +10,9 @@ Features
 --------
 
 - easy tables with remote JSON data
+- easy non-table controllers with remote JSON data
 - async remote image loading
+- table view cell class with remote image
 - easy controller creation without NIB files
 - you can still use NIB files
 - marvelous activity indicator
@@ -32,7 +34,7 @@ How to Learn More
    The files within Demo group of ZZLib project are great examples of library usage.
 2. Read the docs: http://iutinvg.github.com/ZZLib/
 3. Read the sources. They are pretty flat, besides there are some examples of good 
-   practices used by great developers all over the worlds (see Thanks section).  
+   practices used by great developers all over the world (see Thanks section).  
 
 Thanks
 ======
