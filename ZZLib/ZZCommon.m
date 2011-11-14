@@ -9,3 +9,8 @@
 BOOL ZZIsPad() {
 	return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+BOOL ZZIsRetina() {
+    return ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2);
+}
