@@ -4,6 +4,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "ZZImageDelegate.h"
 
 /**
  Image-view for remote images. The image loading is async.
@@ -17,8 +18,15 @@
 	NSURLConnection* _connection;
 	NSMutableData* _data;
     
-    BOOL _loaded;    
+    BOOL _loaded;
+    
+    id<ZZImageDelegate> _imageDelegate;
 }
+
+/**
+ To handle image did load event.
+ */
+@property (nonatomic, assign) id<ZZImageDelegate> imageDelegate;
 
 /**
  Indicates whether image is loaded or not.

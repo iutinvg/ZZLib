@@ -34,18 +34,22 @@
 #pragma mark - Request Handling
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createRequest {
+    NSString* urlString = [NSString stringWithFormat:
+                           @"http://api.flickr.com/services/rest/?method=%@&api_key=%@&text=flower&format=json&nojsoncallback=1",
+                           @"flickr.photos.search",
+                           @"4a6b9d8c09da17219420854c90c0776a"];
+    
     [super createRequest];
-	_request = [[ZZJSONRequest alloc] 
-				initWithURLString:@"http://search.twitter.com/search.json?q=iPhone"
-				delegate:self];
+	_request = [[ZZJSONRequest alloc] initWithURLString:urlString delegate:self];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoading:(ZZJSONRequest*)request {
 	// put necessary part of response in instance variable
 	NSDictionary* tmp = (NSDictionary*)_request.response;
+    tmp = [tmp objectForKey:@"photos"];
 	[_searchResults release];
-	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
+	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"photo"]];
 	
 	ZZLOG(@"results: %d", [_searchResults count]);
 	
@@ -94,8 +98,11 @@
 	
 	NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
 	
-	cell.textLabel.text = [item objectForKey:@"text"];
-    [cell loadImageFromURLStr:[item objectForKey:@"profile_image_url"]];
+	cell.textLabel.text = [item objectForKey:@"title"];
+    NSString* imageUrl = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_s.jpg",
+                          [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
+                          [item objectForKey:@"secret"]];
+    [cell loadImageFromURLStr:imageUrl];
 	
     return cell;
 }
@@ -103,7 +110,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
-    ZZDemoViewController* viewController = [[ZZDemoViewController alloc] initWithImageURLStr:[item objectForKey:@"profile_image_url"]];
+    NSString* imageUrl = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_z.jpg",
+                          [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
+                          [item objectForKey:@"secret"]];
+
+    ZZDemoViewController* viewController = [[ZZDemoViewController alloc] initWithImageURLStr:imageUrl];
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
 }

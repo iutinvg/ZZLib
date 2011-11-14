@@ -10,6 +10,7 @@
 @implementation ZZImageView
 
 @synthesize loaded = _loaded;
+@synthesize imageDelegate = _imageDelegate;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
@@ -48,6 +49,9 @@
         UIImage* image = [UIImage imageWithData:response.data];
         self.image = image;
         _loaded = YES;
+        if ([_imageDelegate respondsToSelector:@selector(imageDidLoad:)]) {
+            [_imageDelegate imageDidLoad:self];
+        }
         return;
     }
 	
@@ -56,8 +60,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImageFromURLStr:(NSString*)urlStr {
-    NSURL* url = [NSURL URLWithString:urlStr];
-    [self loadImageFromURL:url];
+    if (![urlStr isKindOfClass:[NSNull class]] && [urlStr length]) {
+        NSURL* url = [NSURL URLWithString:urlStr];
+        [self loadImageFromURL:url];
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,6 +87,10 @@
 	_data = nil;
     
     _loaded = YES;
+    
+    if ([_imageDelegate respondsToSelector:@selector(imageDidLoad:)]) {
+        [_imageDelegate imageDidLoad:self];
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

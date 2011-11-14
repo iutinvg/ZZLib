@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		DD116E881470AE5D00714C77 /* ZZGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD116E841470AE5D00714C77 /* ZZGalleryController.m */; };
+		DD116E891470AE5D00714C77 /* ZZGalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD116E861470AE5D00714C77 /* ZZGalleryItem.m */; };
 		DD6EC590130241F400FE744A /* ZZDemoCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC58F130241F400FE744A /* ZZDemoCatalog.m */; };
 		DD6EC5AC130245D900FE744A /* ZZTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC5AB130245D900FE744A /* ZZTableController.m */; };
 		DD6EC5B11302471D00FE744A /* ZZDemoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC5B01302471D00FE744A /* ZZDemoTableController.m */; };
@@ -40,6 +42,12 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* ZZ_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZ_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ZZ-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZZ-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DD116E831470AE5D00714C77 /* ZZGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZGalleryController.h; sourceTree = "<group>"; };
+		DD116E841470AE5D00714C77 /* ZZGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZGalleryController.m; sourceTree = "<group>"; };
+		DD116E851470AE5D00714C77 /* ZZGalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZGalleryItem.h; sourceTree = "<group>"; };
+		DD116E861470AE5D00714C77 /* ZZGalleryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZGalleryItem.m; sourceTree = "<group>"; };
+		DD116E871470AE5D00714C77 /* ZZGalleryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZGalleryProtocol.h; sourceTree = "<group>"; };
+		DD116E8A1470AFEF00714C77 /* ZZImageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZImageDelegate.h; sourceTree = "<group>"; };
 		DD6EC58E130241F400FE744A /* ZZDemoCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoCatalog.h; sourceTree = "<group>"; };
 		DD6EC58F130241F400FE744A /* ZZDemoCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoCatalog.m; sourceTree = "<group>"; };
 		DD6EC5AA130245D900FE744A /* ZZTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTableController.h; sourceTree = "<group>"; };
@@ -156,8 +164,14 @@
 				DDAC1292135696E00033A7C1 /* ZZTableViewCell.m */,
 				DDAC1294135697270033A7C1 /* ZZImageView.h */,
 				DDAC1295135697270033A7C1 /* ZZImageView.m */,
+				DD116E8A1470AFEF00714C77 /* ZZImageDelegate.h */,
 				DDC4CB0B13DEDF4000EB7D07 /* ZZActivityIndicator.h */,
 				DDC4CB0C13DEDF4000EB7D07 /* ZZActivityIndicator.m */,
+				DD116E831470AE5D00714C77 /* ZZGalleryController.h */,
+				DD116E841470AE5D00714C77 /* ZZGalleryController.m */,
+				DD116E871470AE5D00714C77 /* ZZGalleryProtocol.h */,
+				DD116E851470AE5D00714C77 /* ZZGalleryItem.h */,
+				DD116E861470AE5D00714C77 /* ZZGalleryItem.m */,
 				DD8712B813E3CECA004B4FD9 /* loading.png */,
 			);
 			path = ZZLib;
@@ -248,8 +262,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ZZ" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -303,6 +320,8 @@
 				DDAC1293135696E00033A7C1 /* ZZTableViewCell.m in Sources */,
 				DDAC1296135697280033A7C1 /* ZZImageView.m in Sources */,
 				DDC4CB0D13DEDF4000EB7D07 /* ZZActivityIndicator.m in Sources */,
+				DD116E881470AE5D00714C77 /* ZZGalleryController.m in Sources */,
+				DD116E891470AE5D00714C77 /* ZZGalleryItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +366,8 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -362,10 +380,9 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
