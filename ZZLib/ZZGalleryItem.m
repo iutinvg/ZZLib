@@ -1,10 +1,7 @@
-//
-//  GalleryItemController.m
-//  HudsonsApp
-//
-//  Created by Слава Иутин on 10/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/* 
+ * Copyright (c) 2011 Whirix <info@whirix.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZGalleryItem.h"
 #import "ZZDebug.h"
