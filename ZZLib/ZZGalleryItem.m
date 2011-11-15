@@ -88,7 +88,7 @@
     self.minimumZoomScale = MIN(self.frame.size.width / s.width, self.frame.size.height / s.height);
     
     if (self.minimumZoomScale>1) {
-        self.maximumZoomScale = self.minimumZoomScale * 1.3;
+        self.maximumZoomScale = self.minimumZoomScale * 2;
     }
     
     CGFloat scale;

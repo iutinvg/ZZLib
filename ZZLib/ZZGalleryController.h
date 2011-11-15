@@ -1,29 +1,18 @@
-/* 
- * Copyright (c) 2011 Whirix <info@whirix.com>
- * License: http://www.opensource.org/licenses/mit-license.html
- */
-
 #import <UIKit/UIKit.h>
 #import "ZZViewController.h"
-#import "ZZGalleryProtocol.h"
 
 @interface ZZGalleryController : ZZViewController <UIScrollViewDelegate> {
     UIScrollView* _scroll;
-    
-    NSArray* _URLs;
-    NSArray* _meta;
+    NSArray* _info;
     NSInteger _currentPage;
-    
-    UILabel* _labelCurrentCaption;
-    UILabel* _labelCurrentDescription;
-    
-    id<ZZGalleryProtocol> _delegate;
+    NSInteger _startPage;
+    UIStatusBarStyle _previousStatusBarStyle;
 }
 
 @property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, assign) id<ZZGalleryProtocol> delegate;
+@property (nonatomic, assign) NSInteger startPage;
 
-- (id)initWithURLs:(NSArray*)URLs andMeta:(NSArray*)meta;
+- (id)initWithInfo:(NSArray*)info;
 
 /**
  Loads / preloads all necessary pages.
@@ -35,9 +24,12 @@
  Loads given page, called from [GalleryController::loadImages]
  */
 - (void)loadImage:(NSInteger)page;
-- (void)setupBottomPanel;
-- (void)updateCaption;
-- (void)actionDetails;
+- (void)layoutScroll:(BOOL)initial;
+- (void)showTop;
+
+- (void)actionDone;
+- (void)actionSingleTap;
 - (void)actionDoubleTap;
+
 
 @end

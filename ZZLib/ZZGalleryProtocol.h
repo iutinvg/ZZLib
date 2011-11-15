@@ -9,6 +9,6 @@
 
 @protocol ZZGalleryProtocol <NSObject>
 
-- (void)gallery:(ZZGalleryController*)galleryController listingSelected:(NSString*)listingId;
+- (void)gallery:(ZZGalleryController*)galleryController listingSelected:(NSString*)imageId;
 
 @end

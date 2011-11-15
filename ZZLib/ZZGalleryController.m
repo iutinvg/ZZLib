@@ -1,27 +1,21 @@
-/* 
- * Copyright (c) 2011 Whirix <info@whirix.com>
- * License: http://www.opensource.org/licenses/mit-license.html
- */
-
+#import "ZZDebug.h"
 #import "ZZGalleryController.h"
 #import "ZZGalleryItem.h"
-#import "ZZCommon.h"
-#import "ZZDebug.h"
 
 @implementation ZZGalleryController
 
 @synthesize currentPage = _currentPage;
-
-@synthesize delegate = _delegate;
+@synthesize startPage = _startPage;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithURLs:(NSArray*)URLs andMeta:(NSArray*)meta {
+- (id)initWithInfo:(NSArray*)info {
     self = [super init];
     if (self) {
-        _URLs = [URLs retain];
-        _meta = [meta retain];
+        _info = [info retain];
         _currentPage = 0;
+        _startPage = 0;
         self.wantsFullScreenLayout = YES;
+        self.hidesBottomBarWhenPushed = YES;
     }
     
     return self;
@@ -31,54 +25,108 @@
 - (void)loadView {
     [super loadView];
     
-    CGRect r = self.view.frame;
-    
-    CGFloat width = MAX(r.size.width, r.size.height);
-    CGFloat height = MIN(r.size.width, r.size.height);
-
-    r = CGRectMake(0, 0, width, height);
-    
-    ZZLOG(@"%@", NSStringFromCGRect(r));
-    
-    _scroll = [[UIScrollView alloc] initWithFrame:r];
-    _scroll.contentSize = CGSizeMake(_scroll.frame.size.width*[_URLs count], _scroll.frame.size.height);
+    _scroll = [[UIScrollView alloc] init];
     _scroll.backgroundColor = [UIColor blackColor];
+    _scroll.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scroll.pagingEnabled = YES;
     _scroll.delegate = self;
-    
     [self.view addSubview:_scroll];
+    
+    [self layoutScroll:YES];
     
     [self loadImages];
     
-    [self setupBottomPanel];
-
-    [self updateCaption];
-
     UITapGestureRecognizer* doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionDoubleTap)];
     doubleTapGesture.numberOfTapsRequired = 2;
+
+    UITapGestureRecognizer* singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSingleTap)];
+    singleTapGesture.numberOfTapsRequired = 1;
+    [singleTapGesture requireGestureRecognizerToFail:doubleTapGesture];
+    
+    [_scroll addGestureRecognizer:singleTapGesture];
     [_scroll addGestureRecognizer:doubleTapGesture];
+    
+    [singleTapGesture release];
     [doubleTapGesture release];
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)layoutScroll:(BOOL)initial {
+    CGRect r = self.view.frame;    
+    ZZLOG(@"%@", NSStringFromCGRect(r));
+    
+    CGFloat width;
+    CGFloat height;
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        ZZLOG(@"portrait");
+        width = MIN(r.size.width, r.size.height);
+        height = MAX(r.size.width, r.size.height);
+    } else {
+        ZZLOG(@"landscape");
+        width = MAX(r.size.width, r.size.height);
+        height = MIN(r.size.width, r.size.height);
+    }
+    
+    _scroll.frame = CGRectMake(0, 0, width, height);
+    _scroll.contentSize = CGSizeMake(width*[_info count], height);
+    
+    if (initial) {
+        // respect startPage
+        _scroll.contentOffset = CGPointMake(_startPage*width, 0);
+    } else {
+        _scroll.contentOffset = CGPointMake(_currentPage*width, 0);
+        for (ZZGalleryItem* i in [_scroll subviews]) {
+            if (![i isKindOfClass:[ZZGalleryItem class]]) {
+                ZZLOG(@"catch scroller, skip it");
+                continue;
+            }
+            i.frame = CGRectMake((i.tag-100)*width, 0, width, height);
+            [i fitScaleForFrame:YES];
+        }
+    }    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    _previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+    self.navigationController.navigationBar.translucent = YES;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
     [_scroll release];
-    [_URLs release];
-    [_meta release];
-    [_labelCurrentCaption release];
-    [_labelCurrentDescription release];
+    [_info release];
     [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return YES;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    for (ZZGalleryItem* i in [_scroll subviews]) {
+        if (i.tag!=_currentPage+100 && [i isKindOfClass:[ZZGalleryItem class]]) {
+            ZZLOG(@"remove %d before rotation", i.tag-100);
+            [i removeFromSuperview];
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self layoutScroll:NO];
+    [self loadImages];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +135,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self loadImages];
-    [self updateCaption];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +167,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImage:(NSInteger)page {
-    if (page<0 || page>[_URLs count] - 1) {
+    if (page<0 || page>[_info count] - 1) {
         ZZLOG(@"out of pages range");
         return;
     }
@@ -130,81 +177,47 @@
     if (item==nil) {
         ZZLOG(@"create image for page %d", page);
         item = [[ZZGalleryItem alloc] initWithFrame:CGRectMake(_scroll.frame.size.width * page, 0, 
-                                                             _scroll.frame.size.width, _scroll.frame.size.height)];
-        item.fillOnFit = YES;
+                                                               _scroll.frame.size.width, _scroll.frame.size.height)];
         item.tag = page + 100;
-        [item loadImageFromURL:[_URLs objectAtIndex:page]];
+        
+        NSDictionary* dict = [_info objectAtIndex:page];
+        NSURL* url = [dict objectForKey:@"url"];
+        [item loadImageFromURL:url];
         [_scroll addSubview:item];
         [item release];
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)setupBottomPanel {
-    CGFloat h = 56;
-    UIView* panelView = [[UIView alloc] initWithFrame:CGRectMake(0, _scroll.frame.size.height - h, _scroll.frame.size.width, h)];
-    panelView.backgroundColor = ZZRGBA(0, 0, 0, 0.7);
-
-    _labelCurrentCaption = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, panelView.frame.size.width-30, 16)];
-    _labelCurrentDescription = [[UILabel alloc] initWithFrame:CGRectMake(10, 21, panelView.frame.size.width-30, 33)];
-    _labelCurrentCaption.backgroundColor =
-    _labelCurrentDescription.backgroundColor = [UIColor clearColor];
-    
-    _labelCurrentCaption.textColor = [UIColor redColor];
-    _labelCurrentCaption.font = [UIFont fontWithName:@"Georgia" size:16];
-    _labelCurrentDescription.textColor = [UIColor whiteColor];
-    _labelCurrentDescription.font = [UIFont systemFontOfSize:12];
-    _labelCurrentDescription.numberOfLines = 0;
-    
-    [panelView addSubview:_labelCurrentCaption];
-    [panelView addSubview:_labelCurrentDescription];
-    
-    UIImageView* arrow = [[UIImageView alloc] initWithFrame:CGRectMake(_scroll.frame.size.width - 20, 21, 9, 14)];
-    arrow.image = [UIImage imageNamed:@"btn_gallery_details.png"];
-    [panelView addSubview:arrow];
-    [arrow release];
-
-    UIButton* buttonDetails = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, panelView.frame.size.width, panelView.frame.size.height)];
-    [buttonDetails addTarget:self action:@selector(actionDetails) forControlEvents:UIControlEventTouchUpInside];
-    [panelView addSubview:buttonDetails];
-    [buttonDetails release];
-    
-    [self.view addSubview:panelView];
-    [panelView release];
+- (void)actionDone {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)updateCaption {
-    NSDictionary* dict = [_meta objectAtIndex:_currentPage];
-    
-    _labelCurrentCaption.text = [dict objectForKey:@"name"];
-    _labelCurrentDescription.text = [dict objectForKey:@"description"];
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)actionDetails {
-    NSDictionary* dict = [_meta objectAtIndex:_currentPage];
-    if ([_delegate respondsToSelector:@selector(gallery:listingSelected:)]) {
-        [_delegate gallery:self listingSelected:[dict objectForKey:@"id"]];
-    }
+- (void)actionSingleTap {
+    [self showTop];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)actionDoubleTap {
     ZZGalleryItem* i = (ZZGalleryItem*)[_scroll viewWithTag:_currentPage + 100];
     
-    CGFloat minScale;
-    
-    if (i.fillOnFit) {
-        minScale = i.fillingScale;
-    } else {
-        minScale = i.minimumZoomScale;
-    }
-    
-    if (i.zoomScale > minScale) {
-        [i setZoomScale:minScale animated:YES];
+    if (i.zoomScale > i.minimumZoomScale) {
+        [i setZoomScale:i.minimumZoomScale animated:YES];
     } else {
         [i setZoomScale:i.maximumZoomScale animated:YES];
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)showTop {
+    if (self.navigationController.isNavigationBarHidden) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    } else {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
 }
 

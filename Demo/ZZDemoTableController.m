@@ -5,6 +5,8 @@
 
 #import "ZZDemoTableController.h"
 #import "ZZDemoViewController.h"
+#import "ZZGalleryController.h"
+#import "JSON.h"
 
 @implementation ZZDemoTableController
 
@@ -109,14 +111,34 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
-    NSString* imageUrl = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_z.jpg",
-                          [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
-                          [item objectForKey:@"secret"]];
+    NSMutableArray* info = [NSMutableArray array];
+    
+    for (NSDictionary* item in _searchResults) {
+        NSString* imageUrl = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_z.jpg",
+                              [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
+                              [item objectForKey:@"secret"]];
+        NSURL* url = [NSURL URLWithString:imageUrl];
+        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:url, @"url",
+                              [item objectForKey:@"title"], @"title",
+                              [item objectForKey:@"id"], @"id",
+                              [item JSONRepresentation], @"description",
+                              nil];
+        [info addObject:dict];
+    }
 
-    ZZDemoViewController* viewController = [[ZZDemoViewController alloc] initWithImageURLStr:imageUrl];
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    ZZGalleryController* galleryController = [[ZZGalleryController alloc] initWithInfo:info];
+    // start from the tapped image
+    galleryController.startPage = indexPath.row;
+    [self.navigationController pushViewController:galleryController animated:YES];
+    [galleryController release];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ZZGalleryProtocol
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)gallery:(ZZGalleryController *)galleryController listingSelected:(NSString *)imageId {
+    ZZLOG(@"user would like to see details for %@", imageId);
 }
 
 @end
