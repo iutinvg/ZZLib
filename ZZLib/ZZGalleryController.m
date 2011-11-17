@@ -30,6 +30,8 @@
     _scroll.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scroll.pagingEnabled = YES;
     _scroll.delegate = self;
+    _scroll.showsVerticalScrollIndicator = 
+    _scroll.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_scroll];
     
     [self layoutScroll:YES];
@@ -157,6 +159,10 @@
     NSInteger tag;
     
     for (UIView* v in [_scroll subviews]) {
+        if (![v isKindOfClass:[ZZGalleryItem class]]) {
+            // must not remove scrollers :)
+            continue;
+        }
         tag = v.tag - 100;
         if (tag<leftPage || tag>rightPage) {
             ZZLOG(@"remove page %d", tag);

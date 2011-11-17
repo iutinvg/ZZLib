@@ -17,7 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate = self;
-        self.maximumZoomScale = 1.3;
+        self.maximumZoomScale = 2;
         self.decelerationRate = UIScrollViewDecelerationRateFast;
         self.contentSize = CGSizeMake(frame.size.width, frame.size.height);
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -29,6 +29,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
+    // can't handle image events any more
+    _imageView.imageDelegate = nil;
+    
     [_imageView release];
     [super dealloc];
 }
@@ -77,10 +80,14 @@
 #pragma mark - ZZImageDelegate
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)imageDidLoad:(ZZImageView*)imageView {
+    ZZLOG(@"image is loaded for %d", self.tag);
     [_imageView sizeToFit];
     [self fitScaleForFrame:NO];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Scale / Rotation Handling
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)fitScaleForFrame:(BOOL)animated {
     CGSize s = _imageView.image.size;

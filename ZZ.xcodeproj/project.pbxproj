@@ -33,6 +33,7 @@
 		DDBB7A011303A184001B5F89 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79FB1303A184001B5F89 /* SBJsonParser.m */; };
 		DDBB7A021303A184001B5F89 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */; };
 		DDC4CB0D13DEDF4000EB7D07 /* ZZActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC4CB0C13DEDF4000EB7D07 /* ZZActivityIndicator.m */; };
+		DDC5E4541474AE2300EEC4F4 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDC5E4531474AE2300EEC4F4 /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		DDBB79FD1303A184001B5F89 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		DDC4CB0B13DEDF4000EB7D07 /* ZZActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZActivityIndicator.h; sourceTree = "<group>"; };
 		DDC4CB0C13DEDF4000EB7D07 /* ZZActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZActivityIndicator.m; sourceTree = "<group>"; };
+		DDC5E4531474AE2300EEC4F4 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 		DD92CE7612D5D70A001872F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDC5E4531474AE2300EEC4F4 /* Entitlements.plist */,
 				DD8F9BDE1321E99400CEDB4E /* README.markdown */,
 				8D1107310486CEB800E47090 /* ZZ-Info.plist */,
 			);
@@ -293,6 +296,7 @@
 				DDA81AAB13500C70001FEF6A /* appledoc.plist in Resources */,
 				DD8712B913E3CECA004B4FD9 /* loading.png in Resources */,
 				DD8712BB13E3CFCE004B4FD9 /* monkey.jpg in Resources */,
+				DDC5E4541474AE2300EEC4F4 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +336,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vyacheslav Iutin (Q378SD2XGM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vyacheslav Iutin (Q378SD2XGM)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -339,7 +346,10 @@
 				GCC_PREFIX_HEADER = ZZ_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				INFOPLIST_FILE = "ZZ-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = ZZ;
+				PROVISIONING_PROFILE = "63E00CE9-1930-41A6-9E44-0E366EDFDA70";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "63E00CE9-1930-41A6-9E44-0E366EDFDA70";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -348,11 +358,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vyacheslav Iutin (Q378SD2XGM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vyacheslav Iutin (Q378SD2XGM)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ZZ_Prefix.pch;
 				INFOPLIST_FILE = "ZZ-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = ZZ;
+				PROVISIONING_PROFILE = "63E00CE9-1930-41A6-9E44-0E366EDFDA70";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "63E00CE9-1930-41A6-9E44-0E366EDFDA70";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
