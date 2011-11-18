@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>ZZViewController Class Reference</title>
+		<title>ZZGalleryItem Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">ZZViewController Class Reference</h1>
+				<h1 class="hideInXcode">ZZGalleryItem Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,13 +38,15 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/fillOnFit">&nbsp;&nbsp;&nbsp;&nbsp;fillOnFit</option>
+	
+	<option value="//api/name/fillingScale">&nbsp;&nbsp;&nbsp;&nbsp;fillingScale</option>
 	
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/showLoading:">&nbsp;&nbsp;&nbsp;&nbsp;- showLoading:</option>
 	
 	
 	
@@ -68,22 +70,24 @@
 
 
 
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showLoading:">showLoading:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillOnFit">fillOnFit</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillingScale">fillingScale</a></span></li>
 	
 </ul></li>
+
+
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="ZZViewController Class Reference" name="top"></a>
+				<a title="ZZGalleryItem Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +96,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">ZZViewController Class Reference</h1>
+						<h1 class="title title-header">ZZGalleryItem Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -100,10 +104,13 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIViewController</td>
+	<td class="specification-value">UIScrollView</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UIScrollViewDelegate<br />ZZImageDelegate</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">ZZViewController.h</td>
+	<td class="specification-value">ZZGalleryItem.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -113,16 +120,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Short hand for creation of view controller with white view stretched to
-full screen and with support of all interface orientations.</p>
-
-<p>Please see Demo part of ZZLib project as a best example of the usage:</p>
-
-<ul>
-<li><a href="https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.h">https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.h</a></li>
-<li><a href="https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.m">https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.m</a></li>
-</ul>
-
+						<p><a href="../Classes/ZZGalleryController.html">ZZGalleryController</a> item class representation. In most cases you
+will not use it directly.</p>
 					</div>
 					
 					
@@ -140,10 +139,18 @@ full screen and with support of all interface orientations.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/showLoading:">&ndash;&nbsp;showLoading:</a></code>
-		<span class="tooltip"><p>Creates/removes a view for visualizing of loading process.</p></span>
+		<code><a href="#//api/name/fillOnFit">&nbsp;&nbsp;fillOnFit</a></code>
+		<span class="tooltip"><p>Flag to set initial scale to the image fill the screen without black gaps around.
+Default value is NO;</p></span>
 	</span>
+	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fillingScale">&nbsp;&nbsp;fillingScale</a></code>
+		<span class="tooltip"><p>Scale when it fill the screen</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -154,37 +161,24 @@ full screen and with support of all interface orientations.</p>
 					
 					
 					
-					
-					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/showLoading:" title="showLoading:"></a>
-	<h3 class="subsubtitle method-title">showLoading:</h3>
+	<a name="//api/name/fillOnFit" title="fillOnFit"></a>
+	<h3 class="subsubtitle method-title">fillOnFit</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates/removes a view for visualizing of loading process.</p>
+		<p>Flag to set initial scale to the image fill the screen without black gaps around.
+Default value is NO;</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)showLoading:(BOOL)<em>flag</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL fillOnFit</code></div>
 	
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>flag</em></dt>
-			<dd><p><code>YES</code> to creates loading view, <code>NO</code> to remove</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -194,21 +188,8 @@ full screen and with support of all interface orientations.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates/removes a view for visualizing of loading process.</p>
-
-<p>You will need it in case of usage this class in pair with ZZJSONRequest or similar.
-Default implementation is very simple: white background with activity indicator in the center.
-Please override if necessary. It is not necessary to involve the super class method in your one,
-though you may of course.</p>
-
-<p>Usage example:</p>
-
-<pre><code>- (void)viewDidLoad {
-    [super viewDidLoad];
-    // starting loading process here
-    [self showLoading:YES];
-}
-</code></pre>
+		<p>Flag to set initial scale to the image fill the screen without black gaps around.
+Default value is NO;</p>
 	</div>
 	
 	
@@ -219,13 +200,56 @@ though you may of course.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZViewController.h</code><br />
+		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fillingScale" title="fillingScale"></a>
+	<h3 class="subsubtitle method-title">fillingScale</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Scale when it fill the screen</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat fillingScale</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Scale when it fill the screen</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
+					
+					
 					
 					
 				</div>

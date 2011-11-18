@@ -1,15 +1,21 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>ZZTableViewCell Class Reference</title>
-		<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
-		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
-		<meta name="generator" content="appledoc 2.0.3 (build 668)" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
 	</head>
 	<body>
 		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">ZZLib </a></h1>
+				<a id="developerHome" href="../index.html">Whirix</a>
+			</div>
+			
 			<div id="title" role="banner">
 				<h1 class="hideInXcode">ZZTableViewCell Class Reference</h1>
 			</div>
@@ -34,9 +40,7 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/asyncImage">&nbsp;&nbsp;&nbsp;&nbsp;asyncImage</option>
-	
-	<option value="//api/name/urlStr">&nbsp;&nbsp;&nbsp;&nbsp;urlStr</option>
+	<option value="//api/name/ZZImageView">&nbsp;&nbsp;&nbsp;&nbsp;ZZImageView</option>
 	
 	
 	
@@ -45,7 +49,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/loadImage">&nbsp;&nbsp;&nbsp;&nbsp;- loadImage</option>
+	<option value="//api/name/loadImageFromURLStr:">&nbsp;&nbsp;&nbsp;&nbsp;- loadImageFromURLStr:</option>
 	
 	
 	
@@ -71,9 +75,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/asyncImage">asyncImage</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/urlStr">urlStr</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ZZImageView">ZZImageView</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +85,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadImage">loadImage</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadImageFromURLStr:">loadImageFromURLStr:</a></span></li>
 	
 </ul></li>
 
@@ -143,21 +145,14 @@ remote images in.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/asyncImage">&nbsp;&nbsp;asyncImage</a></code>
+		<code><a href="#//api/name/ZZImageView">&nbsp;&nbsp;ZZImageView</a></code>
 		<span class="tooltip"><p>Use it to setup the frame of the image.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/urlStr">&nbsp;&nbsp;urlStr</a></code>
-		<span class="tooltip"><p>URL of remote image.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/loadImage">&ndash;&nbsp;loadImage</a></code>
+		<code><a href="#//api/name/loadImageFromURLStr:">&ndash;&nbsp;loadImageFromURLStr:</a></code>
 		<span class="tooltip"><p>Start loading of remote image.</p></span>
 	</span>
 	
@@ -176,8 +171,8 @@ remote images in.</p>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/asyncImage" title="asyncImage"></a>
-	<h3 class="subsubtitle method-title">asyncImage</h3>
+	<a name="//api/name/ZZImageView" title="ZZImageView"></a>
+	<h3 class="subsubtitle method-title">ZZImageView</h3>
 	
 	
 	
@@ -186,7 +181,9 @@ remote images in.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) IBOutlet ZZImageView *asyncImage</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) IBOutlet ZZImageView</code></div>
+	
+	
 	
 	
 	
@@ -196,43 +193,6 @@ remote images in.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Use it to setup the frame of the image.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZTableViewCell.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/urlStr" title="urlStr"></a>
-	<h3 class="subsubtitle method-title">urlStr</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>URL of remote image.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *urlStr</code></div>
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>URL of remote image.</p>
 	</div>
 	
 	
@@ -260,8 +220,8 @@ remote images in.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/loadImage" title="loadImage"></a>
-	<h3 class="subsubtitle method-title">loadImage</h3>
+	<a name="//api/name/loadImageFromURLStr:" title="loadImageFromURLStr:"></a>
+	<h3 class="subsubtitle method-title">loadImageFromURLStr:</h3>
 	
 	
 	
@@ -270,7 +230,19 @@ remote images in.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)loadImage</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)loadImageFromURLStr:(NSString *)<em>urlStr</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>urlStr</em></dt>
+			<dd><p>string representation of image URL</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -281,8 +253,7 @@ remote images in.</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Start loading of remote image.</p>
 
-<p>The cell instance do not start the loading immediately.
-Just because the cell can be invisible.</p>
+<p>Loading starts immediately after calling this message.</p>
 	</div>
 	
 	
@@ -312,9 +283,9 @@ Just because the cell can be invisible.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Whirix. All rights reserved. (Last updated: 2011-07-30)</span><br />
+						<p><span class="copyright">&copy; 2011 Whirix. All rights reserved. (Last updated: 2011-11-18)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.3 (build 668)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						
 					</div>
 				</div>
