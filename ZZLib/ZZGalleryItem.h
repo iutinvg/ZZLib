@@ -6,6 +6,10 @@
 #import <UIKit/UIKit.h>
 #import "ZZImageView.h"
 
+/**
+ ZZGalleryController item class representation. In most cases you
+ will not use it directly.
+ */
 @interface ZZGalleryItem : UIScrollView <UIScrollViewDelegate, ZZImageDelegate> {
     ZZImageView* _imageView;
     BOOL _fillOnFit;
@@ -17,6 +21,7 @@
  Default value is NO;
  */
 @property (nonatomic, assign) BOOL fillOnFit;
+
 /**
  Scale when it fill the screen
  */
