@@ -4,9 +4,8 @@
  */
 
 #import "ZZ.h"
-#import "ZZGalleryProtocol.h"
 
-@interface ZZDemoTableController : ZZTableController <ZZGalleryProtocol> {
+@interface ZZDemoTableController : ZZTableController {
 	NSArray* _searchResults;
 }
 

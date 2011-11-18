@@ -120,8 +120,6 @@
         NSURL* url = [NSURL URLWithString:imageUrl];
         NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:url, @"url",
                               [item objectForKey:@"title"], @"title",
-                              [item objectForKey:@"id"], @"id",
-                              [item JSONRepresentation], @"description",
                               nil];
         [info addObject:dict];
     }

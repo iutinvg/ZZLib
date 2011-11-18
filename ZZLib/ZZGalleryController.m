@@ -37,6 +37,7 @@
     [self layoutScroll:YES];
     
     [self loadImages];
+    [self updateTitle];
     
     UITapGestureRecognizer* doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionDoubleTap)];
     doubleTapGesture.numberOfTapsRequired = 2;
@@ -137,6 +138,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self loadImages];
+    [self updateTitle];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -225,6 +227,12 @@
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)updateTitle {
+    NSDictionary* d = [_info objectAtIndex:_currentPage];
+    self.title = [d objectForKey:@"title"];
 }
 
 @end
