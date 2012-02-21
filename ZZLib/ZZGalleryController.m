@@ -106,6 +106,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
+    // stop loading of images
+    for (ZZGalleryItem* i in [_scroll subviews]) {
+        if (![i isKindOfClass:[ZZGalleryItem class]]) {
+            continue;
+        }
+        [i cancel];
+    }
     [_scroll release];
     [_info release];
     [super dealloc];
@@ -121,6 +128,7 @@
     for (ZZGalleryItem* i in [_scroll subviews]) {
         if (i.tag!=_currentPage+100 && [i isKindOfClass:[ZZGalleryItem class]]) {
             ZZLOG(@"remove %d before rotation", i.tag-100);
+            [i cancel]; // cancel image loading
             [i removeFromSuperview];
         }
     }
@@ -160,7 +168,7 @@
     // remove extra pages (save memory)
     NSInteger tag;
     
-    for (UIView* v in [_scroll subviews]) {
+    for (ZZGalleryItem* v in [_scroll subviews]) {
         if (![v isKindOfClass:[ZZGalleryItem class]]) {
             // must not remove scrollers :)
             continue;
@@ -168,6 +176,7 @@
         tag = v.tag - 100;
         if (tag<leftPage || tag>rightPage) {
             ZZLOG(@"remove page %d", tag);
+            [v cancel]; // stop loading image
             [v removeFromSuperview];
         }
     }    

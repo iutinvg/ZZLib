@@ -31,4 +31,11 @@
 - (void)fitScaleForFrame:(BOOL)animated;
 - (void)centerOffset;
 
+/**
+ Stop item loading.
+ 
+ It is necessary in case we remove page before it is loaded.
+ */
+- (void)cancel;
+
 @end

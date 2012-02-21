@@ -125,4 +125,10 @@
     [self setContentOffset:CGPointMake(x, y)];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)cancel {
+    _imageView.imageDelegate = nil;
+    [_imageView clear];
+}
+
 @end
