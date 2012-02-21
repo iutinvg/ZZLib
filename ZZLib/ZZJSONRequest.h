@@ -29,9 +29,34 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 	NSURLConnection* _connection;
 	BOOL _loaded;
 	BOOL _loading;
+    NSInteger _tag;
 	id<ZZJSONRequestDelegate> _delegate;
 }
 
+/**
+ Request tag.
+ 
+ It can be used to distinguish requests created for the same delegate instance.
+
+    - (void)start2Requests {
+        ZZJSONRequest* r = [[ZZJSONRequest alloc] initWithURLString:@"http://url-to-api-1" delegate:self];
+        r.tag = 100;
+        r = [[ZZJSONRequest alloc] initWithURLString:@"http://url-to-api-2" delegate:self];
+        r.tag = 200;
+    }
+ 
+    - (void)requestDidFinishLoading:(ZZJSONRequest*)request {
+        ...
+        if (request.tag==100) {
+            ZZLOG(@"this is request from API 1");
+        } else if (request.tag==200) {
+            ZZLOG(@"this is request from API 2");
+        }
+        [request release];
+        ...
+    }
+*/
+@property (nonatomic, assign) NSInteger tag;
 
 @property (nonatomic, copy) NSString* urlString;
 

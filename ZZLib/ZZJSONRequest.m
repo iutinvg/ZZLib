@@ -17,6 +17,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 @synthesize connection = _connection;
 @synthesize loaded = _loaded;
 @synthesize loading = _loading;
+@synthesize tag = _tag;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithURLString:(NSString*)urlstr delegate:(id<ZZJSONRequestDelegate>)delegate {
