@@ -24,6 +24,11 @@
 		DD92CE8312D5D8AB001872F6 /* ZZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8012D5D8AB001872F6 /* ZZAppDelegate.m */; };
 		DD92CE8512D5D8E8001872F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CE8412D5D8E8001872F6 /* main.m */; };
 		DD92CEE812D5DC5F001872F6 /* ZZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */; };
+		DDA6FA191558BDF500CEEC33 /* ZZWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FA181558BDF500CEEC33 /* ZZWebController.m */; };
+		DDA6FA261558D21700CEEC33 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6FA221558D21700CEEC33 /* back.png */; };
+		DDA6FA271558D21700CEEC33 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6FA231558D21700CEEC33 /* back@2x.png */; };
+		DDA6FA281558D21700CEEC33 /* forw.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6FA241558D21700CEEC33 /* forw.png */; };
+		DDA6FA291558D21700CEEC33 /* forw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6FA251558D21700CEEC33 /* forw@2x.png */; };
 		DDA81AAB13500C70001FEF6A /* appledoc.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDA81AAA13500C70001FEF6A /* appledoc.plist */; };
 		DDAC1293135696E00033A7C1 /* ZZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC1292135696E00033A7C1 /* ZZTableViewCell.m */; };
 		DDAC1296135697280033A7C1 /* ZZImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC1295135697270033A7C1 /* ZZImageView.m */; };
@@ -70,6 +75,13 @@
 		DD92CE8412D5D8E8001872F6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD92CEE612D5DC5F001872F6 /* ZZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDemoViewController.h; sourceTree = "<group>"; };
 		DD92CEE712D5DC5F001872F6 /* ZZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDemoViewController.m; sourceTree = "<group>"; };
+		DDA6FA171558BDF500CEEC33 /* ZZWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZWebController.h; sourceTree = "<group>"; };
+		DDA6FA181558BDF500CEEC33 /* ZZWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZWebController.m; sourceTree = "<group>"; };
+		DDA6FA221558D21700CEEC33 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		DDA6FA231558D21700CEEC33 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		DDA6FA241558D21700CEEC33 /* forw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forw.png; sourceTree = "<group>"; };
+		DDA6FA251558D21700CEEC33 /* forw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forw@2x.png"; sourceTree = "<group>"; };
+		DDA6FA2A1558D4A600CEEC33 /* ZZWebDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZWebDelegate.h; sourceTree = "<group>"; };
 		DDA81AAA13500C70001FEF6A /* appledoc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = appledoc.plist; path = docs/appledoc.plist; sourceTree = "<group>"; };
 		DDAC1291135696E00033A7C1 /* ZZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZTableViewCell.h; sourceTree = "<group>"; };
 		DDAC1292135696E00033A7C1 /* ZZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZTableViewCell.m; sourceTree = "<group>"; };
@@ -170,6 +182,13 @@
 				DD116E841470AE5D00714C77 /* ZZGalleryController.m */,
 				DD116E851470AE5D00714C77 /* ZZGalleryItem.h */,
 				DD116E861470AE5D00714C77 /* ZZGalleryItem.m */,
+				DDA6FA171558BDF500CEEC33 /* ZZWebController.h */,
+				DDA6FA181558BDF500CEEC33 /* ZZWebController.m */,
+				DDA6FA2A1558D4A600CEEC33 /* ZZWebDelegate.h */,
+				DDA6FA221558D21700CEEC33 /* back.png */,
+				DDA6FA231558D21700CEEC33 /* back@2x.png */,
+				DDA6FA241558D21700CEEC33 /* forw.png */,
+				DDA6FA251558D21700CEEC33 /* forw@2x.png */,
 				DD8712B813E3CECA004B4FD9 /* loading.png */,
 			);
 			path = ZZLib;
@@ -261,7 +280,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ZZ" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -291,6 +310,10 @@
 				DDA81AAB13500C70001FEF6A /* appledoc.plist in Resources */,
 				DD8712B913E3CECA004B4FD9 /* loading.png in Resources */,
 				DD8712BB13E3CFCE004B4FD9 /* monkey.jpg in Resources */,
+				DDA6FA261558D21700CEEC33 /* back.png in Resources */,
+				DDA6FA271558D21700CEEC33 /* back@2x.png in Resources */,
+				DDA6FA281558D21700CEEC33 /* forw.png in Resources */,
+				DDA6FA291558D21700CEEC33 /* forw@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +343,7 @@
 				DDC4CB0D13DEDF4000EB7D07 /* ZZActivityIndicator.m in Sources */,
 				DD116E881470AE5D00714C77 /* ZZGalleryController.m in Sources */,
 				DD116E891470AE5D00714C77 /* ZZGalleryItem.m in Sources */,
+				DDA6FA191558BDF500CEEC33 /* ZZWebController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

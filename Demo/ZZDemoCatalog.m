@@ -6,6 +6,7 @@
 #import "ZZDemoCatalog.h"
 #import "ZZDemoViewController.h"
 #import "ZZDemoTableController.h"
+#import "ZZWebController.h"
 
 @implementation ZZDemoCatalog
 
@@ -34,7 +35,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +55,10 @@
 	} else if (indexPath.row==1) {
 		cell.textLabel.text = @"ZZTableController";
         cell.detailTextLabel.text = @"+ ZZTableViewCell + ZZImageView";
-	}
+	} else if (indexPath.row==2) {
+		cell.textLabel.text = @"ZZWebController";
+        cell.detailTextLabel.text = @"http://github.com";
+    }
 
     return cell;
 }
@@ -73,7 +77,11 @@
 		ZZDemoTableController* demoTable = [[ZZDemoTableController alloc] init];
 		[self.navigationController pushViewController:demoTable animated:YES];
 		[demoTable release];
-	}
+	} else if (indexPath.row==2) {
+        ZZWebController* webController = [[ZZWebController alloc] initWithURLString:@"http://github.com"];
+        [self.navigationController pushViewController:webController animated:YES];
+        [webController release];
+    }
 }
 
 @end
