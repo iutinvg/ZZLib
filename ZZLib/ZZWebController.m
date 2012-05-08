@@ -26,12 +26,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
+    _webView.delegate = nil;
+    [_webView stopLoading];
+    
     [_toolbar release];
-    [_webView release];
     [_urlString release];
     [_buttonBack release];
     [_buttonForward release];
     [_buttonReload release];
+    
+    [_webView release];
+    
     [super dealloc];
 }
 
@@ -55,7 +60,7 @@
     [self updateButtonsStatus];
     
     if ([_delegate respondsToSelector:@selector(webControllerDone:)]) {
-        self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(actionDone:)] autorelease];
+        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionDone:)] autorelease];
     }
 }
 
@@ -135,7 +140,7 @@
 }
 
 - (void)actionDone:(id)sender {
-    if ([_delegate respondsToSelector:@selector(webControllerDone)]) {
+    if ([_delegate respondsToSelector:@selector(webControllerDone:)]) {
         [_delegate webControllerDone:self];
     }
 }
