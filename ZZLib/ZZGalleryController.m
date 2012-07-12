@@ -25,7 +25,7 @@
 - (void)loadView {
     [super loadView];
     
-    _scroll = [[UIScrollView alloc] init];
+    _scroll = [[UIScrollView alloc] initWithFrame:self.view.frame];
     _scroll.backgroundColor = [UIColor blackColor];
     _scroll.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scroll.pagingEnabled = YES;
@@ -33,11 +33,6 @@
     _scroll.showsVerticalScrollIndicator = 
     _scroll.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_scroll];
-    
-    [self layoutScroll:YES];
-    
-    [self loadImages];
-    [self updateTitle];
     
     UITapGestureRecognizer* doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionDoubleTap)];
     doubleTapGesture.numberOfTapsRequired = 2;
@@ -53,25 +48,20 @@
     [doubleTapGesture release];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self layoutScroll:YES];
+    [self loadImages];
+    [self updateTitle];
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)layoutScroll:(BOOL)initial {
-    CGRect r = self.view.frame;    
-    ZZLOG(@"%@", NSStringFromCGRect(r));
+    CGFloat width = CGRectGetWidth(self.view.frame);
+    CGFloat height = CGRectGetHeight(self.view.frame);
     
-    CGFloat width;
-    CGFloat height;
-    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        ZZLOG(@"portrait");
-        width = MIN(r.size.width, r.size.height);
-        height = MAX(r.size.width, r.size.height);
-    } else {
-        ZZLOG(@"landscape");
-        width = MAX(r.size.width, r.size.height);
-        height = MIN(r.size.width, r.size.height);
-    }
-    
-    _scroll.frame = CGRectMake(0, 0, width, height);
     _scroll.contentSize = CGSizeMake(width*[_info count], height);
+    //ZZLOG(@"scroll content %@", NSStringFromCGSize(_scroll.contentSize));
     
     if (initial) {
         // respect startPage
@@ -144,7 +134,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Scroll View Delegate
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self loadImages];
     [self updateTitle];
 }

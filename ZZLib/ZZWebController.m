@@ -79,14 +79,17 @@
     _buttonReload = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
                                                                   target:self action:@selector(actionReload:)];
     
-    UIBarButtonItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
-                                                                            target:nil action:nil] autorelease];
+    UIBarButtonItem* fixed;
+    fixed = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil] autorelease];
+    fixed.width = 44;
+
+    UIBarButtonItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
     
     _toolbar = [[UIToolbar alloc] initWithFrame:
                 CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44)];
     _toolbar.barStyle = UIBarStyleBlack;
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    [_toolbar setItems:[NSArray arrayWithObjects:_buttonBack, space, _buttonForward, space, _buttonReload, nil]];
+    [_toolbar setItems:[NSArray arrayWithObjects:_buttonBack, fixed, _buttonForward, space, _buttonReload, nil]];
     
     [self.view addSubview:_toolbar];
 }

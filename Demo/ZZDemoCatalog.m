@@ -57,7 +57,7 @@
         cell.detailTextLabel.text = @"+ ZZTableViewCell + ZZImageView";
 	} else if (indexPath.row==2) {
 		cell.textLabel.text = @"ZZWebController";
-        cell.detailTextLabel.text = @"http://github.com";
+        cell.detailTextLabel.text = @"https://github.com/iutinvg";
     }
 
     return cell;
@@ -78,7 +78,7 @@
 		[self.navigationController pushViewController:demoTable animated:YES];
 		[demoTable release];
 	} else if (indexPath.row==2) {
-        ZZWebController* webController = [[ZZWebController alloc] initWithURLString:@"http://github.com"];
+        ZZWebController* webController = [[ZZWebController alloc] initWithURLString:@"http://github.com/iutinvg"];
         [self.navigationController pushViewController:webController animated:YES];
         [webController release];
     }
