@@ -25,16 +25,11 @@
 	if (nil != self.nibName) {
 		[super loadView];		
 	} else {		
-		self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+		self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 		self.view.autoresizesSubviews = YES;
 		self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		self.view.backgroundColor = [UIColor whiteColor];
 	}
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

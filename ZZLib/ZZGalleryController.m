@@ -11,7 +11,7 @@
 - (id)initWithInfo:(NSArray*)info {
     self = [super init];
     if (self) {
-        _info = [info retain];
+        _info = info;
         _currentPage = 0;
         _startPage = 0;
         self.wantsFullScreenLayout = YES;
@@ -44,8 +44,6 @@
     [_scroll addGestureRecognizer:singleTapGesture];
     [_scroll addGestureRecognizer:doubleTapGesture];
     
-    [singleTapGesture release];
-    [doubleTapGesture release];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -103,9 +101,6 @@
         }
         [i cancel];
     }
-    [_scroll release];
-    [_info release];
-    [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -191,7 +186,6 @@
         NSURL* url = [dict objectForKey:@"url"];
         [item loadImageFromURL:url];
         [_scroll addSubview:item];
-        [item release];
     }
 }
 

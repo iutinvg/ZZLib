@@ -5,7 +5,7 @@
 
 #import "ZZJSONRequest.h"
 #import "ZZDebug.h"
-#import "JSON.h"
+#import "SBJson.h"
 
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
@@ -40,10 +40,6 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
 	[self cancel];
-	[_connection release];
-	[_response release];
-	[_data release];
-	[super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,9 +70,11 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 	_loading = NO;
 
 	// parse data
-	NSString* json = [[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding] autorelease];
+	NSString* json = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
 	ZZLOG(@"json: %@", json);
-	_response = [[json JSONValue] retain];
+    
+    SBJsonParser* parser = [[SBJsonParser alloc] init];
+    _response = [parser objectWithString:json];
 	
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
 		[_delegate requestDidFinishLoading:self];
@@ -91,15 +89,5 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 		[_delegate request:self failedWithError:error];
 	}
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-/*- (NSCachedURLResponse*)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
-    NSCachedURLResponse* newResponse =
-    [[NSCachedURLResponse alloc] initWithResponse:cachedResponse.response
-                                             data:cachedResponse.data
-                                         userInfo:cachedResponse.userInfo
-                                    storagePolicy:ZZURLCacheStoragePolicy];
-    return [newResponse autorelease];
-}*/
 
 @end

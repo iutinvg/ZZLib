@@ -36,10 +36,10 @@
 	UIActivityIndicatorView *spinner;
 }
 
-@property (nonatomic, retain) UILabel *centerMessageLabel;
-@property (nonatomic, retain) UILabel *subMessageLabel;
+@property (nonatomic, strong) UILabel *centerMessageLabel;
+@property (nonatomic, strong) UILabel *subMessageLabel;
 
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
 
 + (ZZActivityIndicator *)currentIndicator;

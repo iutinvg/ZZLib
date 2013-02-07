@@ -23,24 +23,17 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-    [_asyncImage release];
-    [_urlStr release];
-    [super dealloc];
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)prepareForReuse {
     //ZZLOG(@"clear cell image");
     [super prepareForReuse];
     [_asyncImage clear];
-    [_urlStr release]; 
     _urlStr = nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImageFromURLStr:(NSString*)urlStr {
-    [_urlStr release];
     _urlStr = [urlStr copy];
     
     ZZLOG(@"load image %@", _urlStr);

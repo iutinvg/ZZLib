@@ -20,7 +20,7 @@
 /**
  Use it to setup the frame of the image.
  */
-@property (nonatomic, retain) IBOutlet ZZImageView* asyncImage;
+@property (nonatomic, strong) IBOutlet ZZImageView* asyncImage;
 
 //+ (CGFloat)calculateHeight:(UITableView*)tableView text:(NSString*)text;
 

@@ -45,7 +45,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 	
@@ -68,19 +68,17 @@
 #pragma mark - Table view delegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ZZLOG(@"---------");
 	if (indexPath.row==0) {
 		ZZDemoViewController* demoView = 
         [[ZZDemoViewController alloc] initWithImageURLStr:@"https://github.com/iutinvg/ZZLib/raw/master/Demo/monkey.jpg"];
 		[self.navigationController pushViewController:demoView animated:YES];
-		[demoView release];
 	} else if (indexPath.row==1) {
 		ZZDemoTableController* demoTable = [[ZZDemoTableController alloc] init];
 		[self.navigationController pushViewController:demoTable animated:YES];
-		[demoTable release];
 	} else if (indexPath.row==2) {
         ZZWebController* webController = [[ZZWebController alloc] initWithURLString:@"http://github.com/iutinvg"];
         [self.navigationController pushViewController:webController animated:YES];
-        [webController release];
     }
 }
 

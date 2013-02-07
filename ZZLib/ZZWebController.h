@@ -19,18 +19,17 @@
     UIBarButtonItem* _buttonForward;
     UIBarButtonItem* _buttonReload;
     
-    id<ZZWebDelegate> _delegate;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView* webView;
-@property (nonatomic, retain) IBOutlet UIToolbar* toolbar;
+@property (nonatomic, strong) IBOutlet UIWebView* webView;
+@property (nonatomic, strong) IBOutlet UIToolbar* toolbar;
 @property (nonatomic, copy) NSString* urlString;
 
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* buttonBack;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* buttonForward;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* buttonReload;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem* buttonBack;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem* buttonForward;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem* buttonReload;
 
-@property (nonatomic, assign) id<ZZWebDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<ZZWebDelegate> delegate;
 
 /**
  C-r.

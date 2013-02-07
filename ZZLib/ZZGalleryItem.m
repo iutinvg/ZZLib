@@ -32,8 +32,6 @@
     // can't handle image events any more
     _imageView.imageDelegate = nil;
     
-    [_imageView release];
-    [super dealloc];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

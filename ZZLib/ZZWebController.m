@@ -29,15 +29,8 @@
     _webView.delegate = nil;
     [_webView stopLoading];
     
-    [_toolbar release];
-    [_urlString release];
-    [_buttonBack release];
-    [_buttonForward release];
-    [_buttonReload release];
     
-    [_webView release];
     
-    [super dealloc];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +53,7 @@
     [self updateButtonsStatus];
     
     if ([_delegate respondsToSelector:@selector(webControllerDone:)]) {
-        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionDone:)] autorelease];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionDone:)];
     }
 }
 
@@ -80,10 +73,10 @@
                                                                   target:self action:@selector(actionReload:)];
     
     UIBarButtonItem* fixed;
-    fixed = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil] autorelease];
+    fixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixed.width = 44;
 
-    UIBarButtonItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+    UIBarButtonItem* space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     _toolbar = [[UIToolbar alloc] initWithFrame:
                 CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44)];
@@ -130,11 +123,11 @@
 #pragma mark - Other Methods
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showActivity {
-	UIActivityIndicatorView* activity = [[[UIActivityIndicatorView alloc] 
-										  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
+	UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc] 
+										  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 	[activity startAnimating];
 	self.navigationItem.rightBarButtonItem = 
-	[[[UIBarButtonItem alloc] initWithCustomView:activity] autorelease];	
+	[[UIBarButtonItem alloc] initWithCustomView:activity];	
 }
 
 - (void)updateButtonsStatus {

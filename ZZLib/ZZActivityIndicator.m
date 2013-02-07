@@ -87,11 +87,7 @@ static ZZActivityIndicator *currentIndicator = nil;
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 	
-	[centerMessageLabel release];
-	[subMessageLabel release];
-	[spinner release];
 	
-	[super dealloc];
 }
 
 #pragma mark Creating Message
@@ -189,7 +185,7 @@ static ZZActivityIndicator *currentIndicator = nil;
 	{
 		if (centerMessageLabel == nil)
 		{
-			self.centerMessageLabel = [[[UILabel alloc] initWithFrame:CGRectMake(12,round(self.bounds.size.height/2-50/2),self.bounds.size.width-24,50)] autorelease];
+			self.centerMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(12,round(self.bounds.size.height/2-50/2),self.bounds.size.width-24,50)];
 			centerMessageLabel.backgroundColor = [UIColor clearColor];
 			centerMessageLabel.opaque = NO;
 			centerMessageLabel.textColor = [UIColor whiteColor];
@@ -215,7 +211,7 @@ static ZZActivityIndicator *currentIndicator = nil;
 	{
 		if (subMessageLabel == nil)
 		{
-			self.subMessageLabel = [[[UILabel alloc] initWithFrame:CGRectMake(12,self.bounds.size.height-45,self.bounds.size.width-24,30)] autorelease];
+			self.subMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(12,self.bounds.size.height-45,self.bounds.size.width-24,30)];
 			subMessageLabel.backgroundColor = [UIColor clearColor];
 			subMessageLabel.opaque = NO;
 			subMessageLabel.textColor = [UIColor whiteColor];
@@ -242,7 +238,6 @@ static ZZActivityIndicator *currentIndicator = nil;
 								round(self.bounds.size.height/2 - spinner.frame.size.height/2),
 								spinner.frame.size.width,
 								spinner.frame.size.height);		
-		[spinner release];	
 	}
 	
 	[self addSubview:spinner];

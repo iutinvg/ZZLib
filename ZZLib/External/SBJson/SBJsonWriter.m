@@ -27,52 +27,77 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SBJsonBase.h"
-NSString * SBJSONErrorDomain = @"org.brautaset.JSON.ErrorDomain";
+#if !__has_feature(objc_arc)
+#error "This source file must be compiled with ARC enabled!"
+#endif
+
+#import "SBJsonWriter.h"
+#import "SBJsonStreamWriter.h"
+#import "SBJsonStreamWriterAccumulator.h"
 
 
-@implementation SBJsonBase
+@interface SBJsonWriter ()
+@property (copy) NSString *error;
+@end
 
-@synthesize errorTrace;
+@implementation SBJsonWriter
+
+@synthesize sortKeys;
+@synthesize humanReadable;
+
+@synthesize error;
 @synthesize maxDepth;
+
+@synthesize sortKeysComparator;
 
 - (id)init {
     self = [super init];
-    if (self)
-        self.maxDepth = 512;
+    if (self) {
+        self.maxDepth = 32u;        
+    }
     return self;
 }
 
-- (void)dealloc {
-    [errorTrace release];
-    [super dealloc];
+
+- (NSString*)stringWithObject:(id)value {
+	NSData *data = [self dataWithObject:value];
+	if (data)
+		return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	return nil;
 }
 
-- (void)addErrorWithCode:(NSUInteger)code description:(NSString*)str {
-    NSDictionary *userInfo;
-    if (!errorTrace) {
-        errorTrace = [NSMutableArray new];
-        userInfo = [NSDictionary dictionaryWithObject:str forKey:NSLocalizedDescriptionKey];
-        
-    } else {
-        userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                    str, NSLocalizedDescriptionKey,
-                    [errorTrace lastObject], NSUnderlyingErrorKey,
-                    nil];
-    }
+- (NSData*)dataWithObject:(id)object {	
+    self.error = nil;
+
+    SBJsonStreamWriterAccumulator *accumulator = [[SBJsonStreamWriterAccumulator alloc] init];
     
-    NSError *error = [NSError errorWithDomain:SBJSONErrorDomain code:code userInfo:userInfo];
-
-    [self willChangeValueForKey:@"errorTrace"];
-    [errorTrace addObject:error];
-    [self didChangeValueForKey:@"errorTrace"];
+	SBJsonStreamWriter *streamWriter = [[SBJsonStreamWriter alloc] init];
+	streamWriter.sortKeys = self.sortKeys;
+	streamWriter.maxDepth = self.maxDepth;
+	streamWriter.sortKeysComparator = self.sortKeysComparator;
+	streamWriter.humanReadable = self.humanReadable;
+    streamWriter.delegate = accumulator;
+	
+	BOOL ok = NO;
+	if ([object isKindOfClass:[NSDictionary class]])
+		ok = [streamWriter writeObject:object];
+	
+	else if ([object isKindOfClass:[NSArray class]])
+		ok = [streamWriter writeArray:object];
+		
+	else if ([object respondsToSelector:@selector(proxyForJson)])
+		return [self dataWithObject:[object proxyForJson]];
+	else {
+		self.error = @"Not valid type for JSON";
+		return nil;
+	}
+	
+	if (ok)
+		return accumulator.data;
+	
+	self.error = streamWriter.error;
+	return nil;	
 }
-
-- (void)clearErrorTrace {
-    [self willChangeValueForKey:@"errorTrace"];
-    [errorTrace release];
-    errorTrace = nil;
-    [self didChangeValueForKey:@"errorTrace"];
-}
-
+	
+	
 @end

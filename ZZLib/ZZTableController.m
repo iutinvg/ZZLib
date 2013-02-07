@@ -38,8 +38,6 @@
 - (void)dealloc {
     [self releaseRequest];
     [self showLoading:NO];
-    [_tableView release];
-    [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +60,6 @@
 - (void)viewDidUnload {
     [self releaseRequest];
 	[self showLoading:NO];
-	[_tableView release];
     _tableView = nil;
 	[super viewDidUnload];
 }
@@ -116,7 +113,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	
     return cell;
@@ -135,7 +132,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)releaseRequest {
     [_request cancel];    
-    [_request release];
     _request = nil;
 }
 

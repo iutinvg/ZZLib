@@ -24,9 +24,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
 	[_connection cancel]; //in case the URL is still downloading
-	[_connection release];
-	[_data release]; 
-    [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,13 +74,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
-	[_connection release];
 	_connection = nil;
 	
     UIImage* image = [UIImage imageWithData:_data];
     self.image = image;
     
-	[_data release];
 	_data = nil;
     
     _loaded = YES;
@@ -106,9 +101,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)clear {
     [_connection cancel];
-    [_connection release];
     _connection = nil;
-    [_data release]; 
     _data = nil;
     
     self.image = [UIImage imageNamed:@"loading.png"];

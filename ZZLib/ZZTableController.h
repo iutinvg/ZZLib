@@ -19,8 +19,8 @@
 
 @property (nonatomic, assign) UITableViewStyle tableViewStyle;
 
-@property (nonatomic, retain) ZZJSONRequest* request;
-@property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) ZZJSONRequest* request;
+@property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 /**
  Default implementation of [ZZJSONRequestDelegate requestDidFinishLoading:]

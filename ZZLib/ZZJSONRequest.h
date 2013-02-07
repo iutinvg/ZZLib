@@ -79,10 +79,10 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  @see ZZTableController
  @see ZZJSONRequestDelegate
  */
-@property (nonatomic, retain) id response;
+@property (nonatomic, strong) id response;
 
 /** Current connection used for loading. */
-@property (nonatomic, retain) NSURLConnection* connection;
+@property (nonatomic, strong) NSURLConnection* connection;
 
 /** Indicates the loading is finished. */
 @property (nonatomic, assign) BOOL loaded;

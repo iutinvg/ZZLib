@@ -20,13 +20,12 @@
     
     BOOL _loaded;
     
-    id<ZZImageDelegate> _imageDelegate;
 }
 
 /**
  To handle image did load event.
  */
-@property (nonatomic, assign) id<ZZImageDelegate> imageDelegate;
+@property (nonatomic, unsafe_unretained) id<ZZImageDelegate> imageDelegate;
 
 /**
  Indicates whether image is loaded or not.

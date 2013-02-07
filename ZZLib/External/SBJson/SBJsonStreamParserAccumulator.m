@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2007-2009 Stig Brautaset. All rights reserved.
+ Copyright (C) 2011 Stig Brautaset. All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -27,19 +27,25 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "NSString+SBJSON.h"
-#import "SBJsonParser.h"
+#if !__has_feature(objc_arc)
+#error "This source file must be compiled with ARC enabled!"
+#endif
 
-@implementation NSString (NSString_SBJSON)
+#import "SBJsonStreamParserAccumulator.h"
 
-- (id)JSONValue
-{
-    SBJsonParser *jsonParser = [SBJsonParser new];
-    id repr = [jsonParser objectWithString:self];
-    if (!repr)
-        NSLog(@"-JSONValue failed. Error trace is: %@", [jsonParser errorTrace]);
-    [jsonParser release];
-    return repr;
+@implementation SBJsonStreamParserAccumulator
+
+@synthesize value;
+
+
+#pragma mark SBJsonStreamParserAdapterDelegate
+
+- (void)parser:(SBJsonStreamParser*)parser foundArray:(NSArray *)array {
+	value = array;
+}
+
+- (void)parser:(SBJsonStreamParser*)parser foundObject:(NSDictionary *)dict {
+	value = dict;
 }
 
 @end

@@ -14,18 +14,13 @@
 
 	ZZDemoCatalog* demoCatalog = [[ZZDemoCatalog alloc] init];	
 	UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:demoCatalog];
-	[demoCatalog release];
 	
-	[_window addSubview:nc.view];    
+	_window.rootViewController = nc;
     [_window makeKeyAndVisible];
     
     return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-    [_window release];
-    [super dealloc];
-}
 
 @end

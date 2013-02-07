@@ -6,7 +6,7 @@
 #import "ZZDemoTableController.h"
 #import "ZZDemoViewController.h"
 #import "ZZGalleryController.h"
-#import "JSON.h"
+//#import "SBJson.h"
 
 @implementation ZZDemoTableController
 
@@ -18,18 +18,14 @@
 		
 		// refresh button
 		self.navigationItem.rightBarButtonItem = 
-		[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
 													   target:self
-													   action:@selector(refreshData)] autorelease];		
+													   action:@selector(refreshData)];		
 	}
 	return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-	[_searchResults release];
-	[super dealloc];
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +46,6 @@
 	// put necessary part of response in instance variable
 	NSDictionary* tmp = (NSDictionary*)_request.response;
     tmp = [tmp objectForKey:@"photos"];
-	[_searchResults release];
 	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"photo"]];
 	
 	ZZLOG(@"results: %d", [_searchResults count]);
@@ -94,7 +89,7 @@
     
     ZZTableViewCell *cell = (ZZTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[ZZTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[ZZTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
@@ -128,7 +123,6 @@
     // start from the tapped image
     galleryController.startPage = indexPath.row;
     [self.navigationController pushViewController:galleryController animated:YES];
-    [galleryController release];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
