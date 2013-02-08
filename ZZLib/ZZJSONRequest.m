@@ -6,6 +6,7 @@
 #import "ZZJSONRequest.h"
 #import "ZZDebug.h"
 #import "SBJson.h"
+#import "NSData+Base64.h"
 
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
@@ -20,25 +21,35 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 @synthesize tag = _tag;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithURLString:(NSString*)urlstr delegate:(id<ZZJSONRequestDelegate>)delegate {
+- (id)initWithDelegate:(id<ZZJSONRequestDelegate>)delegate {
     self = [super init];
 	if (self) {
 		_delegate = delegate;
-		self.urlString = urlstr;
-		
-		NSURL* url = [NSURL URLWithString:_urlString];
-		NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20];
-		_loaded = NO;
-		_loading = YES;
-
-		_data = [[NSMutableData alloc] init];		
-		_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];		
 	}
 	return self;
 }
 
+- (void)getFrom:(NSString*)urlstr {
+    [self cancel];
+    self.urlString = urlstr;
+    
+    NSURL* url = [NSURL URLWithString:_urlString];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:ZZURLRequestCachePolicy
+                                                       timeoutInterval:20];
+    if ([self.username length] && [self.password length]) {
+        [self authForRequest:request];
+    }
+    _loaded = NO;
+    _loading = YES;
+    
+    _data = [[NSMutableData alloc] init];
+    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
+    _delegate = nil;
 	[self cancel];
 }
 
@@ -88,6 +99,20 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 	if ([_delegate respondsToSelector:@selector(request:failedWithError:)]) {
 		[_delegate request:self failedWithError:error];
 	}
+}
+
+- (void)authUsername:(NSString *)username password:(NSString *)password
+{
+    self.username = username;
+    self.password = password;
+}
+
+- (void)authForRequest:(NSMutableURLRequest*)request
+{
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", self.username, self.password];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodingWithLineLength:80]];
+    [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 }
 
 @end

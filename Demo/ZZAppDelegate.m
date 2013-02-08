@@ -5,6 +5,8 @@
 
 #import "ZZAppDelegate.h"
 #import "ZZDemoCatalog.h"
+#import "ZZURLHelper.h"
+#import "ZZDebug.h"
 
 @implementation ZZAppDelegate
 
@@ -18,9 +20,20 @@
 	_window.rootViewController = nc;
     [_window makeKeyAndVisible];
     
+    [self test];
+    
     return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)test
+{
+    NSDictionary* params = [NSDictionary dictionaryWithObject:@"12312123" forKey:@"api_key"];
+    [ZZURLHelper startWithBaseURL:@"http://some.url/api/v1/" persistentParams:nil];
+    
+    NSDictionary* p = [NSDictionary dictionaryWithObject:@"1" forKey:@"a"];
+    
+    ZZLOG(@"url for test: %@", [ZZURLHelper urlForMethod:@"test" params:nil]);
+}
 
 @end

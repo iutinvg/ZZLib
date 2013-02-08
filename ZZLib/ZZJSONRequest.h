@@ -90,6 +90,9 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 /** Indicates the loading in process. */
 @property (nonatomic, assign) BOOL loading;
 
+@property NSString* username;
+@property NSString* password;
+
 /**
  Creates request with given URL and delegate.
  
@@ -97,7 +100,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  @param urlstr URL string to load data from
  @param delegate NSURLConnection delegate
 */
-- (id)initWithURLString:(NSString*)urlstr delegate:(id<ZZJSONRequestDelegate>)delegate;
+- (id)initWithDelegate:(id<ZZJSONRequestDelegate>)delegate;
 
 /**
  Cancels loading of request.
@@ -106,5 +109,9 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  However, ZZTableController calls it properly at such cases.
  */
 - (void)cancel;
+
+- (void)authUsername:(NSString*)usernme password:(NSString*)password;
+
+- (void)getFrom:(NSString*)urlstr;
 
 @end

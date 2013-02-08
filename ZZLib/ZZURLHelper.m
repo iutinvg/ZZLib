@@ -1,4 +1,5 @@
 #import "ZZURLHelper.h"
+#import "ZZDebug.h"
 
 static NSDictionary* persistentParams;
 static NSString* baseURL;
@@ -8,7 +9,15 @@ static NSString* baseURL;
 + (void)startWithBaseURL:(NSString *)url persistentParams:(NSDictionary *)params
 {
     baseURL = url;
-    persistentParams = params;
+    [ZZURLHelper persistentParams:params];
+}
+
++ (NSDictionary*)persistentParams:(NSDictionary *)params
+{
+    if (params!=nil) {
+        persistentParams = params;
+    }
+    return persistentParams;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,6 +40,8 @@ static NSString* baseURL;
         [method appendFormat:@"%@%@=%@", sep, key, [ZZURLHelper encode:[dict objectForKey:key]]];
         veryFirst = NO;
     }
+    
+    ZZLOG(@"create URL: %@", method);
     
     return method;
 }
