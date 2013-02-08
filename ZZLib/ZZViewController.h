@@ -3,6 +3,8 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import "ZZJSONRequest.h"
+
 /** 
  Short hand for creation of view controller with white view stretched to 
  full screen and with support of all interface orientations.
@@ -12,10 +14,32 @@
  - https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.h
  - https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.m
  */
-@interface ZZViewController : UIViewController {
-}
+@interface ZZViewController : UIViewController <ZZJSONRequestDelegate>
 
-/** 
+@property ZZJSONRequest* request;
+
+/**
+ Must be overriden to create relevant request for your application.
+ The default method just show activity idicator.
+ 
+ Example:
+ - (void)createRequest {
+ [super createRequest];
+ _request = [[ZZJSONRequest alloc]
+ initWithURLString:@"http://search.twitter.com/search.json?q=iPhone"
+ delegate:self];
+ }
+ 
+ */
+- (void)createRequest;
+
+/**
+ It cancel and release the current request. It is called by
+ [ZZJSONRequestDelegate requestDidFinishLoading:].
+ */
+
+- (void)releaseRequest;
+/**
  Creates/removes a view for visualizing of loading process.
  
  You will need it in case of usage this class in pair with ZZJSONRequest or similar.

@@ -36,6 +36,29 @@
  
  @see ZZJSONRequest.request
  */
+/**
+ Default implementation of [ZZJSONRequestDelegate requestDidFinishLoading:]
+ 
+ Must be overriden in order to get loaded data. The super class method must
+ be invoked at the end of overriden method. Example:
+ 
+ NSDictionary* tmp = (NSDictionary*)_request.response;
+ [_searchResults release];
+ _searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"results"]];
+ 
+ // reload table
+ [self.tableView reloadData];
+ 
+ // in case you use ZZTableViewCell
+ [self loadVisibleImages];
+ 
+ // must be called to release request
+ // and hide loading visualizations
+ [super requestDidFinishLoading:request];
+ 
+ 
+ @param request request @see [ZZJSONRequestDelegate requestDidFinishLoading:]
+ */
 - (void)requestDidFinishLoading:(ZZJSONRequest*)request;
 
 @end

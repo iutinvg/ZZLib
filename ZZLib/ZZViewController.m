@@ -10,8 +10,8 @@
 
 @implementation ZZViewController
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
+- (id)init
+{
     self = [self initWithNibName:nil bundle:nil];
     
 	if (self) {
@@ -20,8 +20,8 @@
 	return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
+- (void)loadView
+{
 	if (nil != self.nibName) {
 		[super loadView];		
 	} else {		
@@ -32,14 +32,38 @@
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)showLoading:(BOOL)flag {
+- (void)showLoading:(BOOL)flag
+{
     ZZActivityIndicator* ai = [ZZActivityIndicator currentIndicator];
     if (flag) {
         [ai displayActivity:@"Loading"];
     } else {
         [ai hide];
     }
+}
+
+#pragma mark - ZZJSONRequestDelegate
+- (void)request:(ZZJSONRequest*)request failedWithError:(NSError*)error
+{
+	[self showLoading:NO];
+    [self releaseRequest];
+}
+
+- (void)requestDidFinishLoading:(ZZJSONRequest*)request
+{
+	[self showLoading:NO];
+    [self releaseRequest];
+}
+
+- (void)createRequest
+{
+	[self showLoading:YES];
+}
+
+- (void)releaseRequest
+{
+    [_request cancel];
+    _request = nil;
 }
 
 @end

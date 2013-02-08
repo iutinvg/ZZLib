@@ -38,13 +38,13 @@
                            @"4a6b9d8c09da17219420854c90c0776a"];
     
     [super createRequest];
-	_request = [[ZZJSONRequest alloc] initWithURLString:urlString delegate:self];
+	self.request = [[ZZJSONRequest alloc] initWithURLString:urlString delegate:self];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoading:(ZZJSONRequest*)request {
 	// put necessary part of response in instance variable
-	NSDictionary* tmp = (NSDictionary*)_request.response;
+	NSDictionary* tmp = (NSDictionary*)self.request.response;
     tmp = [tmp objectForKey:@"photos"];
 	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"photo"]];
 	
