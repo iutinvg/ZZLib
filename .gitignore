@@ -3,3 +3,4 @@ ZZ.xcodeproj/*.pbxuser
 build
 ZZ.xcodeproj/xcuserdata/*
 ZZ.xcodeproj/project.xcworkspace/*
+.DS_Store
