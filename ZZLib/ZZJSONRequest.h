@@ -23,13 +23,8 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 //extern NSURLCacheStoragePolicy ZZURLCacheStoragePolicy;
 
 @interface ZZJSONRequest : NSObject {
-	NSString* _urlString;
 	NSMutableData* _data;
-	id _response;
 	NSURLConnection* _connection;
-	BOOL _loaded;
-	BOOL _loading;
-    NSInteger _tag;
 	id<ZZJSONRequestDelegate> _delegate;
 }
 
@@ -56,9 +51,14 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
         ...
     }
 */
-@property (nonatomic, assign) NSInteger tag;
+@property NSInteger tag;
 
-@property (nonatomic, copy) NSString* urlString;
+@property NSString* urlString;
+
+/**
+ Latest response status code.
+ */
+@property NSInteger status;
 
 /** 
  Response data.
@@ -79,16 +79,16 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  @see ZZTableController
  @see ZZJSONRequestDelegate
  */
-@property (nonatomic, strong) id response;
+@property id response;
 
 /** Current connection used for loading. */
-@property (nonatomic, strong) NSURLConnection* connection;
+@property NSURLConnection* connection;
 
 /** Indicates the loading is finished. */
-@property (nonatomic, assign) BOOL loaded;
+@property BOOL loaded;
 
 /** Indicates the loading in process. */
-@property (nonatomic, assign) BOOL loading;
+@property BOOL loading;
 
 @property NSString* username;
 @property NSString* password;

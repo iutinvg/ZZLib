@@ -13,12 +13,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 
 @implementation ZZJSONRequest
 
-@synthesize urlString = _urlString;
-@synthesize response = _response;
 @synthesize connection = _connection;
-@synthesize loaded = _loaded;
-@synthesize loading = _loading;
-@synthesize tag = _tag;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithDelegate:(id<ZZJSONRequestDelegate>)delegate {
@@ -66,6 +61,8 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	ZZLOG(@"get response from %@", _urlString);
 	[_data setLength:0];
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    _status = [httpResponse statusCode];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
