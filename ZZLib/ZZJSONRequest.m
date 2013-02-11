@@ -24,7 +24,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 	return self;
 }
 
-- (void)getFrom:(NSString*)urlstr {
+- (void)get:(NSString*)urlstr {
     [self cancel];
     self.urlString = urlstr;
     
@@ -32,6 +32,36 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:ZZURLRequestCachePolicy
                                                        timeoutInterval:20];
+    if ([self.username length] && [self.password length]) {
+        [self authForRequest:request];
+    }
+    _loaded = NO;
+    _loading = YES;
+    
+    _data = [[NSMutableData alloc] init];
+    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)post:(NSString *)urlstr params:(NSDictionary *)params
+{
+    [self cancel];
+    self.urlString = urlstr;
+    
+    NSURL* url = [NSURL URLWithString:_urlString];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:ZZURLRequestCachePolicy
+                                                       timeoutInterval:20];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    SBJsonWriter* writer = [[SBJsonWriter alloc] init];
+    NSString* json = [writer stringWithObject:params];
+    ZZLOG(@"json to post: %@", json);
+    
+    NSData* postData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
+    [request setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody: postData];
+    
     if ([self.username length] && [self.password length]) {
         [self authForRequest:request];
     }

@@ -112,6 +112,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 
 - (void)authUsername:(NSString*)usernme password:(NSString*)password;
 
-- (void)getFrom:(NSString*)urlstr;
+- (void)get:(NSString*)urlstr;
+- (void)post:(NSString*)urlstr params:(NSDictionary*)params;
 
 @end
