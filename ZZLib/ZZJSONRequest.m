@@ -93,6 +93,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 	[_data setLength:0];
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     _status = [httpResponse statusCode];
+    ZZLOG(@"response status: %d", _status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,11 +109,11 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 	_loading = NO;
 
 	// parse data
-	NSString* json = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-	ZZLOG(@"json: %@", json);
+	self.responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+	ZZLOG(@"json: %@", self.responseString);
     
     SBJsonParser* parser = [[SBJsonParser alloc] init];
-    _response = [parser objectWithString:json];
+    _response = [parser objectWithString:self.responseString];
 	
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
 		[_delegate requestDidFinishLoading:self];

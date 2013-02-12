@@ -81,6 +81,8 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  */
 @property id response;
 
+@property NSString* responseString;
+
 /** Current connection used for loading. */
 @property NSURLConnection* connection;
 
