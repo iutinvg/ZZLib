@@ -7,6 +7,7 @@
 #import "ZZCommon.h"
 #import "ZZViewController.h"
 #import "ZZTableController.h"
+#import "ZZURLHelper.h"
 #import "ZZJSONRequest.h"
 #import "ZZImageView.h"
 #import "ZZTableViewCell.h"
