@@ -10,16 +10,7 @@
  Web controller with toolbar: back, forward and reload.
  Very useful when you need to open a web-page but have to stay in the app.
  */
-@interface ZZWebController : ZZViewController <UIWebViewDelegate> {
-    UIWebView* _webView;
-    UIToolbar* _toolbar;
-    NSString* _urlString;
-    
-    UIBarButtonItem* _buttonBack;
-    UIBarButtonItem* _buttonForward;
-    UIBarButtonItem* _buttonReload;
-    
-}
+@interface ZZWebController : ZZViewController <UIWebViewDelegate> 
 
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
 @property (nonatomic, strong) IBOutlet UIToolbar* toolbar;
