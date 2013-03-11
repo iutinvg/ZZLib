@@ -46,10 +46,12 @@
     _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_webView];
     
-    NSURL* url = [NSURL URLWithString:_urlString];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:request];
-    
+    if ([_urlString length]) {
+        NSURL* url = [NSURL URLWithString:_urlString];
+        NSURLRequest* request = [NSURLRequest requestWithURL:url];
+        [_webView loadRequest:request];
+    }
+
     [self updateButtonsStatus];
     
     if ([_delegate respondsToSelector:@selector(webControllerDone:)]) {
