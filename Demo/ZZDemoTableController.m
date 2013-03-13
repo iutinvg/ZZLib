@@ -49,7 +49,7 @@
     
     [super createRequest];
 	self.request = [[ZZJSONRequest alloc] initWithDelegate:self];
-    [self.request getFrom:urlString];
+    [self.request get:urlString];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

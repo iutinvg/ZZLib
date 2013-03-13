@@ -10,6 +10,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		DD08DA9316F05C8200A17DFE /* ZZText.m in Sources */ = {isa = PBXBuildFile; fileRef = DD08DA9216F05C8200A17DFE /* ZZText.m */; };
 		DD116E881470AE5D00714C77 /* ZZGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD116E841470AE5D00714C77 /* ZZGalleryController.m */; };
 		DD116E891470AE5D00714C77 /* ZZGalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD116E861470AE5D00714C77 /* ZZGalleryItem.m */; };
 		DD6EC590130241F400FE744A /* ZZDemoCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6EC58F130241F400FE744A /* ZZDemoCatalog.m */; };
@@ -55,6 +56,8 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* ZZ_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZ_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ZZ-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZZ-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DD08DA9116F05C8200A17DFE /* ZZText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZText.h; sourceTree = "<group>"; };
+		DD08DA9216F05C8200A17DFE /* ZZText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZText.m; sourceTree = "<group>"; };
 		DD116E831470AE5D00714C77 /* ZZGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZGalleryController.h; sourceTree = "<group>"; };
 		DD116E841470AE5D00714C77 /* ZZGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZGalleryController.m; sourceTree = "<group>"; };
 		DD116E851470AE5D00714C77 /* ZZGalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZGalleryItem.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				DDA6FA241558D21700CEEC33 /* forw.png */,
 				DDA6FA251558D21700CEEC33 /* forw@2x.png */,
 				DD8712B813E3CECA004B4FD9 /* loading.png */,
+				DD08DA9116F05C8200A17DFE /* ZZText.h */,
+				DD08DA9216F05C8200A17DFE /* ZZText.m */,
 			);
 			path = ZZLib;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				DDFCF27D16C39396005B76C8 /* SBJsonWriter.m in Sources */,
 				DDF3839616C4C96200F16CA4 /* ZZURLHelper.m in Sources */,
 				DDF3839E16C4FD6D00F16CA4 /* NSData+Base64.m in Sources */,
+				DD08DA9316F05C8200A17DFE /* ZZText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
