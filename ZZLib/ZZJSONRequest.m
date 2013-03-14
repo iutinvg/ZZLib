@@ -44,6 +44,16 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
 
 - (void)post:(NSString *)urlstr params:(NSDictionary *)params
 {
+    [self send:urlstr params:params method:@"POST"];
+}
+
+- (void)put:(NSString *)urlstr params:(NSDictionary *)params
+{
+    [self send:urlstr params:params method:@"PUT"];
+}
+
+- (void)send:(NSString *)urlstr params:(NSDictionary *)params method:(NSString*)method
+{
     [self cancel];
     self.urlString = urlstr;
     
@@ -51,7 +61,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:ZZURLRequestCachePolicy
                                                        timeoutInterval:20];
-    request.HTTPMethod = @"POST";
+    request.HTTPMethod = method;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     SBJsonWriter* writer = [[SBJsonWriter alloc] init];
@@ -71,6 +81,7 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
     _data = [[NSMutableData alloc] init];
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {

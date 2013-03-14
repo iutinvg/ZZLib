@@ -116,5 +116,6 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 
 - (void)get:(NSString*)urlstr;
 - (void)post:(NSString*)urlstr params:(NSDictionary*)params;
+- (void)put:(NSString*)urlstr params:(NSDictionary*)params;
 
 @end
