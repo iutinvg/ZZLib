@@ -1,15 +1,10 @@
-//
-//  NSObject.h
-//  ZZ
-//
-//  Created by Slava Iutin on 3/13/13.
-//
-//
-
 #import <UIKit/UIKit.h>
 
 @interface ZZText : NSObject 
 
+/**
+ Return capitalized string
+ */
 + (NSString*)capitalizeFirst:(NSString*)str;
 
 /**

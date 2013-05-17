@@ -9,6 +9,7 @@ Generated documentation: http://iutinvg.github.com/ZZLib/
 Features
 --------
 
+- ARC support
 - easy tables with remote JSON data
 - easy non-table controllers with remote JSON data
 - async remote image loading
@@ -17,12 +18,10 @@ Features
 - you can still use NIB files
 - marvelous activity indicator
 - very clear logging (`ZZLOG`)
-- number of useful macros and functions: `ZZIsPad`, `ZZRGBA`, etc
-
-ARC Support
------------
-The branch `arc` must be used. Looks like I'll go forward with this branch, 
-then merge it to `master` after some time.
+- web-view with navigation and loading indicating
+- HTTP requests support: GET, POST, PUT
+- number of useful macros and functions: `ZZIsPad`, `ZZRGBA`, `ZZIs5` (to detect iPhone5)
+- simple text utils such as capitalization, etc
 
 Installation
 ============
@@ -41,6 +40,13 @@ How to Learn More
 3. Read the sources. They are pretty flat, besides there are some examples of good 
    practices used by great developers all over the world (see Thanks section).  
 
+Road Map
+========
+
+- Won't add any more features until document existing functionality. Will use appledoc for class referenes and sphinx for guides.
+- All the functions in Demo app.
+- Put licence file in some folder, write about license below.
+
 Thanks
 ======
 
@@ -56,7 +62,4 @@ The following libraries are not used here, but you can find them useful:
 - network caching: https://github.com/rs/SDURLCache (looks like it'll be included here soon)
 - Reachability class by Apple (necessary almost always, great stuff)
 
-Other 
-=====
-
-iPhone client application for our [web monitoring service](http://is2monitor.com) is built with ZZLib.
+s

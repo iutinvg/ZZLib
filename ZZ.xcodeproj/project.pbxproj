@@ -228,7 +228,6 @@
 		DD92CE7612D5D70A001872F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DD8F9BDE1321E99400CEDB4E /* README.markdown */,
 				8D1107310486CEB800E47090 /* ZZ-Info.plist */,
 			);
 			name = Resources;
@@ -255,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA81AAA13500C70001FEF6A /* appledoc.plist */,
+				DD8F9BDE1321E99400CEDB4E /* README.markdown */,
 			);
 			name = Docs;
 			sourceTree = "<group>";
