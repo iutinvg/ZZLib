@@ -24,7 +24,7 @@ Features
 - simple text utils such as capitalization, etc
 
 Installation
-============
+------------
 
 1. Clone the repository:
 	git://github.com/iutinvg/ZZLib.git
@@ -32,7 +32,7 @@ Installation
 3. Drag ZZLib group and drop it in your project. 
 
 How to Learn More
-=================
+-----------------
 
 1. ZZLib contains a demo application which you can compile and start in simulator.
    The files within Demo group of ZZLib project are great examples of library usage.
@@ -41,14 +41,14 @@ How to Learn More
    practices used by great developers all over the world (see Thanks section).  
 
 Road Map
-========
+--------
 
 - Won't add any more features until document existing functionality. Will use appledoc for class referenes and sphinx for guides.
 - All the functions in Demo app.
 - Put licence file in some folder, write about license below.
 
 Thanks
-======
+------
 
 ZZLib uses many third party open source pieces of code, libraries, tools and frameworks:
 
@@ -61,5 +61,3 @@ The following libraries are not used here, but you can find them useful:
 
 - network caching: https://github.com/rs/SDURLCache (looks like it'll be included here soon)
 - Reachability class by Apple (necessary almost always, great stuff)
-
-s
