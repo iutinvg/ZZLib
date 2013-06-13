@@ -12,6 +12,14 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // the params to add to every request
+    NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"4a6b9d8c09da17219420854c90c0776a", @"api_key",
+                            @"json", @"format",
+                            @"1", @"nojsoncallback",
+                            nil];
+    [ZZURLHelper startWithBaseURL:@"http://api.flickr.com/services/rest/" persistentParams:params];
+    
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 	ZZDemoCatalog* demoCatalog = [[ZZDemoCatalog alloc] init];	
@@ -20,20 +28,7 @@
 	_window.rootViewController = nc;
     [_window makeKeyAndVisible];
     
-    [self test];
-    
     return YES;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)test
-{
-    NSDictionary* params = [NSDictionary dictionaryWithObject:@"12312123" forKey:@"api_key"];
-    [ZZURLHelper startWithBaseURL:@"http://some.url/api/v1/" persistentParams:nil];
-    
-    NSDictionary* p = [NSDictionary dictionaryWithObject:@"1" forKey:@"a"];
-    
-    ZZLOG(@"url for test: %@", [ZZURLHelper urlForMethod:@"test" params:nil]);
 }
 
 @end

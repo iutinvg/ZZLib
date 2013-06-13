@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>--company-id</key>
-	<string>com.whirix</string>
+	<string>com.iutinvg</string>
 	<key>--create-html</key>
 	<true/>
 	<key>--ignore</key>
@@ -19,7 +19,7 @@
 	<key>--output</key>
 	<string>../ZZDocs</string>
 	<key>--project-company</key>
-	<string>Whirix</string>
+	<string>iutinvg.com</string>
 	<key>--project-name</key>
 	<string>ZZLib</string>
 </dict>

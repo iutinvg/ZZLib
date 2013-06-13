@@ -32,18 +32,11 @@
 #pragma mark - Request Handling
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createRequest {
-    [ZZURLHelper startWithBaseURL:@"http://api.flickr.com/services/rest/" persistentParams:nil];
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"flickr.photos.search", @"method",
-                            @"4a6b9d8c09da17219420854c90c0776a", @"api_key",
                             @"flower", @"text",
-                            @"json", @"format",
-                            @"1", @"nojsoncallback",
                             nil];
-    /*NSString* urlString = [NSString stringWithFormat:
-                           @"http://api.flickr.com/services/rest/?method=%@&api_key=%@&text=flower&format=json&nojsoncallback=1",
-                           @"flickr.photos.search",
-                           @"4a6b9d8c09da17219420854c90c0776a"];*/
+    // don't forget a number of persistent params will also be added
     NSString* urlString = [ZZURLHelper urlForMethod:@"" params:params];
     ZZLOG(@"flick url: %@", urlString);
     
