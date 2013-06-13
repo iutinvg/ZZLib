@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
 				<h1><a id="libraryTitle" href="../index.html">ZZLib </a></h1>
-				<a id="developerHome" href="../index.html">Whirix</a>
+				<a id="developerHome" href="../index.html">iutinvg.com</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -43,6 +43,10 @@
 	
 	
 	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/createRequest">&nbsp;&nbsp;&nbsp;&nbsp;- createRequest</option>
+	
+	<option value="//api/name/releaseRequest">&nbsp;&nbsp;&nbsp;&nbsp;- releaseRequest</option>
 	
 	<option value="//api/name/showLoading:">&nbsp;&nbsp;&nbsp;&nbsp;- showLoading:</option>
 	
@@ -74,6 +78,10 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createRequest">createRequest</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/releaseRequest">releaseRequest</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showLoading:">showLoading:</a></span></li>
 	
 </ul></li>
@@ -101,6 +109,9 @@
 						<tr>
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/ZZJSONRequestDelegate.html">ZZJSONRequestDelegate</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">ZZViewController.h</td>
@@ -140,6 +151,22 @@ full screen and with support of all interface orientations.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/createRequest">&ndash;&nbsp;createRequest</a></code>
+		<span class="tooltip"><p>Must be overriden to create relevant request for your application.
+The default method just show activity idicator.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/releaseRequest">&ndash;&nbsp;releaseRequest</a></code>
+		<span class="tooltip"><p>It cancel and release the current request. It is called by
+<a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/showLoading:">&ndash;&nbsp;showLoading:</a></code>
 		<span class="tooltip"><p>Creates/removes a view for visualizing of loading process.</p></span>
 	</span>
@@ -163,6 +190,100 @@ full screen and with support of all interface orientations.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/createRequest" title="createRequest"></a>
+	<h3 class="subsubtitle method-title">createRequest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Must be overriden to create relevant request for your application.
+The default method just show activity idicator.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)createRequest</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Must be overriden to create relevant request for your application.
+The default method just show activity idicator.</p>
+
+<p>Example:
+&ndash; (void)createRequest {
+[super createRequest];
+_request = [[ZZJSONRequest alloc]
+initWithURLString:@&ldquo;<a href="http://search.twitter.com/search.json?q=iPhone">http://search.twitter.com/search.json?q=iPhone</a>&rdquo;
+delegate:self];
+}</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/releaseRequest" title="releaseRequest"></a>
+	<h3 class="subsubtitle method-title">releaseRequest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>It cancel and release the current request. It is called by
+<a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)releaseRequest</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>It cancel and release the current request. It is called by
+<a href="../Protocols/ZZJSONRequestDelegate.html#//api/name/requestDidFinishLoading:">[ZZJSONRequestDelegate requestDidFinishLoading:]</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/showLoading:" title="showLoading:"></a>
 	<h3 class="subsubtitle method-title">showLoading:</h3>
 	
@@ -172,9 +293,11 @@ full screen and with support of all interface orientations.</p>
 		<p>Creates/removes a view for visualizing of loading process.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)showLoading:(BOOL)<em>flag</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -238,9 +361,9 @@ though you may of course.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Whirix. All rights reserved. (Last updated: 2011-11-18)</span><br />
+						<p><span class="copyright">&copy; 2013 iutinvg.com. All rights reserved. (Last updated: 2013-06-13)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -328,6 +451,14 @@ though you may of course.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>ZZGalleryItem Class Reference</title>
+		<title>ZZText Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">ZZGalleryItem Class Reference</h1>
+				<h1 class="hideInXcode">ZZText Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,8 +26,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -38,20 +36,15 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/fillOnFit">&nbsp;&nbsp;&nbsp;&nbsp;fillOnFit</option>
-	
-	<option value="//api/name/fillingScale">&nbsp;&nbsp;&nbsp;&nbsp;fillingScale</option>
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/capitalizeFirst:">&nbsp;&nbsp;&nbsp;&nbsp;+ capitalizeFirst:</option>
+	
+	<option value="//api/name/norm:">&nbsp;&nbsp;&nbsp;&nbsp;+ norm:</option>
 	
 	
-	
-	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
 	
 	
 	
@@ -62,8 +55,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -75,30 +66,24 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillOnFit">fillOnFit</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capitalizeFirst:">capitalizeFirst:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillingScale">fillingScale</a></span></li>
-	
-</ul></li>
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/norm:">norm:</a></span></li>
 	
 </ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="ZZGalleryItem Class Reference" name="top"></a>
+				<a title="ZZText Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,7 +92,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">ZZGalleryItem Class Reference</h1>
+						<h1 class="title title-header">ZZText Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -115,25 +100,13 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIScrollView</td>
-</tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">UIScrollViewDelegate<br />ZZImageDelegate</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">ZZGalleryItem.h</td>
+	<td class="specification-value">ZZText.h</td>
 </tr>
 						</tbody></table></div>
 					
-					
-					
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/ZZGalleryController.html">ZZGalleryController</a> item class representation. In most cases you
-will not use it directly.</p>
-					</div>
 					
 					
 					
@@ -150,23 +123,15 @@ will not use it directly.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillOnFit">&nbsp;&nbsp;fillOnFit</a></code>
-		<span class="tooltip"><p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p></span>
+		<code><a href="#//api/name/capitalizeFirst:">+&nbsp;capitalizeFirst:</a></code>
+		<span class="tooltip"><p>Return capitalized string</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillingScale">&nbsp;&nbsp;fillingScale</a></code>
-		<span class="tooltip"><p>Scale when it fill the screen</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Stop item loading.</p></span>
+		<code><a href="#//api/name/norm:">+&nbsp;norm:</a></code>
+		<span class="tooltip"><p>Get empty string is nil or NULL, etc</p></span>
 	</span>
 	
 	
@@ -179,24 +144,25 @@ Default value is NO;</p></span>
 					
 					
 					
+					
+					
 					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/fillOnFit" title="fillOnFit"></a>
-	<h3 class="subsubtitle method-title">fillOnFit</h3>
+	<a name="//api/name/capitalizeFirst:" title="capitalizeFirst:"></a>
+	<h3 class="subsubtitle method-title">capitalizeFirst:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
+		<p>Return capitalized string</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL fillOnFit</code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)capitalizeFirst:(NSString *)<em>str</em></code></div>
 
     
 	
@@ -208,8 +174,7 @@ Default value is NO;</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
+		<p>Return capitalized string</p>
 	</div>
 	
 	
@@ -220,25 +185,25 @@ Default value is NO;</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+		<code class="declared-in-ref">ZZText.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/fillingScale" title="fillingScale"></a>
-	<h3 class="subsubtitle method-title">fillingScale</h3>
+	<a name="//api/name/norm:" title="norm:"></a>
+	<h3 class="subsubtitle method-title">norm:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Scale when it fill the screen</p>
+		<p>Get empty string is nil or NULL, etc</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat fillingScale</code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)norm:(NSString *)<em>str</em></code></div>
 
     
 	
@@ -250,7 +215,7 @@ Default value is NO;</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Scale when it fill the screen</p>
+		<p>Get empty string is nil or NULL, etc</p>
 	</div>
 	
 	
@@ -261,7 +226,7 @@ Default value is NO;</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+		<code class="declared-in-ref">ZZText.h</code><br />
 	</div>				
 	
 	
@@ -270,57 +235,6 @@ Default value is NO;</p>
 					</div>
 					
 					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/cancel" title="cancel"></a>
-	<h3 class="subsubtitle method-title">cancel</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Stop item loading.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Stop item loading.</p>
-
-<p>It is necessary in case we remove page before it is loaded.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 				</div>

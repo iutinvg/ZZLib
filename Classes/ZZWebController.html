@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>ZZGalleryItem Class Reference</title>
+		<title>ZZWebController Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">ZZGalleryItem Class Reference</h1>
+				<h1 class="hideInXcode">ZZWebController Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,20 +38,23 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/fillOnFit">&nbsp;&nbsp;&nbsp;&nbsp;fillOnFit</option>
-	
-	<option value="//api/name/fillingScale">&nbsp;&nbsp;&nbsp;&nbsp;fillingScale</option>
-	
-	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	<option value="//api/name/actionBack:">&nbsp;&nbsp;&nbsp;&nbsp;- actionBack:</option>
+	
+	<option value="//api/name/actionForward:">&nbsp;&nbsp;&nbsp;&nbsp;- actionForward:</option>
+	
+	<option value="//api/name/actionReload:">&nbsp;&nbsp;&nbsp;&nbsp;- actionReload:</option>
+	
+	<option value="//api/name/initWithURLString:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithURLString:</option>
+	
+	<option value="//api/name/setupToolbar">&nbsp;&nbsp;&nbsp;&nbsp;- setupToolbar</option>
+	
+	<option value="//api/name/updateButtonsStatus">&nbsp;&nbsp;&nbsp;&nbsp;- updateButtonsStatus</option>
 	
 	
 	
@@ -75,21 +78,23 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillOnFit">fillOnFit</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillingScale">fillingScale</a></span></li>
-	
-</ul></li>
-
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/actionBack:">actionBack:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/actionForward:">actionForward:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/actionReload:">actionReload:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithURLString:">initWithURLString:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setupToolbar">setupToolbar</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateButtonsStatus">updateButtonsStatus</a></span></li>
 	
 </ul></li>
 
@@ -98,7 +103,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="ZZGalleryItem Class Reference" name="top"></a>
+				<a title="ZZWebController Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,7 +112,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">ZZGalleryItem Class Reference</h1>
+						<h1 class="title title-header">ZZWebController Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -115,13 +120,13 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIScrollView</td>
+	<td class="specification-value"><a href="../Classes/ZZViewController.html">ZZViewController</a> : UIViewController</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">UIScrollViewDelegate<br />ZZImageDelegate</td>
+	<td class="specification-value">UIWebViewDelegate</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">ZZGalleryItem.h</td>
+	<td class="specification-value">ZZWebController.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -131,8 +136,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/ZZGalleryController.html">ZZGalleryController</a> item class representation. In most cases you
-will not use it directly.</p>
+						<p>Web controller with toolbar: back, forward and reload.
+Very useful when you need to open a web-page but have to stay in the app.</p>
 					</div>
 					
 					
@@ -150,23 +155,43 @@ will not use it directly.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillOnFit">&nbsp;&nbsp;fillOnFit</a></code>
-		<span class="tooltip"><p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p></span>
+		<code><a href="#//api/name/initWithURLString:">&ndash;&nbsp;initWithURLString:</a></code>
+		<span class="tooltip"><p>C-r.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillingScale">&nbsp;&nbsp;fillingScale</a></code>
-		<span class="tooltip"><p>Scale when it fill the screen</p></span>
+		<code><a href="#//api/name/setupToolbar">&ndash;&nbsp;setupToolbar</a></code>
+		<span class="tooltip"><p>Create and setup toolbar. Can be overwritten for customization.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Stop item loading.</p></span>
+		<code><a href="#//api/name/updateButtonsStatus">&ndash;&nbsp;updateButtonsStatus</a></code>
+		<span class="tooltip"><p>Enables and disables buttons statuses.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/actionBack:">&ndash;&nbsp;actionBack:</a></code>
+		<span class="tooltip"><p>Back action.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/actionForward:">&ndash;&nbsp;actionForward:</a></code>
+		<span class="tooltip"><p>Forward action.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/actionReload:">&ndash;&nbsp;actionReload:</a></code>
+		<span class="tooltip"><p>Reload action.</p></span>
 	</span>
 	
 	
@@ -179,96 +204,6 @@ Default value is NO;</p></span>
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/fillOnFit" title="fillOnFit"></a>
-	<h3 class="subsubtitle method-title">fillOnFit</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL fillOnFit</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/fillingScale" title="fillingScale"></a>
-	<h3 class="subsubtitle method-title">fillingScale</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Scale when it fill the screen</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat fillingScale</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Scale when it fill the screen</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
 					
 					
 					
@@ -278,18 +213,18 @@ Default value is NO;</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/cancel" title="cancel"></a>
-	<h3 class="subsubtitle method-title">cancel</h3>
+	<a name="//api/name/actionBack:" title="actionBack:"></a>
+	<h3 class="subsubtitle method-title">actionBack:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Stop item loading.</p>
+		<p>Back action.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+	<div class="method-subsection method-declaration"><code>- (IBAction)actionBack:(id)<em>sender</em></code></div>
 
     
 	
@@ -301,9 +236,7 @@ Default value is NO;</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Stop item loading.</p>
-
-<p>It is necessary in case we remove page before it is loaded.</p>
+		<p>Back action.</p>
 	</div>
 	
 	
@@ -314,7 +247,222 @@ Default value is NO;</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+		<code class="declared-in-ref">ZZWebController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/actionForward:" title="actionForward:"></a>
+	<h3 class="subsubtitle method-title">actionForward:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Forward action.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)actionForward:(id)<em>sender</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Forward action.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZWebController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/actionReload:" title="actionReload:"></a>
+	<h3 class="subsubtitle method-title">actionReload:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Reload action.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (IBAction)actionReload:(id)<em>sender</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Reload action.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZWebController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithURLString:" title="initWithURLString:"></a>
+	<h3 class="subsubtitle method-title">initWithURLString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>C-r.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithURLString:(NSString *)<em>urlString</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>urlString</em></dt>
+			<dd><p>intial URL to open.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>C-r.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZWebController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setupToolbar" title="setupToolbar"></a>
+	<h3 class="subsubtitle method-title">setupToolbar</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create and setup toolbar. Can be overwritten for customization.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setupToolbar</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create and setup toolbar. Can be overwritten for customization.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZWebController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updateButtonsStatus" title="updateButtonsStatus"></a>
+	<h3 class="subsubtitle method-title">updateButtonsStatus</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enables and disables buttons statuses.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)updateButtonsStatus</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Enables and disables buttons statuses.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZWebController.h</code><br />
 	</div>				
 	
 	

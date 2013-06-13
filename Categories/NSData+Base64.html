@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>ZZGalleryItem Class Reference</title>
+		<title>NSData(Base64) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">ZZGalleryItem Class Reference</h1>
+				<h1 class="hideInXcode">NSData(Base64) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,8 +26,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -38,20 +36,20 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/fillOnFit">&nbsp;&nbsp;&nbsp;&nbsp;fillOnFit</option>
-	
-	<option value="//api/name/fillingScale">&nbsp;&nbsp;&nbsp;&nbsp;fillingScale</option>
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/dataWithBase64EncodedString:">&nbsp;&nbsp;&nbsp;&nbsp;+ dataWithBase64EncodedString:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	<option value="//api/name/base64EncodingWithLineLength:">&nbsp;&nbsp;&nbsp;&nbsp;- base64EncodingWithLineLength:</option>
+	
+	<option value="//api/name/initWithBase64EncodedString:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBase64EncodedString:</option>
 	
 	
 	
@@ -62,8 +60,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -75,21 +71,21 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillOnFit">fillOnFit</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillingScale">fillingScale</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dataWithBase64EncodedString:">dataWithBase64EncodedString:</a></span></li>
 	
 </ul></li>
 
 
 
-
-
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/base64EncodingWithLineLength:">base64EncodingWithLineLength:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBase64EncodedString:">initWithBase64EncodedString:</a></span></li>
 	
 </ul></li>
 
@@ -98,7 +94,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="ZZGalleryItem Class Reference" name="top"></a>
+				<a title="NSData(Base64) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,33 +103,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">ZZGalleryItem Class Reference</h1>
+						<h1 class="title title-header">NSData(Base64) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIScrollView</td>
-</tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">UIScrollViewDelegate<br />ZZImageDelegate</td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">ZZGalleryItem.h</td>
+	<td class="specification-value">NSData+Base64.h</td>
 </tr>
 						</tbody></table></div>
 					
-					
-					
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/ZZGalleryController.html">ZZGalleryController</a> item class representation. In most cases you
-will not use it directly.</p>
-					</div>
 					
 					
 					
@@ -150,23 +131,30 @@ will not use it directly.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillOnFit">&nbsp;&nbsp;fillOnFit</a></code>
-		<span class="tooltip"><p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p></span>
+		<code><a href="#//api/name/dataWithBase64EncodedString:">+&nbsp;dataWithBase64EncodedString:</a></code>
+		<span class="tooltip"><pre><code>@function   +dataWithBase64EncodedString:
+@discussion This method returns an autoreleased NSData object. The NSData object is initialized with the
+            contents of the Base 64 encoded string. This is a convenience method.
+</code></pre></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillingScale">&nbsp;&nbsp;fillingScale</a></code>
-		<span class="tooltip"><p>Scale when it fill the screen</p></span>
+		<code><a href="#//api/name/initWithBase64EncodedString:">&ndash;&nbsp;initWithBase64EncodedString:</a></code>
+		<span class="tooltip"><pre><code>@function   -initWithBase64EncodedString:
+@discussion The NSData object is initialized with the contents of the Base 64 encoded string.
+            This method returns self as a convenience.
+</code></pre></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Stop item loading.</p></span>
+		<code><a href="#//api/name/base64EncodingWithLineLength:">&ndash;&nbsp;base64EncodingWithLineLength:</a></code>
+		<span class="tooltip"><pre><code>@function   -base64EncodingWithLineLength:
+@discussion This method returns a Base 64 encoded string representation of the data object.
+</code></pre></span>
 	</span>
 	
 	
@@ -179,28 +167,47 @@ Default value is NO;</p></span>
 					
 					
 					
+					
+					
 					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/fillOnFit" title="fillOnFit"></a>
-	<h3 class="subsubtitle method-title">fillOnFit</h3>
+	<a name="//api/name/dataWithBase64EncodedString:" title="dataWithBase64EncodedString:"></a>
+	<h3 class="subsubtitle method-title">dataWithBase64EncodedString:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
+		<pre><code>@function   +dataWithBase64EncodedString:
+@discussion This method returns an autoreleased NSData object. The NSData object is initialized with the
+            contents of the Base 64 encoded string. This is a convenience method.
+</code></pre>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL fillOnFit</code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSData *)dataWithBase64EncodedString:(NSString *)<em>string</em></code></div>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inBase64String</em></dt>
+			<dd><p>An NSString object that contains only Base 64 encoded data.</p></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The NSData object.</p>
+	</div>
 	
 	
 	
@@ -208,8 +215,10 @@ Default value is NO;</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
+		<pre><code>@function   +dataWithBase64EncodedString:
+@discussion This method returns an autoreleased NSData object. The NSData object is initialized with the
+            contents of the Base 64 encoded string. This is a convenience method.
+</code></pre>
 	</div>
 	
 	
@@ -220,48 +229,7 @@ Default value is NO;</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/fillingScale" title="fillingScale"></a>
-	<h3 class="subsubtitle method-title">fillingScale</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Scale when it fill the screen</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat fillingScale</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Scale when it fill the screen</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+		<code class="declared-in-ref">NSData+Base64.h</code><br />
 	</div>				
 	
 	
@@ -271,29 +239,47 @@ Default value is NO;</p>
 					
 					
 					
-					
-					
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/cancel" title="cancel"></a>
-	<h3 class="subsubtitle method-title">cancel</h3>
+	<a name="//api/name/base64EncodingWithLineLength:" title="base64EncodingWithLineLength:"></a>
+	<h3 class="subsubtitle method-title">base64EncodingWithLineLength:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Stop item loading.</p>
+		<pre><code>@function   -base64EncodingWithLineLength:
+@discussion This method returns a Base 64 encoded string representation of the data object.
+</code></pre>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)base64EncodingWithLineLength:(unsigned int)<em>lineLength</em></code></div>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inLineLength</em></dt>
+			<dd><p>A value of zero means no line breaks.  This is crunched to a multiple of 4 (the next</p>
+
+<pre><code>                     one greater than inLineLength).
+</code></pre></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The base 64 encoded data.</p>
+	</div>
 	
 	
 	
@@ -301,9 +287,9 @@ Default value is NO;</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Stop item loading.</p>
-
-<p>It is necessary in case we remove page before it is loaded.</p>
+		<pre><code>@function   -base64EncodingWithLineLength:
+@discussion This method returns a Base 64 encoded string representation of the data object.
+</code></pre>
 	</div>
 	
 	
@@ -314,7 +300,69 @@ Default value is NO;</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+		<code class="declared-in-ref">NSData+Base64.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithBase64EncodedString:" title="initWithBase64EncodedString:"></a>
+	<h3 class="subsubtitle method-title">initWithBase64EncodedString:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<pre><code>@function   -initWithBase64EncodedString:
+@discussion The NSData object is initialized with the contents of the Base 64 encoded string.
+            This method returns self as a convenience.
+</code></pre>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithBase64EncodedString:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>inBase64String</em></dt>
+			<dd><p>An NSString object that contains only Base 64 encoded data.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>This method returns self.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<pre><code>@function   -initWithBase64EncodedString:
+@discussion The NSData object is initialized with the contents of the Base 64 encoded string.
+            This method returns self as a convenience.
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSData+Base64.h</code><br />
 	</div>				
 	
 	

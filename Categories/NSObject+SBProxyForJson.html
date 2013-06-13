@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>ZZGalleryItem Class Reference</title>
+		<title>NSObject(SBProxyForJson) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">ZZGalleryItem Class Reference</h1>
+				<h1 class="hideInXcode">NSObject(SBProxyForJson) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,20 +38,13 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/fillOnFit">&nbsp;&nbsp;&nbsp;&nbsp;fillOnFit</option>
-	
-	<option value="//api/name/fillingScale">&nbsp;&nbsp;&nbsp;&nbsp;fillingScale</option>
-	
-	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	<option value="//api/name/proxyForJson">&nbsp;&nbsp;&nbsp;&nbsp;- proxyForJson</option>
 	
 	
 	
@@ -75,21 +68,13 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillOnFit">fillOnFit</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fillingScale">fillingScale</a></span></li>
-	
-</ul></li>
-
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/proxyForJson">proxyForJson</a></span></li>
 	
 </ul></li>
 
@@ -98,7 +83,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="ZZGalleryItem Class Reference" name="top"></a>
+				<a title="NSObject(SBProxyForJson) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,21 +92,15 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">ZZGalleryItem Class Reference</h1>
+						<h1 class="title title-header">NSObject(SBProxyForJson) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIScrollView</td>
-</tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">UIScrollViewDelegate<br />ZZImageDelegate</td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">ZZGalleryItem.h</td>
+	<td class="specification-value">SBJsonStreamWriter.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -131,8 +110,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/ZZGalleryController.html">ZZGalleryController</a> item class representation. In most cases you
-will not use it directly.</p>
+						<p>Enable JSON writing for non-native objects</p>
 					</div>
 					
 					
@@ -150,23 +128,8 @@ will not use it directly.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fillOnFit">&nbsp;&nbsp;fillOnFit</a></code>
-		<span class="tooltip"><p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/fillingScale">&nbsp;&nbsp;fillingScale</a></code>
-		<span class="tooltip"><p>Scale when it fill the screen</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
-		<span class="tooltip"><p>Stop item loading.</p></span>
+		<code><a href="#//api/name/proxyForJson">&ndash;&nbsp;proxyForJson</a></code>
+		<span class="tooltip"><p>Allows generation of JSON for otherwise unsupported classes.</p></span>
 	</span>
 	
 	
@@ -179,96 +142,6 @@ Default value is NO;</p></span>
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/fillOnFit" title="fillOnFit"></a>
-	<h3 class="subsubtitle method-title">fillOnFit</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL fillOnFit</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Flag to set initial scale to the image fill the screen without black gaps around.
-Default value is NO;</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/fillingScale" title="fillingScale"></a>
-	<h3 class="subsubtitle method-title">fillingScale</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Scale when it fill the screen</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat fillingScale</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Scale when it fill the screen</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
 					
 					
 					
@@ -278,18 +151,18 @@ Default value is NO;</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/cancel" title="cancel"></a>
-	<h3 class="subsubtitle method-title">cancel</h3>
+	<a name="//api/name/proxyForJson" title="proxyForJson"></a>
+	<h3 class="subsubtitle method-title">proxyForJson</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Stop item loading.</p>
+		<p>Allows generation of JSON for otherwise unsupported classes.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+	<div class="method-subsection method-declaration"><code>- (id)proxyForJson</code></div>
 
     
 	
@@ -301,9 +174,21 @@ Default value is NO;</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Stop item loading.</p>
+		<p>Allows generation of JSON for otherwise unsupported classes.</p>
 
-<p>It is necessary in case we remove page before it is loaded.</p>
+<p>If you have a custom class that you want to create a JSON representation
+for you can implement this method in your class. It should return a
+representation of your object defined in terms of objects that can be
+translated into JSON. For example, a Person object might implement it like this:</p>
+
+<pre><code> - (id)proxyForJson {
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+    name, @"name",
+    phone, @"phone",
+    email, @"email",
+    nil];
+ }
+</code></pre>
 	</div>
 	
 	
@@ -314,7 +199,7 @@ Default value is NO;</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">ZZGalleryItem.h</code><br />
+		<code class="declared-in-ref">SBJsonStreamWriter.h</code><br />
 	</div>				
 	
 	
