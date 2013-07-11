@@ -11,6 +11,8 @@
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
 
+static NSDictionary* persistentHeaders;
+
 @implementation ZZJSONRequest
 
 @synthesize connection = _connection;
@@ -32,6 +34,12 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:ZZURLRequestCachePolicy
                                                        timeoutInterval:20];
+    
+    // set persistent headers
+    for (NSString* key in [persistentHeaders allKeys]) {
+        [request setValue:persistentHeaders[key] forHTTPHeaderField:key];
+    }
+    
     if ([self.username length] && [self.password length]) {
         [self authForRequest:request];
     }
@@ -70,6 +78,12 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
     
     NSData* postData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
     [request setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
+    
+    // set persistent headers
+    for (NSString* key in [persistentHeaders allKeys]) {
+        [request setValue:persistentHeaders[key] forHTTPHeaderField:key];
+    }
+    
     [request setHTTPBody: postData];
     
     if ([self.username length] && [self.password length]) {
@@ -152,6 +166,14 @@ NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePo
     NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
     NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodingWithLineLength:80]];
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+}
+
++ (NSDictionary*)persistentHeaders:(NSDictionary *)headers
+{
+    if (headers!=nil) {
+        persistentHeaders = headers;
+    }
+    return persistentHeaders;
 }
 
 @end

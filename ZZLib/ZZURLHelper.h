@@ -36,6 +36,8 @@
 		 self.request = [[ZZJSONRequest alloc] initWithDelegate:self];
 		 [self.request get:urlString];
 	 }
+ 
+ You may also want to use [ZZJSONRequest persistemtHeader:] method.
  */
 @interface ZZURLHelper : NSObject
 
@@ -53,6 +55,7 @@
  @param params dictionary to use as key-value pair in query string.
  */
 + (NSDictionary*)persistentParams:(NSDictionary*)params;
+
 + (NSString*)urlForMethod:(NSString*)method params:(NSDictionary*)dict;
 + (NSString*)urlForMethod3:(NSString*)action params:(NSDictionary*)dict;
 + (NSString*)encode:(NSString*)value;

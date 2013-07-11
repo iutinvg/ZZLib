@@ -1,11 +1,11 @@
-/* 
+/*
  * Copyright (c) 2011 Whirix <info@whirix.com>
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
 /**
  Wrapper for NSURLConnection for handful async getting of JSON data.
- 
+
  Usually it is used in pair with ZZTableController or ZZViewController.
  */
 
@@ -30,7 +30,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 
 /**
  Request tag.
- 
+
  It can be used to distinguish requests created for the same delegate instance.
 
     - (void)start2Requests {
@@ -39,7 +39,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
         r = [[ZZJSONRequest alloc] initWithURLString:@"http://url-to-api-2" delegate:self];
         r.tag = 200;
     }
- 
+
     - (void)requestDidFinishLoading:(ZZJSONRequest*)request {
         ...
         if (request.tag==100) {
@@ -60,20 +60,20 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  */
 @property NSInteger status;
 
-/** 
+/**
  Response data.
- 
+
  You can use it when loading is finished.
  Depending on the JSON you get it can be NSArray or NSDictionary.
  Just use casting to access it:
- 
+
 	- (void)requestDidFinishLoading:(ZZJSONRequest*)request {
 		...
 		NSArray* items = (NSArray*)_request.response;
 		NSArray* a = a;
 		...
 	}
- 
+
  @warning You must retain it for futher usage in your methods.
  @see ZZTableController requestDidFinishLoading:]
  @see ZZTableController
@@ -97,7 +97,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 
 /**
  Creates request with given URL and delegate.
- 
+
  The request starts loading immediatelly.
  @param urlstr URL string to load data from
  @param delegate NSURLConnection delegate
@@ -106,7 +106,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 
 /**
  Cancels loading of request.
- 
+
  You have to call it when close the screen before data is loaded.
  However, ZZTableController calls it properly at such cases.
  */
@@ -117,5 +117,28 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 - (void)get:(NSString*)urlstr;
 - (void)post:(NSString*)urlstr params:(NSDictionary*)params;
 - (void)put:(NSString*)urlstr params:(NSDictionary*)params;
+
+/**
+ Sets parameters which will be added to request headers for all requests.
+
+ Usage example:
+     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+         // params to add to every request
+         NSDictionary* headers = [NSDictionary dictionaryWithObjectsAndKeys:
+                         @"4a6b9d8c09da17219420854c90c0776a", @"x-simpleauth-token",
+                         nil];
+
+         [ZZJSONReqeust persistemtHeader:headers]
+
+         [ZZURLHelper startWithBaseURL:@"http://api.flickr.com/services/rest/" persistentParams:nil];
+
+         // ...
+     }
+
+ You may also want to use [ZZURLHelper persistentParams:] for similar purposes.
+
+ @param params dictionary to use as key-value pair in headers. Values must be strings.
+ */
++ (NSDictionary*)persistentHeaders:(NSDictionary*)headers;
 
 @end
