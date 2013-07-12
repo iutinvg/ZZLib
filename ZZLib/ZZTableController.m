@@ -24,8 +24,8 @@
 @synthesize request = _request;
 @synthesize tableView = _tableView;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
+- (id)init
+{
     self = [self initWithNibName:nil bundle:nil];
 	if (self) {
 		_tableViewStyle = UITableViewStylePlain;
@@ -34,14 +34,14 @@
 	return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
+- (void)dealloc
+{
     [self releaseRequest];
     [self showLoading:NO];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
+- (void)loadView
+{
 	// calling of ZZViewController's method
 	// it'll do correct creations in case we don't use nib
 	[super loadView];
@@ -50,45 +50,41 @@
 	}
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
 	[self refreshData];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self releaseRequest];
 	[self showLoading:NO];
     _tableView = nil;
 	[super viewDidUnload];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     if (_request!=nil && _request.loading) {
         [self showLoading:NO];
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark Table view data source
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 0;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -99,8 +95,8 @@
     return cell;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createTable {
+- (void)createTable
+{
 	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
 	_tableView.dataSource = self;
 	_tableView.delegate = self;
@@ -109,8 +105,8 @@
 	[self.view addSubview:_tableView];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)refreshData {
+- (void)refreshData
+{
     // cancel current release 
     [self releaseRequest];
     // create new release
