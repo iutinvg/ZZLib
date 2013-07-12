@@ -25,13 +25,9 @@
 	return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Request Handling
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createRequest {
+- (void)createRequest
+{
     NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"flickr.photos.search", @"method",
                             @"flower", @"text",
@@ -45,8 +41,8 @@
     [self.request get:urlString];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)requestDidFinishLoading:(ZZJSONRequest*)request {
+- (void)requestDidFinishLoading:(ZZJSONRequest*)request
+{
 	// put necessary part of response in instance variable
 	NSDictionary* tmp = (NSDictionary*)self.request.response;
     tmp = [tmp objectForKey:@"photos"];
@@ -62,32 +58,30 @@
 	[super requestDidFinishLoading:request];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)showLoading:(BOOL)flag {
+- (void)showLoading:(BOOL)flag
+{
 	[super showLoading:flag];
 	
 	// enable/disable refresh button
 	self.navigationItem.rightBarButtonItem.enabled = !flag;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Table view data source
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 	return 1;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
 	if (_searchResults==nil) {
 		return 0;
 	}
     return [_searchResults count];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     static NSString *CellIdentifier = @"ZZTableViewCell";
     
@@ -108,8 +102,8 @@
     return cell;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSMutableArray* info = [NSMutableArray array];
     
     for (NSDictionary* item in _searchResults) {
@@ -129,11 +123,9 @@
     [self.navigationController pushViewController:galleryController animated:YES];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ZZGalleryProtocol
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)gallery:(ZZGalleryController *)galleryController listingSelected:(NSString *)imageId {
+- (void)gallery:(ZZGalleryController *)galleryController listingSelected:(NSString *)imageId
+{
     ZZLOG(@"user would like to see details for %@", imageId);
 }
 
