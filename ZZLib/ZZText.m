@@ -1,10 +1,7 @@
-//
-//  NSObject.m
-//  ZZ
-//
-//  Created by Slava Iutin on 3/13/13.
-//
-//
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZText.h"
 

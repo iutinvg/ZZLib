@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
 /**
  Check if current device is iPad.
  @return `YES` if it is iPad, `NO` otherwise.

@@ -1,5 +1,5 @@
-/* 
- * Copyright (c) 2011 Whirix <info@whirix.com>
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
