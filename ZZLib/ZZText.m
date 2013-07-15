@@ -25,4 +25,10 @@
     return str;
 }
 
++ (BOOL)isEmpty:(NSString *)str
+{
+    str = [ZZText norm:str];
+    return [str length];
+}
+
 @end
