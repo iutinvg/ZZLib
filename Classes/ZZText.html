@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -42,6 +44,8 @@
 	
 	<option value="//api/name/capitalizeFirst:">&nbsp;&nbsp;&nbsp;&nbsp;+ capitalizeFirst:</option>
 	
+	<option value="//api/name/isEmpty:">&nbsp;&nbsp;&nbsp;&nbsp;+ isEmpty:</option>
+	
 	<option value="//api/name/norm:">&nbsp;&nbsp;&nbsp;&nbsp;+ norm:</option>
 	
 	
@@ -55,6 +59,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -71,6 +77,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capitalizeFirst:">capitalizeFirst:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty:">isEmpty:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/norm:">norm:</a></span></li>
 	
@@ -110,6 +118,14 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A number of simple and often used text utils.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -124,14 +140,23 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/capitalizeFirst:">+&nbsp;capitalizeFirst:</a></code>
-		<span class="tooltip"><p>Return capitalized string</p></span>
+		<span class="tooltip"><p>Return capitalized string.
+Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]</code>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/norm:">+&nbsp;norm:</a></code>
-		<span class="tooltip"><p>Get empty string is nil or NULL, etc</p></span>
+		<span class="tooltip"><p>Get empty string for given <code>nil</code>, <code>NULL</code> and not <code>NSString</code> instance.
+It&rsquo;s to simplify empty string checking if you want to have an empty string for a corresponding value.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEmpty:">+&nbsp;isEmpty:</a></code>
+		<span class="tooltip"><p>Check if string is empty or <code>NULL</code> or <code>nil</code> or any other &ldquo;unpleasant&rdquo; thing (e.g. not a <code>NSString</code> instance).</p></span>
 	</span>
 	
 	
@@ -157,7 +182,8 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Return capitalized string</p>
+		<p>Return capitalized string.
+Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]</code>.</p>
 	</div>		
 	
     
@@ -166,7 +192,22 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>str</em></dt>
+			<dd><p>string to capitalize, can be <code>nil</code>, <code>NULL</code> or not <code>NSString</code> instance.</p></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>capitalized string</p>
+	</div>
 	
 	
 	
@@ -174,7 +215,64 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Return capitalized string</p>
+		<p>Return capitalized string.
+Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZText.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEmpty:" title="isEmpty:"></a>
+	<h3 class="subsubtitle method-title">isEmpty:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Check if string is empty or <code>NULL</code> or <code>nil</code> or any other &ldquo;unpleasant&rdquo; thing (e.g. not a <code>NSString</code> instance).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isEmpty:(NSString *)<em>str</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>str</em></dt>
+			<dd><p>object to check for emptiness</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if given object is similar to empty string</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Check if string is empty or <code>NULL</code> or <code>nil</code> or any other &ldquo;unpleasant&rdquo; thing (e.g. not a <code>NSString</code> instance).</p>
 	</div>
 	
 	
@@ -198,7 +296,8 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get empty string is nil or NULL, etc</p>
+		<p>Get empty string for given <code>nil</code>, <code>NULL</code> and not <code>NSString</code> instance.
+It&rsquo;s to simplify empty string checking if you want to have an empty string for a corresponding value.</p>
 	</div>		
 	
     
@@ -207,7 +306,22 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>str</em></dt>
+			<dd><p>to normalize, if <code>NULL</code>, <code>nil</code>, <code>@""</code> or object of other then <code>NSString</code> class is given <code>@""</code> will be returned. Or given string otherwise.</p></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>@""</code> or given <code>NSString</code> instance</p>
+	</div>
 	
 	
 	
@@ -215,7 +329,8 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Get empty string is nil or NULL, etc</p>
+		<p>Get empty string for given <code>nil</code>, <code>NULL</code> and not <code>NSString</code> instance.
+It&rsquo;s to simplify empty string checking if you want to have an empty string for a corresponding value.</p>
 	</div>
 	
 	
@@ -247,7 +362,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 sevencrayons.com. All rights reserved. (Last updated: 2013-07-11)</span><br />
+						<p><span class="copyright">&copy; 2013 sevencrayons.com. All rights reserved. (Last updated: 2013-07-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
