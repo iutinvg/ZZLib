@@ -1,10 +1,7 @@
-//
-//  NSObject.m
-//  ZZ
-//
-//  Created by Slava Iutin on 3/13/13.
-//
-//
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZText.h"
 
@@ -34,6 +31,12 @@
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'+0000'"];
     return [formatter dateFromString:string];
+}
+
++ (BOOL)isEmpty:(NSString *)str
+{
+    str = [ZZText norm:str];
+    return [str length];
 }
 
 @end

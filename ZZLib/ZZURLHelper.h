@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
 /**
  A collection of functions to create URLs.
 

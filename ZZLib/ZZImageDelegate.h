@@ -1,10 +1,7 @@
-//
-//  ZZImageDelegate.h
-//  HudsonsApp
-//
-//  Created by Слава Иутин on 10/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import <Foundation/Foundation.h>
 
