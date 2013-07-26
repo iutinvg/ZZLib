@@ -36,7 +36,7 @@
 + (BOOL)isEmpty:(NSString *)str
 {
     str = [ZZText norm:str];
-    return [str length];
+    return ![str length];
 }
 
 @end
