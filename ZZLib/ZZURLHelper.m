@@ -46,7 +46,7 @@ static NSString* baseURL;
         veryFirst = NO;
     }
     
-    ZZLOG(@"create URL: %@", method);
+    //ZZLOG(@"create URL: %@", method);
     
     return method;
 }

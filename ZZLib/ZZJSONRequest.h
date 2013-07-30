@@ -96,6 +96,12 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 @property NSString* password;
 
 /**
+ Enables more output to debug console. Very useful new API
+ investigations.
+ */
+@property BOOL debug;
+
+/**
  Creates request with given URL and delegate.
 
  The request starts loading immediatelly.

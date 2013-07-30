@@ -22,6 +22,7 @@ static NSDictionary* persistentHeaders;
     self = [super init];
 	if (self) {
 		_delegate = delegate;
+        _debug = NO;
 	}
 	return self;
 }
@@ -74,7 +75,8 @@ static NSDictionary* persistentHeaders;
     
     SBJsonWriter* writer = [[SBJsonWriter alloc] init];
     NSString* json = [writer stringWithObject:params];
-    ZZLOG(@"json to post: %@", json);
+    
+    if (_debug) ZZLOG(@"json to post: %@", json);
     
     NSData* postData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
     [request setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
@@ -114,28 +116,28 @@ static NSDictionary* persistentHeaders;
 #pragma mark - NSURLConnection delegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	ZZLOG(@"get response from %@", _urlString);
 	[_data setLength:0];
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     _status = [httpResponse statusCode];
-    ZZLOG(@"response status: %d", _status);
+	if (_debug) ZZLOG(@"get response from %@ [%d]", _urlString, _status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	ZZLOG(@"got %d bytes", [data length]);
+	if (_debug) ZZLOG(@"got %d bytes", [data length]);
 	[_data appendData:data];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	ZZLOG(@"finish loading successfuly");
+	if (_debug) ZZLOG(@"finish loading successfuly");
 	_loaded = YES;
 	_loading = NO;
 
 	// parse data
 	self.responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-	ZZLOG(@"json: %@", self.responseString);
+    
+	if (_debug) ZZLOG(@"json: %@", self.responseString);
     
     SBJsonParser* parser = [[SBJsonParser alloc] init];
     _response = [parser objectWithString:self.responseString];
