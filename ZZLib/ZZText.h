@@ -20,11 +20,11 @@
 + (NSString*)capitalizeFirst:(NSString*)str;
 
 /**
- Get empty string for given `nil`, `NULL` and not `NSString` instance.
+ Get empty string for given `nil`, `NULL`. Tries to call `stringValue` method.
  It's to simplify empty string checking if you want to have an empty string for a corresponding value.
  
- @param str to normalize, if `NULL`, `nil`, `@""` or object of other then `NSString` class is given `@""` will be returned. Or given string otherwise.
- @return `@""` or given `NSString` instance
+ @param str to normalize, if `NULL`, `nil`, `@""` or object which doesn't have `stringValue` method is given `@""` will be returned. Or given string otherwise.
+ @return `NSString` instance
  */
 + (NSString*)norm:(NSString*)str;
 

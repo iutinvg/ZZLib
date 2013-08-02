@@ -12,6 +12,15 @@
     if ([str isKindOfClass:[NSString class]] && [str length]) {
         return str;
     }
+    
+    @try {
+        id obj = str;
+        return [obj stringValue];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    
     return @"";
 }
 
