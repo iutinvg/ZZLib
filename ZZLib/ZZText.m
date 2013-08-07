@@ -7,18 +7,14 @@
 
 @implementation ZZText
 
-+ (NSString*)norm:(NSString *)str
++ (NSString*)norm:(id)obj
 {
-    if ([str isKindOfClass:[NSString class]] && [str length]) {
-        return str;
+    if ([obj isKindOfClass:[NSString class]] && [obj length]) {
+        return obj;
     }
     
-    @try {
-        id obj = str;
+    if ([obj respondsToSelector:@selector(stringValue)]) {
         return [obj stringValue];
-    }
-    @catch (NSException *exception) {
-        
     }
     
     return @"";
