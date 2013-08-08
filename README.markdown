@@ -4,7 +4,7 @@ ZZLib
 ZZLib is a collection of iPhone classes and macros cought by us on the Internet
 and integrated with each other. Our main idea is to keep the library easy to use and make it very simple.
 
-Generated documentation: http://iutinvg.github.com/ZZLib/
+Generated documentation: http://sevencrayons.com/ZZLib/
 
 Features
 --------
@@ -29,7 +29,7 @@ Installation
 1. Clone the repository:
 	git://github.com/iutinvg/ZZLib.git
 2. This will create ZZLib folder, where you can find ZZ.xcodeproj. Open it in Xcode.
-3. Drag ZZLib group and drop it in your project. 
+3. Drag ZZLib group and drop it in your project.
 
 How to Learn More
 -----------------
@@ -37,8 +37,8 @@ How to Learn More
 1. ZZLib contains a demo application which you can compile and start in simulator.
    The files within Demo group of ZZLib project are great examples of library usage.
 2. Read the docs: http://iutinvg.github.com/ZZLib/
-3. Read the sources. They are pretty flat, besides there are some examples of good 
-   practices used by great developers all over the world (see Thanks section).  
+3. Read the sources. They are pretty flat, besides there are some examples of good
+   practices used by great developers all over the world (see Thanks section).
 
 Road Map
 --------
@@ -59,5 +59,5 @@ ZZLib uses many third party open source pieces of code, libraries, tools and fra
 
 The following libraries are not used here, but you can find them useful:
 
-- network caching: https://github.com/rs/SDURLCache (looks like it'll be included here soon)
+- network caching: https://github.com/rs/SDURLCache
 - Reachability class by Apple (necessary almost always, great stuff)
