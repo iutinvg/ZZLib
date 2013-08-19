@@ -11,3 +11,6 @@
 #import "ZZJSONRequest.h"
 #import "ZZImageView.h"
 #import "ZZTableViewCell.h"
+#import "ZZActivityIndicator.h"
+#import "ZZText.h"
+#import "ZZWebController.h"
