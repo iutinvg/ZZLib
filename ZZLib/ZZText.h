@@ -36,6 +36,13 @@
  @param string ISO 8601 formatted datetime string to convert
  */
 + (NSDate*)string2date:(NSString*)string;
+
+/**
+ Converts date to ISO 8601 formatted datetime string (e.g. "2013-08-20T15:12:34+0000").
+ 
+ @param date the date to convert
+ @return ISO 8601 formatted datetime string
+ */
 + (NSString*)date2string:(NSDate*)date;
 
 /**
