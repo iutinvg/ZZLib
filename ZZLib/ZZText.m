@@ -38,6 +38,13 @@
     return [formatter dateFromString:string];
 }
 
++ (NSString*)date2string:(NSDate*)date
+{
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'+0000'"];
+    return [formatter stringFromDate:date];
+}
+
 + (BOOL)isEmpty:(NSString *)str
 {
     str = [ZZText norm:str];

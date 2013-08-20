@@ -36,6 +36,7 @@
  @param string ISO 8601 formatted datetime string to convert
  */
 + (NSDate*)string2date:(NSString*)string;
++ (NSString*)date2string:(NSDate*)date;
 
 /**
  Check if string is empty or `NULL` or `nil` or any other "unpleasant" thing (e.g. not a `NSString` instance).
