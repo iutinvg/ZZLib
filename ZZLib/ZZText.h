@@ -53,4 +53,31 @@
  */
 + (BOOL)isEmpty:(NSString*)str;
 
+/**
+ Shorthand for getting of colored text.
+
+ Usage:
+    NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];
+    [attrStr appendAttributedString:[ZZText text:@"Hello " withColor:[UIColor redColor]];
+    [attrStr appendAttributedString:[ZZText text:@"world" withColor:[UIColor greenColor]];
+    textLabel.attributedText = attrStr;
+ 
+ @param text string to wrap with color
+ @param color the color to use for wrapping
+ */
++ (NSAttributedString*)text:(NSString*)text withColor:(UIColor*)color;
+
+/**
+ Shorthand useful when you need several colors in the same string.
+ 
+ Usage:
+    NSMutableAttributedString* attrStr = [ZZText appendText:@"Hello " withColor:[UIColor redColor] to:nil];
+    [ZZText appendText:@" world" withColor:[UIColor greenColor] to:attrStr];
+    textLabel.attributedText = attrStr;
+ 
+ @param to mutable string will be appended with given text, also this string will be returned, if it is `nil` then
+    it'll be created
+ */
++ (NSMutableAttributedString*)appendText:(NSString*)text withColor:(UIColor*)color to:(NSMutableAttributedString*)to;
+
 @end

@@ -51,4 +51,20 @@
     return ![str length];
 }
 
++ (NSAttributedString*)text:(NSString *)text withColor:(UIColor *)color
+{
+    NSDictionary* colorDict = [[NSDictionary alloc] initWithObjectsAndKeys:color, NSForegroundColorAttributeName, nil];
+    return [[NSAttributedString alloc] initWithString:text attributes:colorDict];
+}
+
++ (NSMutableAttributedString*)appendText:(NSString *)text withColor:(UIColor *)color to:(NSMutableAttributedString *)to
+{
+    if (to==nil) {
+        to = [[NSMutableAttributedString alloc] init];
+    }
+    [to appendAttributedString:[ZZText text:text withColor:color]];
+    
+    return to;
+}
+
 @end
