@@ -80,4 +80,16 @@
  */
 + (NSMutableAttributedString*)appendText:(NSString*)text withColor:(UIColor*)color to:(NSMutableAttributedString*)to;
 
+/**
+ Translate string like "first_name" to "First Name". Just like
+ Django library does for model field names. 
+ 
+ @see ``django.forms.forms``,
+ https://github.com/django/django/blob/master/django/forms/forms.py
+ 
+ @param name string to get pretty name
+ @return string pretty name
+ */
++ (NSString*)prettyName:(NSString*)name;
+
 @end

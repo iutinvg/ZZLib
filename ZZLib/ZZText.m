@@ -67,4 +67,10 @@
     return to;
 }
 
++ (NSString*)prettyName:(NSString*)name
+{
+    name = [[ZZText norm:name] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    return [name capitalizedString];
+}
+
 @end
