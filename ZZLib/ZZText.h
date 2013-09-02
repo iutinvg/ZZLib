@@ -11,15 +11,6 @@
 @interface ZZText : NSObject 
 
 /**
- Return capitalized string.
- Short hand for `[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]`.
- 
- @param str string to capitalize, can be `nil`, `NULL` or not `NSString` instance.
- @return capitalized string
- */
-+ (NSString*)capitalizeFirst:(NSString*)str;
-
-/**
  Get empty string for given `nil`, `NULL`. Tries to call `stringValue` method.
  It's to simplify empty string checking if you want to have an empty string for a corresponding value.
  
