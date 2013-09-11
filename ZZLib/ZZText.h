@@ -83,4 +83,14 @@
  */
 + (NSString*)prettyName:(NSString*)name;
 
+/**
+ Return a copy of the string with leading and trailing spaces (new lines, tabs) removed.
+ 
+ It is a shorthand for ``[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]``
+ 
+ @param string the string to tream
+ @return trimmed string
+ */
++ (NSString*)trim:(NSString*)string;
+
 @end
