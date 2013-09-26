@@ -88,6 +88,11 @@
     }
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    ZZLOG(@"image loading faied: %@", [error localizedDescription]);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /*- (NSCachedURLResponse*)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
     NSCachedURLResponse* newResponse =
