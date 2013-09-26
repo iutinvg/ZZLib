@@ -26,5 +26,14 @@ BOOL ZZIsRetina();
  */
 BOOL ZZIs5();
 
+/**
+ Check if current iOS is 7 or more.
+
+ Short hand for `[[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0`
+ 
+ @return YES is iOS 7 or newer, NO otherwise
+ */
+BOOL ZZIs7();
+
 // short hand for color creation
 #define ZZRGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
