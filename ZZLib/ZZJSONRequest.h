@@ -25,7 +25,6 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 @interface ZZJSONRequest : NSObject {
 	NSMutableData* _data;
 	NSURLConnection* _connection;
-	id<ZZJSONRequestDelegate> _delegate;
 }
 
 /**
@@ -54,6 +53,8 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 @property NSInteger tag;
 
 @property NSString* urlString;
+
+@property (readonly) id<ZZJSONRequestDelegate> delegate;
 
 /**
  Latest response status code.

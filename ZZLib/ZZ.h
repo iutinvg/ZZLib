@@ -9,6 +9,7 @@
 #import "ZZTableController.h"
 #import "ZZURLHelper.h"
 #import "ZZJSONRequest.h"
+#import "ZZRequestQueue.h"
 #import "ZZImageView.h"
 #import "ZZTableViewCell.h"
 #import "ZZActivityIndicator.h"
