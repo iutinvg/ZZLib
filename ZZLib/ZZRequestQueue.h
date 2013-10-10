@@ -64,9 +64,9 @@
  
         queue = [[ZZRequestQueue alloc] initWithDelegate:self];
  
-        request1 = [[ZZJSONRequest alloc] initWithDelegate:queue];
-        request2 = [[ZZJSONRequest alloc] initWithDelegate:queue];
-        request3 = [[ZZJSONRequest alloc] initWithDelegate:queue];
+        request1 = [queue add:[[ZZJSONRequest alloc] initWithDelegate:queue]];
+        request2 = [queue add:[[ZZJSONRequest alloc] initWithDelegate:queue]];
+        request3 = [queue add:[[ZZJSONRequest alloc] initWithDelegate:queue]];
  
         [request1 get:@"some-url1"];
         [request2 get:@"some-url2"];
@@ -94,8 +94,9 @@
  Also it does not start the request. You should care about it.
  
  @param request the request to add to queue
+ @return return the added request, it is just make the code shorter
  */
-- (void)add:(ZZJSONRequest*)request;
+- (ZZJSONRequest*)add:(ZZJSONRequest*)request;
 
 /**
  Checks if requests are finished. Calls delegate method if they are.

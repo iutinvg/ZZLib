@@ -21,10 +21,11 @@
 	return self;
 }
 
-- (void)add:(ZZJSONRequest*)request
+- (ZZJSONRequest*)add:(ZZJSONRequest*)request
 {
     NSAssert(request.delegate==self, @"Request delegate is not the queue!");
     [self.requests addObject:request];
+    return request;
 }
 
 - (void)start
