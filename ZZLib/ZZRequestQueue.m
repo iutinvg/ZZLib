@@ -24,6 +24,13 @@
 - (ZZJSONRequest*)add:(ZZJSONRequest*)request
 {
     NSAssert(request.delegate==self, @"Request delegate is not the queue!");
+    
+    if ([self.requests containsObject:request]) {
+        if (self.debug) {
+            ZZLOG(@"request already in queue, will not add it again");
+        }
+    }
+    
     [self.requests addObject:request];
     return request;
 }
@@ -69,6 +76,9 @@
 #pragma mark - ZZJSONRequestDelegate
 - (void)requestDidFinishLoading:(ZZJSONRequest *)request
 {
+    if ([_delegate respondsToSelector:@selector(requestQueueRequestFinished:)]) {
+        [_delegate requestQueueRequestFinished:request];
+    }
     [self check];
 }
 
@@ -77,6 +87,7 @@
     if (self.debug) {
         ZZLOG(@"failed to load the request %@: %@", request.urlString, [error localizedDescription]);
     }
+    
     [self check];
 }
 
