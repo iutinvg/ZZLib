@@ -35,10 +35,15 @@
     return request;
 }
 
-- (void)start
+- (void)restart
 {
     _started = YES;
     _finished = NO;
+}
+
+- (void)start
+{
+    [self restart];
     [self check];
 }
 

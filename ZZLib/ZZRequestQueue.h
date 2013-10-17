@@ -89,6 +89,28 @@
 - (void)start;
 
 /**
+ Very similar to start be can be used when you handled all-finished event
+ and anticipate to restart some requests in the future (but not now). So the queue 
+ will be ready to report you about finishing. But will not check if the requests are
+ performed at this moment.
+ 
+ Typical usage:
+    - (void)requestQueueAllRequestsFinished:(ZZRequestQueue *)queue
+    {
+        // here we know all requests are done
+        id data = request1.response;
+ 
+        // hide loading indication, etc
+        [self showLoading:NO];
+ 
+        // we will want to perform some requests in the future again
+        [queue restart];
+    }
+ 
+ */
+- (void)restart;
+
+/**
  Add request to the queue.
  
  Please get noted. The requests delegate must be this queue object. Please care about it when creating it.
