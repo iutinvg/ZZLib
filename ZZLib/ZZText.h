@@ -24,7 +24,7 @@
  
  Good link about it: http://stackoverflow.com/questions/4380381/how-to-convert-string-to-date-in-objective-c
  
- @param string ISO 8601 formatted datetime string to convert
+ @param string ISO 8601 formatted datetime string to convert, nil if conversion failed
  */
 + (NSDate*)string2date:(NSString*)string;
 
