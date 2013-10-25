@@ -126,6 +126,13 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 - (void)put:(NSString*)urlstr params:(NSDictionary*)params;
 
 /**
+ Performs DELETE request.
+ 
+ `delete` is a keyword of Objective-C. So we can't use it.
+ */
+- (void)del:(NSString*)urlstr;
+
+/**
  Sets parameters which will be added to request headers for all requests.
 
  Usage example:

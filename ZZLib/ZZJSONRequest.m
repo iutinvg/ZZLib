@@ -27,7 +27,7 @@ static NSDictionary* persistentHeaders;
 	return self;
 }
 
-- (void)get:(NSString*)urlstr {
+- (void)_get:(NSString*)urlstr method:(NSString*)method {
     [self cancel];
     self.urlString = urlstr;
     
@@ -35,6 +35,7 @@ static NSDictionary* persistentHeaders;
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:ZZURLRequestCachePolicy
                                                        timeoutInterval:20];
+    request.HTTPMethod = method;
     
     // set persistent headers
     for (NSString* key in [persistentHeaders allKeys]) {
@@ -51,17 +52,27 @@ static NSDictionary* persistentHeaders;
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+- (void)get:(NSString*)urlstr
+{
+    [self _get:urlstr method:@"GET"];
+}
+
+- (void)del:(NSString *)urlstr
+{
+    [self _get:urlstr method:@"DELETE"];
+}
+
 - (void)post:(NSString *)urlstr params:(NSDictionary *)params
 {
-    [self send:urlstr params:params method:@"POST"];
+    [self _post:urlstr params:params method:@"POST"];
 }
 
 - (void)put:(NSString *)urlstr params:(NSDictionary *)params
 {
-    [self send:urlstr params:params method:@"PUT"];
+    [self _post:urlstr params:params method:@"PUT"];
 }
 
-- (void)send:(NSString *)urlstr params:(NSDictionary *)params method:(NSString*)method
+- (void)_post:(NSString *)urlstr params:(NSDictionary *)params method:(NSString*)method
 {
     [self cancel];
     self.urlString = urlstr;
