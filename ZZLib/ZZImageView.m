@@ -33,7 +33,7 @@
 
     // Actually nil URL is OK, but checking it in cache can cause crash
     if (url==nil) {
-        ZZLOG(@"image URL is nil");
+        //ZZLOG(@"image URL is nil");
         return;
     }
     
