@@ -90,7 +90,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    ZZLOG(@"image loading faied: %@", [error localizedDescription]);
+    //ZZLOG(@"image loading faied: %@", [error localizedDescription]);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
