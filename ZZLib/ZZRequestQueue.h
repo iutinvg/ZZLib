@@ -14,6 +14,7 @@
  */
 @protocol ZZRequestQueueDelegate <NSObject>
 - (void)requestQueueAllRequestsFinished:(ZZRequestQueue*)queue;
+@optional
 - (void)requestQueueRequestFinished:(ZZJSONRequest*)request;
 @end
 
