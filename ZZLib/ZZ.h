@@ -3,6 +3,9 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#ifndef ZZ_ZZ_h
+#define ZZ_ZZ_h
+
 #import "ZZDebug.h"
 #import "ZZCommon.h"
 #import "ZZViewController.h"
@@ -15,3 +18,5 @@
 #import "ZZActivityIndicator.h"
 #import "ZZText.h"
 #import "ZZWebController.h"
+
+#endif
