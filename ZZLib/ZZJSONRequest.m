@@ -90,7 +90,7 @@ static NSDictionary* persistentHeaders;
     if (_debug) ZZLOG(@"json to post: %@", json);
     
     NSData* postData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
-    [request setValue:[NSString stringWithFormat:@"%d", [postData length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[postData length]] forHTTPHeaderField:@"Content-Length"];
     
     // set persistent headers
     for (NSString* key in [persistentHeaders allKeys]) {
@@ -130,12 +130,12 @@ static NSDictionary* persistentHeaders;
 	[_data setLength:0];
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     _status = [httpResponse statusCode];
-	if (_debug) ZZLOG(@"get response from %@ [%d]", _urlString, _status);
+	if (_debug) ZZLOG(@"get response from %@ [%ld]", _urlString, (long)_status);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	if (_debug) ZZLOG(@"got %d bytes", [data length]);
+	if (_debug) ZZLOG(@"got %lu bytes", (unsigned long)[data length]);
 	[_data appendData:data];
 }
 

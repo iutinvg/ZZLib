@@ -19,7 +19,7 @@
         _info = info;
         _currentPage = 0;
         _startPage = 0;
-        self.wantsFullScreenLayout = YES;
+        //self.wantsFullScreenLayout = YES;
         self.hidesBottomBarWhenPushed = YES;
     }
     
