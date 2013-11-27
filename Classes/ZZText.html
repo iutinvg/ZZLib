@@ -42,13 +42,21 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/capitalizeFirst:">&nbsp;&nbsp;&nbsp;&nbsp;+ capitalizeFirst:</option>
+	<option value="//api/name/appendText:withColor:to:">&nbsp;&nbsp;&nbsp;&nbsp;+ appendText:withColor:to:</option>
+	
+	<option value="//api/name/date2string:">&nbsp;&nbsp;&nbsp;&nbsp;+ date2string:</option>
 	
 	<option value="//api/name/isEmpty:">&nbsp;&nbsp;&nbsp;&nbsp;+ isEmpty:</option>
 	
 	<option value="//api/name/norm:">&nbsp;&nbsp;&nbsp;&nbsp;+ norm:</option>
 	
+	<option value="//api/name/prettyName:">&nbsp;&nbsp;&nbsp;&nbsp;+ prettyName:</option>
+	
 	<option value="//api/name/string2date:">&nbsp;&nbsp;&nbsp;&nbsp;+ string2date:</option>
+	
+	<option value="//api/name/text:withColor:">&nbsp;&nbsp;&nbsp;&nbsp;+ text:withColor:</option>
+	
+	<option value="//api/name/trim:">&nbsp;&nbsp;&nbsp;&nbsp;+ trim:</option>
 	
 	
 	
@@ -78,13 +86,21 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/capitalizeFirst:">capitalizeFirst:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/appendText:withColor:to:">appendText:withColor:to:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/date2string:">date2string:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty:">isEmpty:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/norm:">norm:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prettyName:">prettyName:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/string2date:">string2date:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/text:withColor:">text:withColor:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/trim:">trim:</a></span></li>
 	
 </ul></li>
 
@@ -143,16 +159,8 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/capitalizeFirst:">+&nbsp;capitalizeFirst:</a></code>
-		<span class="tooltip"><p>Return capitalized string.
-Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]</code>.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/norm:">+&nbsp;norm:</a></code>
-		<span class="tooltip"><p>Get empty string for given <code>nil</code>, <code>NULL</code> and not <code>NSString</code> instance.
+		<span class="tooltip"><p>Get empty string for given <code>nil</code>, <code>NULL</code>. Tries to call <code>stringValue</code> method.
 It&rsquo;s to simplify empty string checking if you want to have an empty string for a corresponding value.</p></span>
 	</span>
 	
@@ -166,8 +174,44 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/date2string:">+&nbsp;date2string:</a></code>
+		<span class="tooltip"><p>Converts date to ISO 8601 formatted datetime string (e.g. &ldquo;2013-08-20T15:12:34+0000&rdquo;).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/isEmpty:">+&nbsp;isEmpty:</a></code>
 		<span class="tooltip"><p>Check if string is empty or <code>NULL</code> or <code>nil</code> or any other &ldquo;unpleasant&rdquo; thing (e.g. not a <code>NSString</code> instance).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/text:withColor:">+&nbsp;text:withColor:</a></code>
+		<span class="tooltip"><p>Shorthand for getting of colored text.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/appendText:withColor:to:">+&nbsp;appendText:withColor:to:</a></code>
+		<span class="tooltip"><p>Shorthand useful when you need several colors in the same string.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/prettyName:">+&nbsp;prettyName:</a></code>
+		<span class="tooltip"><p>Translate string like &ldquo;first_name&rdquo; to &ldquo;First Name&rdquo;. Just like
+Django library does for model field names.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/trim:">+&nbsp;trim:</a></code>
+		<span class="tooltip"><p>Return a copy of the string with leading and trailing spaces (new lines, tabs) removed.</p></span>
 	</span>
 	
 	
@@ -187,19 +231,18 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/capitalizeFirst:" title="capitalizeFirst:"></a>
-	<h3 class="subsubtitle method-title">capitalizeFirst:</h3>
+	<a name="//api/name/appendText:withColor:to:" title="appendText:withColor:to:"></a>
+	<h3 class="subsubtitle method-title">appendText:withColor:to:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Return capitalized string.
-Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]</code>.</p>
+		<p>Shorthand useful when you need several colors in the same string.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (NSString *)capitalizeFirst:(NSString *)<em>str</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSMutableAttributedString *)appendText:(NSString *)<em>text</em> withColor:(UIColor *)<em>color</em> to:(NSMutableAttributedString *)<em>to</em></code></div>
 
     
 	
@@ -207,8 +250,69 @@ Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) wi
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>str</em></dt>
-			<dd><p>string to capitalize, can be <code>nil</code>, <code>NULL</code> or not <code>NSString</code> instance.</p></dd>
+			<dt><em>to</em></dt>
+			<dd><p>mutable string will be appended with given text, also this string will be returned, if it is <code>nil</code> then</p>
+
+<pre><code>it'll be created
+</code></pre></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Shorthand useful when you need several colors in the same string.</p>
+
+<p>Usage:</p>
+
+<pre><code>NSMutableAttributedString* attrStr = [ZZText appendText:@"Hello " withColor:[UIColor redColor] to:nil];
+[ZZText appendText:@" world" withColor:[UIColor greenColor] to:attrStr];
+textLabel.attributedText = attrStr;
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZText.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/date2string:" title="date2string:"></a>
+	<h3 class="subsubtitle method-title">date2string:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Converts date to ISO 8601 formatted datetime string (e.g. &ldquo;2013-08-20T15:12:34+0000&rdquo;).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)date2string:(NSDate *)<em>date</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>date</em></dt>
+			<dd><p>the date to convert</p></dd>
 		</dl>
 		
 	</div>
@@ -217,7 +321,7 @@ Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) wi
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>capitalized string</p>
+		<p>ISO 8601 formatted datetime string</p>
 	</div>
 	
 	
@@ -226,8 +330,7 @@ Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) wi
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Return capitalized string.
-Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[str substringToIndex:1] uppercaseString]]</code>.</p>
+		<p>Converts date to ISO 8601 formatted datetime string (e.g. &ldquo;2013-08-20T15:12:34+0000&rdquo;).</p>
 	</div>
 	
 	
@@ -307,7 +410,7 @@ Short hand for <code>[str stringByReplacingCharactersInRange:NSMakeRange(0,1) wi
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get empty string for given <code>nil</code>, <code>NULL</code> and not <code>NSString</code> instance.
+		<p>Get empty string for given <code>nil</code>, <code>NULL</code>. Tries to call <code>stringValue</code> method.
 It&rsquo;s to simplify empty string checking if you want to have an empty string for a corresponding value.</p>
 	</div>		
 	
@@ -322,7 +425,7 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>str</em></dt>
-			<dd><p>to normalize, if <code>NULL</code>, <code>nil</code>, <code>@""</code> or object of other then <code>NSString</code> class is given <code>@""</code> will be returned. Or given string otherwise.</p></dd>
+			<dd><p>to normalize, if <code>NULL</code>, <code>nil</code>, <code>@""</code> or object which doesn&rsquo;t have <code>stringValue</code> method is given <code>@""</code> will be returned. Or given string otherwise.</p></dd>
 		</dl>
 		
 	</div>
@@ -331,7 +434,7 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p><code>@""</code> or given <code>NSString</code> instance</p>
+		<p><code>NSString</code> instance</p>
 	</div>
 	
 	
@@ -340,13 +443,81 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Get empty string for given <code>nil</code>, <code>NULL</code> and not <code>NSString</code> instance.
+		<p>Get empty string for given <code>nil</code>, <code>NULL</code>. Tries to call <code>stringValue</code> method.
 It&rsquo;s to simplify empty string checking if you want to have an empty string for a corresponding value.</p>
 	</div>
 	
 	
 	
 	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZText.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/prettyName:" title="prettyName:"></a>
+	<h3 class="subsubtitle method-title">prettyName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Translate string like &ldquo;first_name&rdquo; to &ldquo;First Name&rdquo;. Just like
+Django library does for model field names.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)prettyName:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>string to get pretty name</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>string pretty name</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Translate string like &ldquo;first_name&rdquo; to &ldquo;First Name&rdquo;. Just like
+Django library does for model field names.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><code>django.forms.forms</code>,
+<a href="https://github.com/django/django/blob/master/django/forms/forms.py">https://github.com/django/django/blob/master/django/forms/forms.py</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -379,7 +550,7 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>string</em></dt>
-			<dd><p>ISO 8601 formatted datetime string to convert</p></dd>
+			<dd><p>ISO 8601 formatted datetime string to convert, nil if conversion failed</p></dd>
 		</dl>
 		
 	</div>
@@ -411,6 +582,128 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/text:withColor:" title="text:withColor:"></a>
+	<h3 class="subsubtitle method-title">text:withColor:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shorthand for getting of colored text.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSAttributedString *)text:(NSString *)<em>text</em> withColor:(UIColor *)<em>color</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>text</em></dt>
+			<dd><p>string to wrap with color</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>color</em></dt>
+			<dd><p>the color to use for wrapping</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Shorthand for getting of colored text.</p>
+
+<p>Usage:</p>
+
+<pre><code>NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];
+[attrStr appendAttributedString:[ZZText text:@"Hello " withColor:[UIColor redColor]];
+[attrStr appendAttributedString:[ZZText text:@"world" withColor:[UIColor greenColor]];
+textLabel.attributedText = attrStr;
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZText.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/trim:" title="trim:"></a>
+	<h3 class="subsubtitle method-title">trim:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a copy of the string with leading and trailing spaces (new lines, tabs) removed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)trim:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>the string to tream</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>trimmed string</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Return a copy of the string with leading and trailing spaces (new lines, tabs) removed.</p>
+
+<p>It is a shorthand for <code>[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZText.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -426,7 +719,7 @@ It&rsquo;s to simplify empty string checking if you want to have an empty string
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 sevencrayons.com. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						<p><span class="copyright">&copy; 2013 sevencrayons.com. All rights reserved. (Last updated: 2013-11-27)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

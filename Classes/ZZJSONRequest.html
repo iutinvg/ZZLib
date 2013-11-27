@@ -42,6 +42,8 @@
 	
 	<option value="//api/name/connection">&nbsp;&nbsp;&nbsp;&nbsp;connection</option>
 	
+	<option value="//api/name/debug">&nbsp;&nbsp;&nbsp;&nbsp;debug</option>
+	
 	<option value="//api/name/loaded">&nbsp;&nbsp;&nbsp;&nbsp;loaded</option>
 	
 	<option value="//api/name/loading">&nbsp;&nbsp;&nbsp;&nbsp;loading</option>
@@ -65,6 +67,8 @@
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/del:">&nbsp;&nbsp;&nbsp;&nbsp;- del:</option>
 	
 	<option value="//api/name/initWithDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDelegate:</option>
 	
@@ -94,6 +98,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/connection">connection</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debug">debug</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loaded">loaded</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loading">loading</a></span></li>
@@ -119,6 +125,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/del:">del:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDelegate:">initWithDelegate:</a></span></li>
 	
@@ -223,6 +231,14 @@ Please use SDURLCache library by Grzegorz Adam Hankiewicz, <a href="https://gith
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/debug">&nbsp;&nbsp;debug</a></code>
+		<span class="tooltip"><p>Enables more output to debug console. Very useful new API
+investigations.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/initWithDelegate:">&ndash;&nbsp;initWithDelegate:</a></code>
 		<span class="tooltip"><p>Creates request with given URL and delegate.</p></span>
 	</span>
@@ -232,6 +248,13 @@ Please use SDURLCache library by Grzegorz Adam Hankiewicz, <a href="https://gith
 	<span class="tooltip">
 		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
 		<span class="tooltip"><p>Cancels <a href="#//api/name/loading">loading</a> of request.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/del:">&ndash;&nbsp;del:</a></code>
+		<span class="tooltip"><p>Performs DELETE request.</p></span>
 	</span>
 	
 	
@@ -280,6 +303,49 @@ Please use SDURLCache library by Grzegorz Adam Hankiewicz, <a href="https://gith
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Current connection used for <a href="#//api/name/loading">loading</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZJSONRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/debug" title="debug"></a>
+	<h3 class="subsubtitle method-title">debug</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enables more output to debug console. Very useful new API
+investigations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property BOOL debug</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Enables more output to debug console. Very useful new API
+investigations.</p>
 	</div>
 	
 	
@@ -509,7 +575,7 @@ Just use casting to access it:</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Request tag.</p>
 
-<p>It can be used to distinguish requests created for the same delegate instance.</p>
+<p>It can be used to distinguish requests created for the same <a href="#//api/name/delegate">delegate</a> instance.</p>
 
 <pre><code>- (void)start2Requests {
     ZZJSONRequest* r = [[ZZJSONRequest alloc] initWithURLString:@"http://url-to-api-1" delegate:self];
@@ -673,6 +739,49 @@ However, <a href="../Classes/ZZTableController.html">ZZTableController</a> calls
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/del:" title="del:"></a>
+	<h3 class="subsubtitle method-title">del:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs DELETE request.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)del:(NSString *)<em>urlstr</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Performs DELETE request.</p>
+
+<p><code>delete</code> is a keyword of Objective-C. So we can&rsquo;t use it.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ZZJSONRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithDelegate:" title="initWithDelegate:"></a>
 	<h3 class="subsubtitle method-title">initWithDelegate:</h3>
 	
@@ -743,7 +852,7 @@ However, <a href="../Classes/ZZTableController.html">ZZTableController</a> calls
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 sevencrayons.com. All rights reserved. (Last updated: 2013-07-19)</span><br />
+						<p><span class="copyright">&copy; 2013 sevencrayons.com. All rights reserved. (Last updated: 2013-11-27)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
