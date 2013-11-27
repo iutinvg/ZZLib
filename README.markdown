@@ -22,6 +22,7 @@ Features
 - HTTP requests support: GET, POST, PUT
 - number of useful macros and functions: `ZZIsPad`, `ZZRGBA`, `ZZIs5` (to detect iPhone5)
 - simple text utils such as capitalization, etc
+- a category to set fonts recursively in subviews
 
 Installation
 ------------

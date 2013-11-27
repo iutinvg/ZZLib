@@ -5,13 +5,12 @@
 
 #import "ZZDemoTableController.h"
 #import "ZZDemoViewController.h"
-#import "ZZGalleryController.h"
 #import "ZZURLHelper.h"
 
 @implementation ZZDemoTableController
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
+- (id)init
+{
     self=[super init];
 	if (self) {
 		self.title = @"ZZTableController";
@@ -100,33 +99,6 @@
     [cell loadImageFromURLStr:imageUrl];
 	
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSMutableArray* info = [NSMutableArray array];
-    
-    for (NSDictionary* item in _searchResults) {
-        NSString* imageUrl = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_z.jpg",
-                              [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
-                              [item objectForKey:@"secret"]];
-        NSURL* url = [NSURL URLWithString:imageUrl];
-        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:url, @"url",
-                              [item objectForKey:@"title"], @"title",
-                              nil];
-        [info addObject:dict];
-    }
-
-    ZZGalleryController* galleryController = [[ZZGalleryController alloc] initWithInfo:info];
-    // start from the tapped image
-    galleryController.startPage = indexPath.row;
-    [self.navigationController pushViewController:galleryController animated:YES];
-}
-
-#pragma mark - ZZGalleryProtocol
-- (void)gallery:(ZZGalleryController *)galleryController listingSelected:(NSString *)imageId
-{
-    ZZLOG(@"user would like to see details for %@", imageId);
 }
 
 @end

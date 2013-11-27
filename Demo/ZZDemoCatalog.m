@@ -7,11 +7,16 @@
 #import "ZZDemoViewController.h"
 #import "ZZDemoTableController.h"
 #import "ZZWebController.h"
+#import "UIView+ZZFontSetter.h"
+
+// fonts
+#define FONT_9 [UIFont fontWithName:@"AmericanTypewriter-Light" size:9]
+#define FONT_9B [UIFont fontWithName:@"AmericanTypewriter-CondensedBold" size:9]
 
 @implementation ZZDemoCatalog
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
+- (id)init
+{
     self = [super init];
 	if (self) {
 		self.title = @"ZZCatalog";
@@ -19,27 +24,18 @@
 	return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-	return YES;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Table view data source
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 3;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *CellIdentifier = @"Cell";
     
@@ -57,18 +53,16 @@
         cell.detailTextLabel.text = @"+ ZZTableViewCell + ZZImageView";
 	} else if (indexPath.row==2) {
 		cell.textLabel.text = @"ZZWebController";
-        cell.detailTextLabel.text = @"http://iutinvg.com";
+        cell.detailTextLabel.text = @"http://sevencrayons.com";
+        [cell setAllFonts:FONT_9 bold:FONT_9B];
     }
 
     return cell;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Table view delegate
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZZLOG(@"---------");
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	if (indexPath.row==0) {
 		ZZDemoViewController* demoView = 
         [[ZZDemoViewController alloc] initWithImageURLStr:@"https://github.com/iutinvg/ZZLib/raw/master/Demo/monkey.jpg"];
@@ -77,8 +71,8 @@
 		ZZDemoTableController* demoTable = [[ZZDemoTableController alloc] init];
 		[self.navigationController pushViewController:demoTable animated:YES];
 	} else if (indexPath.row==2) {
-        ZZWebController* webController = [[ZZWebController alloc] initWithURLString:@"http://iutinvg.com"];
-        webController.title = @"iutinvg.com";
+        ZZWebController* webController = [[ZZWebController alloc] initWithURLString:@"http://sevencrayons.com"];
+        webController.title = @"sevencrayons.com";
         [self.navigationController pushViewController:webController animated:YES];
     }
 }

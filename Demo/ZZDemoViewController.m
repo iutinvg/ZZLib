@@ -7,8 +7,8 @@
 
 @implementation ZZDemoViewController
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithImageURLStr:(NSString*)urlStr {
+- (id)initWithImageURLStr:(NSString*)urlStr
+{
     self = [super init];
 	if (self) {
 		self.title = @"ZZViewController";
@@ -17,10 +17,8 @@
 	return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
+- (void)loadView
+{
 	[super loadView];
     
     _image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
@@ -29,11 +27,6 @@
     [_image loadImageFromURLStr:_urlStr];
 	
 	[self.view addSubview:_image];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidUnload {
-    _image = nil;
 }
 
 @end
