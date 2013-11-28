@@ -5,6 +5,7 @@
 
 #import "ZZRequestQueue.h"
 #import "ZZDebug.h"
+#import "ZZJSONRequest.h"
 
 @implementation ZZRequestQueue
 
