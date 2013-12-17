@@ -18,5 +18,6 @@
 #import "ZZActivityIndicator.h"
 #import "ZZText.h"
 #import "ZZWebController.h"
+#import "UIView+ZZFontSetter.h"
 
 #endif
