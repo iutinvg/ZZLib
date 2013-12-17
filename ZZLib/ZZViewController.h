@@ -14,7 +14,10 @@
  - https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.h
  - https://github.com/iutinvg/ZZLib/blob/master/Demo/ZZDemoViewController.m
  */
-@interface ZZViewController : UIViewController <ZZJSONRequestDelegate>
+@interface ZZViewController : UIViewController <ZZJSONRequestDelegate> {
+    NSTimer* _timerLoadingIndication;
+    NSTimer* _timerHideIndication;
+}
 
 @property ZZJSONRequest* request;
 

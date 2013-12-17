@@ -30,15 +30,23 @@
 		self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		self.view.backgroundColor = [UIColor whiteColor];
 	}
+    _timerLoadingIndication = nil;
+    _timerHideIndication = nil;
+}
+
+- (void)dealloc
+{
+    [self invalidateTimers];
 }
 
 - (void)showLoading:(BOOL)flag
 {
-    ZZActivityIndicator* ai = [ZZActivityIndicator currentIndicator];
     if (flag) {
-        [ai displayActivity:@"Loading"];
+        [self scheduleIndicationShowing];
     } else {
-        [ai hide];
+        [self invalidateTimers];
+        [[ZZActivityIndicator currentIndicator] hide];
+        [self scheduleIndicationHiding];
     }
 }
 
@@ -64,6 +72,43 @@
 {
     [_request cancel];
     _request = nil;
+}
+
+#pragma mark - Loadin Indicator
+- (void)scheduleIndicationShowing
+{
+    _timerLoadingIndication = [NSTimer scheduledTimerWithTimeInterval:1
+                                                               target:self
+                                                             selector:@selector(doShowLoading)
+                                                             userInfo:nil repeats:NO];
+}
+
+- (void)scheduleIndicationHiding
+{
+    _timerHideIndication = [NSTimer scheduledTimerWithTimeInterval:1
+                                                            target:self
+                                                          selector:@selector(doHideLoading)
+                                                          userInfo:nil repeats:NO];
+}
+
+- (void)doShowLoading
+{
+    [[ZZActivityIndicator currentIndicator] displayActivity:NSLocalizedString(@"Loading", @"Common")];
+}
+
+- (void)doHideLoading
+{
+    [self invalidateTimers];
+    [[ZZActivityIndicator currentIndicator] hide];
+}
+
+- (void)invalidateTimers
+{
+    [_timerLoadingIndication invalidate];
+    _timerLoadingIndication = nil;
+    
+    [_timerHideIndication invalidate];
+    _timerHideIndication = nil;
 }
 
 @end
