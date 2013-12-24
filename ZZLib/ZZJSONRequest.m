@@ -160,7 +160,7 @@ static NSDictionary* persistentHeaders;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    ZZLOG(@"connection failed with error: %@", [error localizedDescription]);
+    if (_debug) ZZLOG(@"connection failed with error: %@", [error localizedDescription]);
 	_loaded = _loading = NO;
 	if ([_delegate respondsToSelector:@selector(request:failedWithError:)]) {
 		[_delegate request:self failedWithError:error];

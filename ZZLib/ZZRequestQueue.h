@@ -15,7 +15,8 @@
 @protocol ZZRequestQueueDelegate <NSObject>
 - (void)requestQueueAllRequestsFinished:(ZZRequestQueue*)queue;
 @optional
-- (void)requestQueueRequestFinished:(ZZJSONRequest*)request;
+- (void)requestQueue:(ZZRequestQueue*)queue requestFinished:(ZZJSONRequest*)request;
+- (void)requestQueue:(ZZRequestQueue*)queue request:(ZZJSONRequest*)request failedWithError:(NSError*)error;
 @end
 
 /**
@@ -123,7 +124,10 @@
 - (ZZJSONRequest*)add:(ZZJSONRequest*)request;
 
 /**
- Checks if requests are finished. Calls delegate method if they are.
+ Checks if requests are finished. Calls delegate method if they are. 
+ 
+ Please get noticed: if one or more requests failed the delegate's method `requestQueueAllRequestsFinished:` call will never call.
+ See `requestQueue:request:failedWithError:` to handle request failures.
  */
 - (void)check;
 

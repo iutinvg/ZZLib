@@ -82,8 +82,8 @@
 #pragma mark - ZZJSONRequestDelegate
 - (void)requestDidFinishLoading:(ZZJSONRequest *)request
 {
-    if ([_delegate respondsToSelector:@selector(requestQueueRequestFinished:)]) {
-        [_delegate requestQueueRequestFinished:request];
+    if ([_delegate respondsToSelector:@selector(requestQueue:requestFinished:)]) {
+        [_delegate requestQueue:self requestFinished:request];
     }
     [self check];
 }
@@ -92,6 +92,10 @@
 {
     if (self.debug) {
         ZZLOG(@"failed to load the request %@: %@", request.urlString, [error localizedDescription]);
+    }
+    
+    if ([_delegate respondsToSelector:@selector(requestQueue:request:failedWithError:)]) {
+        [_delegate requestQueue:self request:request failedWithError:error];
     }
     
     [self check];
