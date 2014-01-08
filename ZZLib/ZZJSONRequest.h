@@ -155,4 +155,10 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  */
 + (NSDictionary*)persistentHeaders:(NSDictionary*)headers;
 
+/**
+ These delegate methods are defined here to make possible to inherite and override it in child class.
+ */
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection;
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+
 @end
