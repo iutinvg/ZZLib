@@ -14,7 +14,7 @@ Features
 - table view cell class with remote image
 - easy controller creation without NIB files
 - you can still use NIB files
-- marvelous activity indicator
+- marvelous activity indicator (start indication if activity is long enough)
 - very clear logging (`ZZLOG`)
 - web-view with navigation and loading indicating
 - HTTP requests support: GET, POST, PUT
