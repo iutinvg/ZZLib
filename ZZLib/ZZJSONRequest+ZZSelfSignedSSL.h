@@ -1,12 +1,11 @@
-//
-//  ZZJSONRequest+ZZSelfSignedSSL.h
-//  PhoneaPlumber
-//
-//  Created by Slava Iutin on 1/9/14.
-//  Copyright (c) 2014 Phone a Plumber. All rights reserved.
-//
+/*
+ * Copyright (c) Sevencrayons.com <iutinvg@gmail.com>
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "ZZJSONRequest.h"
+
+#warning !!! I SWEAR SHOULD NOT COMPILE IT FOR PRODUCTION, JUST REMOVE REFERENCES TO THESE FILES BEFORE PUBLISHING  !!!
 
 @interface ZZJSONRequest (ZZSelfSignedSSL)
 
