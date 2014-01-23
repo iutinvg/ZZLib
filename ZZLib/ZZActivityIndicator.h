@@ -48,6 +48,7 @@
 - (void)hideAfterDelay;
 - (void)hide;
 - (void)hidden;
+- (void)persist;
 - (void)displayActivity:(NSString *)m;
 - (void)displayCompleted:(NSString *)m;
 - (void)setCenterMessage:(NSString *)message;
