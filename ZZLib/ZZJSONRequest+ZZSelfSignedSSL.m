@@ -3,6 +3,8 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#ifdef DEBUG
+
 #import "ZZJSONRequest+ZZSelfSignedSSL.h"
 
 @implementation ZZJSONRequest (ZZSelfSignedSSL)
@@ -18,3 +20,5 @@
 }
 
 @end
+
+#endif

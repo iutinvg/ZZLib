@@ -3,10 +3,14 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#ifdef DEBUG
+
 #import "ZZJSONRequest.h"
 
-#warning !!! I SWEAR SHOULD NOT COMPILE IT FOR PRODUCTION, JUST REMOVE REFERENCES TO THESE FILES BEFORE PUBLISHING  !!!
+#warning ACCEPT INSECURE SERVER CONNECTIONS, ENSURE IT IS DISABLED FOR PRODUCTION
 
 @interface ZZJSONRequest (ZZSelfSignedSSL)
 
 @end
+
+#endif
