@@ -40,6 +40,9 @@ static NSDictionary* persistentHeaders;
     // set persistent headers
     for (NSString* key in [persistentHeaders allKeys]) {
         [request setValue:persistentHeaders[key] forHTTPHeaderField:key];
+        if (self.debug) {
+            ZZLOG(@"set header %@: %@", key, persistentHeaders[key]);
+        }
     }
     
     if ([self.username length] && [self.password length]) {
@@ -95,6 +98,9 @@ static NSDictionary* persistentHeaders;
     // set persistent headers
     for (NSString* key in [persistentHeaders allKeys]) {
         [request setValue:persistentHeaders[key] forHTTPHeaderField:key];
+        if (self.debug) {
+            ZZLOG(@"set header %@: %@", key, persistentHeaders[key]);
+        }
     }
     
     [request setHTTPBody: postData];
