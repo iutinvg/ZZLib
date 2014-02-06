@@ -3,11 +3,13 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-#ifdef DEBUG
-
 #import "ZZJSONRequest+ZZSelfSignedSSL.h"
 
 @implementation ZZJSONRequest (ZZSelfSignedSSL)
+
+#if defined(DEBUG) || defined(ADHOC)
+
+#warning ACCEPT INSECURE SERVER CONNECTIONS, ENSURE IT IS DISABLED FOR PRODUCTION
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
     return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
@@ -19,6 +21,7 @@
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
 
+#endif
+
 @end
 
-#endif
