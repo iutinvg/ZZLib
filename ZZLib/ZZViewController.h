@@ -61,4 +61,18 @@
  */
 - (void)showLoading:(BOOL)flag;
 
+/**
+ Finds first responder in the given view.
+ 
+ You may need it if you want to know the current editable textfield for example.
+ 
+ @param view the view to search first responder in.
+ */
+- (UIView*)findFirstResponderBeneathView:(UIView*)view;
+
+/**
+ Hides keyboard.
+ */
+- (void)hideKeyboard;
+
 @end
