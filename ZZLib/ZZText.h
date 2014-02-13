@@ -46,30 +46,25 @@
 
 /**
  Shorthand for getting of colored text.
-
+ 
  Usage:
     NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];
-    [attrStr appendAttributedString:[ZZText text:@"Hello " withColor:[UIColor redColor]];
-    [attrStr appendAttributedString:[ZZText text:@"world" withColor:[UIColor greenColor]];
+    UIFont *font = [UIFont systemFontOfSize:30];
+    [attrStr appendAttributedString:[ZZText text:@"Hello " withColor:[UIColor redColor] font:font];
+    [attrStr appendAttributedString:[ZZText text:@"world" withColor:[UIColor greenColor] font:font];
     textLabel.attributedText = attrStr;
  
  @param text string to wrap with color
  @param color the color to use for wrapping
+ @param font the font to set 
  */
-+ (NSAttributedString*)text:(NSString*)text withColor:(UIColor*)color;
++ (NSAttributedString*)text:(NSString*)text withColor:(UIColor*)color font:(UIFont *)font;
 
 /**
- Shorthand useful when you need several colors in the same string.
- 
- Usage:
-    NSMutableAttributedString* attrStr = [ZZText appendText:@"Hello " withColor:[UIColor redColor] to:nil];
-    [ZZText appendText:@" world" withColor:[UIColor greenColor] to:attrStr];
-    textLabel.attributedText = attrStr;
- 
- @param to mutable string will be appended with given text, also this string will be returned, if it is `nil` then
-    it'll be created
+ Shorthand for 
+ `(NSAttributedString*)text:(NSString*)text withColor:(UIColor*)color font:(UIFont *)font`
  */
-+ (NSMutableAttributedString*)appendText:(NSString*)text withColor:(UIColor*)color to:(NSMutableAttributedString*)to;
++ (NSAttributedString*)t:(NSString*)text c:(UIColor*)color f:(UIFont *)font;
 
 /**
  Translate string like "first_name" to "First Name". Just like

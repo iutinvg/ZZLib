@@ -44,20 +44,18 @@
     return ![str length];
 }
 
-+ (NSAttributedString*)text:(NSString *)text withColor:(UIColor *)color
++ (NSAttributedString*)text:(NSString*)text withColor:(UIColor*)color font:(UIFont *)font
 {
-    NSDictionary* colorDict = [[NSDictionary alloc] initWithObjectsAndKeys:color, NSForegroundColorAttributeName, nil];
+    NSDictionary* colorDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                               color, NSForegroundColorAttributeName,
+                               font, NSFontAttributeName,
+                               nil];
     return [[NSAttributedString alloc] initWithString:text attributes:colorDict];
 }
 
-+ (NSMutableAttributedString*)appendText:(NSString *)text withColor:(UIColor *)color to:(NSMutableAttributedString *)to
++ (NSAttributedString*)t:(NSString*)text c:(UIColor*)color f:(UIFont *)font
 {
-    if (to==nil) {
-        to = [[NSMutableAttributedString alloc] init];
-    }
-    [to appendAttributedString:[ZZText text:text withColor:color]];
-    
-    return to;
+    return [ZZText text:text withColor:color font:font];
 }
 
 + (NSString*)prettyName:(NSString*)name
