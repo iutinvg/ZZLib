@@ -28,6 +28,7 @@
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'+0000'"];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     return [formatter dateFromString:string];
 }
 
