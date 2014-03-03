@@ -11,6 +11,8 @@
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
 
+NSInteger ZZTimeoutInterval = 10;
+
 static NSDictionary* persistentHeaders;
 
 @implementation ZZJSONRequest
@@ -34,7 +36,7 @@ static NSDictionary* persistentHeaders;
     NSURL* url = [NSURL URLWithString:_urlString];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:ZZURLRequestCachePolicy
-                                                       timeoutInterval:20];
+                                                       timeoutInterval:ZZTimeoutInterval];
     request.HTTPMethod = method;
     
     // set persistent headers
@@ -83,7 +85,7 @@ static NSDictionary* persistentHeaders;
     NSURL* url = [NSURL URLWithString:_urlString];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:ZZURLRequestCachePolicy
-                                                       timeoutInterval:20];
+                                                       timeoutInterval:ZZTimeoutInterval];
     request.HTTPMethod = method;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     

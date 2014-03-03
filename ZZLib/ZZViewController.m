@@ -77,7 +77,7 @@
 #pragma mark - Loadin Indicator
 - (void)scheduleIndicationShowing
 {
-    _timerLoadingIndication = [NSTimer scheduledTimerWithTimeInterval:1
+    _timerLoadingIndication = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                                target:self
                                                              selector:@selector(doShowLoading)
                                                              userInfo:nil repeats:NO];
@@ -85,7 +85,7 @@
 
 - (void)scheduleIndicationHiding
 {
-    _timerHideIndication = [NSTimer scheduledTimerWithTimeInterval:1
+    _timerHideIndication = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                             target:self
                                                           selector:@selector(doHideLoading)
                                                           userInfo:nil repeats:NO];
