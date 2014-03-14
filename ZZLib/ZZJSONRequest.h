@@ -126,6 +126,13 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 - (void)put:(NSString*)urlstr params:(NSDictionary*)params;
 
 /**
+ Performs real post. It is used for POST and PUT.
+ 
+ It is necessary to override and change encoding.
+ */
+- (void)_post:(NSString *)urlstr params:(NSDictionary *)params method:(NSString*)method;
+
+/**
  Performs DELETE request.
  
  `delete` is a keyword of Objective-C. So we can't use it.
