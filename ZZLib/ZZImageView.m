@@ -12,7 +12,6 @@
 @synthesize loaded = _loaded;
 @synthesize imageDelegate = _imageDelegate;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
     self=[super initWithFrame:frame];
     if (self) {
@@ -21,12 +20,10 @@
     return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
 	[_connection cancel]; //in case the URL is still downloading
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImageFromURL:(NSURL*)url {
     //in case we are downloading a 2nd image
     [self clear];
@@ -39,7 +36,8 @@
     
     // check the cache
     NSURLCache* cache = [NSURLCache sharedURLCache];
-    NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:ZZURLRequestCachePolicy timeoutInterval:20.0];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:[self cachePolicy]
+                                         timeoutInterval:20.0];
     NSCachedURLResponse* response = [cache cachedResponseForRequest:request];
     if (response!=nil) {
         //ZZLOG(@"it is found in cache");
@@ -55,7 +53,6 @@
 	_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadImageFromURLStr:(NSString*)urlStr {
     if (![urlStr isKindOfClass:[NSNull class]] && [urlStr length]) {
         NSURL* url = [NSURL URLWithString:urlStr];
@@ -63,7 +60,6 @@
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
 	if (_data==nil) { 
         _data = [[NSMutableData alloc] initWithCapacity:2048]; 
@@ -103,16 +99,25 @@
     return [newResponse autorelease];
 }*/
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)clear {
     [_connection cancel];
     _connection = nil;
     _data = nil;
     
-    self.image = [UIImage imageNamed:@"loading.png"];
+    self.image = [self defaultImage];
     _loaded = NO;
     // other option to visualize not loaded image
     //self.backgroundColor = [UIColor grayColor];
+}
+
+- (NSURLRequestCachePolicy)cachePolicy
+{
+    return ZZURLRequestCachePolicy;
+}
+
+- (UIImage *)defaultImage
+{
+    return [UIImage imageNamed:@"loading.png"];
 }
 
 @end

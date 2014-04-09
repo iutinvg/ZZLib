@@ -74,4 +74,19 @@
  */
 - (void)clear;
 
+/**
+ Possibility to change cache policy for inherited classes.
+ 
+ Default implementation returns `ZZURLRequestCachePolicy`, which is 
+ global cache policy setup option.
+ */
+- (NSURLRequestCachePolicy)cachePolicy;
+
+/**
+ Image to use by default.
+ 
+ This image can be displayed while the remote image is loading.
+ */
+- (UIImage *)defaultImage;
+
 @end
