@@ -42,6 +42,7 @@
     if (response!=nil) {
         //ZZLOG(@"it is found in cache");
         UIImage* image = [UIImage imageWithData:response.data];
+        
         self.image = image;
         _loaded = YES;
         if ([_imageDelegate respondsToSelector:@selector(imageDidLoad:)]) {
@@ -73,7 +74,15 @@
 	_connection = nil;
 	
     UIImage* image = [UIImage imageWithData:_data];
-    self.image = image;
+
+    if (image==nil) {
+        if ([_imageDelegate respondsToSelector:@selector(imageWrongData:)]) {
+            [_imageDelegate imageWrongData:_data];
+        }
+    } else {
+        ZZLOG(@"image is not wrong!");
+        self.image = image;
+    }
     
 	_data = nil;
     
@@ -86,6 +95,9 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    if ([_imageDelegate respondsToSelector:@selector(imageDidFailed:)]) {
+        [_imageDelegate imageDidFailed:error];
+    }
     //ZZLOG(@"image loading faied: %@", [error localizedDescription]);
 }
 

@@ -10,6 +10,7 @@
 @protocol ZZImageDelegate <NSObject>
 
 @optional
-- (void)imageDidLoad:(ZZImageView*)imageView;
-
+- (void)imageDidLoad:(ZZImageView *)imageView;
+- (void)imageDidFailed:(NSError *)error;
+- (void)imageWrongData:(NSData *)data;
 @end

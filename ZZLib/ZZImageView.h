@@ -77,8 +77,11 @@
 /**
  Possibility to change cache policy for inherited classes.
  
- Default implementation returns `ZZURLRequestCachePolicy`, which is 
- global cache policy setup option.
+ Default implementation returns `NSURLRequestReloadRevalidatingCacheData`, which is
+ diffrent from global cache policy setup option `ZZURLRequestCachePolicy`.
+ 
+ `NSURLRequestReloadRevalidatingCacheData` allows you to see cached images
+ when connection isn't available.
  */
 - (NSURLRequestCachePolicy)cachePolicy;
 
