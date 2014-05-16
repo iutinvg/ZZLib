@@ -9,7 +9,7 @@
 
 #if defined(DEBUG) || defined(ADHOC)
 
-#warning ACCEPT INSECURE SERVER CONNECTIONS, ENSURE IT IS DISABLED FOR PRODUCTION
+//#warning ACCEPT INSECURE SERVER CONNECTIONS, ENSURE IT IS DISABLED FOR PRODUCTION
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
     return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
