@@ -80,7 +80,6 @@
             [_imageDelegate imageWrongData:_data];
         }
     } else {
-        ZZLOG(@"image is not wrong!");
         self.image = image;
     }
     
