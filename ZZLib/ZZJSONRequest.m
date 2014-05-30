@@ -199,6 +199,8 @@ static NSDictionary* persistentHeaders;
         authValue = [authData base64Encoding];                              // pre iOS7
     }
 
+    authValue = [NSString stringWithFormat:@"Basic %@", authValue];
+
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 }
 
