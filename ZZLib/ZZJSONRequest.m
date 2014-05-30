@@ -5,7 +5,6 @@
 
 #import "ZZJSONRequest.h"
 #import "ZZDebug.h"
-//#import "SBJson.h"
 
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
@@ -151,13 +150,23 @@ static NSDictionary* persistentHeaders;
 	_loading = NO;
 
 	// parse data
-	self.responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-    
-	if (_debug) ZZLOG(@"json: %@", self.responseString);
-    
-    //SBJsonParser* parser = [[SBJsonParser alloc] init];
-    _response = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:nil];
-	
+    NSError *error = nil;
+    _response = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:&error];
+    self.responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+
+    if (error==nil) {
+        if (_debug) {
+            NSData *prettyData = [NSJSONSerialization dataWithJSONObject:_response options:NSJSONWritingPrettyPrinted error:nil];
+            ZZLOG(@"JSON: %@", [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding]);
+        }
+    } else {
+        ZZLOG(@"JSON parse error: %@", [error localizedDescription]);
+        if (_debug) {
+            ZZLOG(@"got string: %@", self.responseString);
+        }
+    }
+
+
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
 		[_delegate requestDidFinishLoading:self];
 	}
