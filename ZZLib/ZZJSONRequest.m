@@ -156,8 +156,7 @@ static NSDictionary* persistentHeaders;
 
     if (error==nil) {
         if (_debug) {
-            NSData *prettyData = [NSJSONSerialization dataWithJSONObject:_response options:NSJSONWritingPrettyPrinted error:nil];
-            ZZLOG(@"JSON: %@", [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding]);
+            ZZLOG(@"JSON: %@", [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:_response options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
         }
     } else {
         ZZLOG(@"JSON parse error: %@", [error localizedDescription]);
