@@ -5,8 +5,7 @@
 
 #import "ZZJSONRequest.h"
 #import "ZZDebug.h"
-#import "SBJson.h"
-#import "NSData+Base64.h"
+//#import "SBJson.h"
 
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
@@ -89,12 +88,10 @@ static NSDictionary* persistentHeaders;
     request.HTTPMethod = method;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    SBJsonWriter* writer = [[SBJsonWriter alloc] init];
-    NSString* json = [writer stringWithObject:params];
-    
-    if (_debug) ZZLOG(@"json to post: %@", json);
-    
-    NSData* postData = [NSData dataWithBytes:[json UTF8String] length:[json length]];
+    if (_debug) ZZLOG(@"json to post: %@", params);
+
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+
     [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[postData length]] forHTTPHeaderField:@"Content-Length"];
     
     // set persistent headers
@@ -158,8 +155,8 @@ static NSDictionary* persistentHeaders;
     
 	if (_debug) ZZLOG(@"json: %@", self.responseString);
     
-    SBJsonParser* parser = [[SBJsonParser alloc] init];
-    _response = [parser objectWithString:self.responseString];
+    //SBJsonParser* parser = [[SBJsonParser alloc] init];
+    _response = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:nil];
 	
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
 		[_delegate requestDidFinishLoading:self];
@@ -185,7 +182,15 @@ static NSDictionary* persistentHeaders;
 {
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", self.username, self.password];
     NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodingWithLineLength:80]];
+    NSString *authValue;
+
+    // http://stackoverflow.com/a/19794564/444966
+    if ([authData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+        authValue = [authData base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
+    } else {
+        authValue = [authData base64Encoding];                              // pre iOS7
+    }
+
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 }
 
