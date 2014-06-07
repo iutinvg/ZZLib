@@ -52,7 +52,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 */
 @property NSInteger tag;
 
-@property NSString* urlString;
+@property (nonatomic, strong) NSString* urlString;
 
 @property (readonly) id<ZZJSONRequestDelegate> delegate;
 
@@ -80,12 +80,12 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  @see ZZTableController
  @see ZZJSONRequestDelegate
  */
-@property id response;
+@property (nonatomic, strong) id response;
 
-@property NSString* responseString;
+@property (nonatomic, strong) NSString* responseString;
 
 /** Current connection used for loading. */
-@property NSURLConnection* connection;
+@property (nonatomic, strong) NSURLConnection* connection;
 
 /** Indicates the loading is finished. */
 @property BOOL loaded;
@@ -93,8 +93,8 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 /** Indicates the loading in process. */
 @property BOOL loading;
 
-@property NSString* username;
-@property NSString* password;
+@property (nonatomic, strong) NSString* username;
+@property (nonatomic, strong) NSString* password;
 
 /**
  Enables more output to debug console. Very useful new API

@@ -195,9 +195,9 @@ static NSDictionary* persistentHeaders;
     // http://stackoverflow.com/a/19794564/444966
     if ([authData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
         authValue = [authData base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
-    } else {
+    }/* else {
         authValue = [authData base64Encoding];                              // pre iOS7
-    }
+    }*/
 
     authValue = [NSString stringWithFormat:@"Basic %@", authValue];
 
