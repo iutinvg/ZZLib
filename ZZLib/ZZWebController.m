@@ -47,7 +47,9 @@
     [self.view addSubview:_webView];
     
     if ([_urlString length]) {
+        ZZLOG(@"url we are going to load %@", _urlString);
         NSURL* url = [NSURL URLWithString:_urlString];
+        ZZLOG(@"url we are going to load (URL) %@", [url description]);
         NSURLRequest* request = [NSURLRequest requestWithURL:url];
         [_webView loadRequest:request];
     }
@@ -101,6 +103,11 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    if([error code] == NSURLErrorCancelled) {
+        ZZLOG(@"got that stupid error, will ignore: %@", [error localizedDescription]);
+        return;
+    }
+
 	self.navigationItem.rightBarButtonItem = nil;
     [self updateButtonsStatus];
 }
