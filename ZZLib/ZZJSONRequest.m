@@ -70,6 +70,11 @@ static NSDictionary* persistentHeaders;
     [self _post:urlstr params:params method:@"POST"];
 }
 
+- (void)patch:(NSString *)urlstr params:(NSDictionary *)params
+{
+    [self _post:urlstr params:params method:@"PATCH"];
+}
+
 - (void)put:(NSString *)urlstr params:(NSDictionary *)params
 {
     [self _post:urlstr params:params method:@"PUT"];
