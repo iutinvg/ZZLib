@@ -12,6 +12,12 @@
 #import <Foundation/Foundation.h>
 #import "ZZJSONRequestDelegate.h"
 
+#define ZZ_HTTP_METHOD_GET @"GET"
+#define ZZ_HTTP_METHOD_POST @"POST"
+#define ZZ_HTTP_METHOD_PUT @"PUT"
+#define ZZ_HTTP_METHOD_DELETE @"DELETE"
+#define ZZ_HTTP_METHOD_PATCH @"PATCH"
+
 /**
  Defines global behaviour for caching.
  You can set this variable to NSURLRequestReturnCacheDataDontLoad if you
@@ -26,6 +32,17 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 	NSMutableData* _data;
 	NSURLConnection* _connection;
 }
+
+/**
+ The dictionary we post (put or patch) last time.
+ It is used in `redo` method, but you can use it for your needs too.
+ */
+@property (nonatomic, retain) NSDictionary* lastPostedDictionary;
+
+/** 
+ The request method which was called last time.
+ */
+@property (nonatomic, copy) NSString *lastMethod;
 
 /**
  Request tag.
@@ -125,6 +142,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 - (void)post:(NSString*)urlstr params:(NSDictionary*)params;
 - (void)put:(NSString*)urlstr params:(NSDictionary*)params;
 - (void)patch:(NSString*)urlstr params:(NSDictionary*)params;
+- (void)redo;
 
 /**
  Performs real post. It is used for POST and PUT.
