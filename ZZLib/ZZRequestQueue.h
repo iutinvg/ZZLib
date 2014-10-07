@@ -27,7 +27,7 @@
 /**
  List of requests.
  */
-@property NSMutableArray* requests;
+@property (nonatomic, strong) NSMutableArray* requests;
 
 /**
  Indicate the queue is in state if request checking.
@@ -44,7 +44,7 @@
  */
 @property BOOL debug;
 
-@property id<ZZRequestQueueDelegate> delegate;
+@property (assign) id<ZZRequestQueueDelegate> delegate;
 
 /**
  C-r.

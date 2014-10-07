@@ -19,7 +19,7 @@
     NSTimer* _timerHideIndication;
 }
 
-@property ZZJSONRequest* request;
+@property (nonatomic, strong) ZZJSONRequest* request;
 
 /**
  Must be overriden to create relevant request for your application.

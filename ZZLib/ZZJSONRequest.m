@@ -5,7 +5,6 @@
 
 #import "ZZJSONRequest.h"
 #import "ZZDebug.h"
-//#import "SBJson.h"
 
 NSURLRequestCachePolicy ZZURLRequestCachePolicy = NSURLRequestUseProtocolCachePolicy;
 //NSURLCacheStoragePolicy ZZURLCacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
@@ -19,7 +18,8 @@ static NSDictionary* persistentHeaders;
 @synthesize connection = _connection;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithDelegate:(id<ZZJSONRequestDelegate>)delegate {
+- (id)initWithDelegate:(id<ZZJSONRequestDelegate>)delegate
+{
     self = [super init];
 	if (self) {
 		_delegate = delegate;
@@ -28,7 +28,10 @@ static NSDictionary* persistentHeaders;
 	return self;
 }
 
-- (void)_get:(NSString*)urlstr method:(NSString*)method {
+- (void)_get:(NSString*)urlstr method:(NSString*)method
+{
+    self.lastMethod = method;
+    self.lastPostedDictionary = nil;
     [self cancel];
     self.urlString = urlstr;
     
@@ -58,26 +61,33 @@ static NSDictionary* persistentHeaders;
 
 - (void)get:(NSString*)urlstr
 {
-    [self _get:urlstr method:@"GET"];
+    [self _get:urlstr method:ZZ_HTTP_METHOD_GET];
 }
 
 - (void)del:(NSString *)urlstr
 {
-    [self _get:urlstr method:@"DELETE"];
+    [self _get:urlstr method:ZZ_HTTP_METHOD_DELETE];
 }
 
 - (void)post:(NSString *)urlstr params:(NSDictionary *)params
 {
-    [self _post:urlstr params:params method:@"POST"];
+    [self _post:urlstr params:params method:ZZ_HTTP_METHOD_POST];
+}
+
+- (void)patch:(NSString *)urlstr params:(NSDictionary *)params
+{
+    [self _post:urlstr params:params method:ZZ_HTTP_METHOD_PATCH];
 }
 
 - (void)put:(NSString *)urlstr params:(NSDictionary *)params
 {
-    [self _post:urlstr params:params method:@"PUT"];
+    [self _post:urlstr params:params method:ZZ_HTTP_METHOD_PUT];
 }
 
 - (void)_post:(NSString *)urlstr params:(NSDictionary *)params method:(NSString*)method
 {
+    self.lastMethod = method;
+    self.lastPostedDictionary = params;
     [self cancel];
     self.urlString = urlstr;
     
@@ -114,57 +124,81 @@ static NSDictionary* persistentHeaders;
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+- (void)redo
+{
+    if ([self.lastMethod isEqualToString:ZZ_HTTP_METHOD_GET]) {
+        [self get:self.urlString];
+    } else if ([self.lastMethod isEqualToString:ZZ_HTTP_METHOD_POST]) {
+        [self post:self.urlString params:self.lastPostedDictionary];
+    } else if ([self.lastMethod isEqualToString:ZZ_HTTP_METHOD_PUT]) {
+        [self put:self.urlString params:self.lastPostedDictionary];
+    } else if ([self.lastMethod isEqualToString:ZZ_HTTP_METHOD_DELETE]) {
+        [self del:self.urlString];
+    } else if ([self.lastMethod isEqualToString:ZZ_HTTP_METHOD_PATCH]) {
+        [self patch:self.urlString params:self.lastPostedDictionary];
+    } else {
+        ZZLOG(@"unknown method to redo: %@", self.lastMethod);
+    }
+}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
+- (void)dealloc
+{
     _delegate = nil;
 	[self cancel];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)cancel {
+- (void)cancel
+{
 	_loaded = _loading = NO;
 	[_connection cancel];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSURLConnection delegate
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
 	[_data setLength:0];
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     _status = [httpResponse statusCode];
 	if (_debug) ZZLOG(@"get response from %@ [%ld]", _urlString, (long)_status);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
 	if (_debug) ZZLOG(@"got %lu bytes", (unsigned long)[data length]);
 	[_data appendData:data];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
 	if (_debug) ZZLOG(@"finish loading successfuly");
 	_loaded = YES;
 	_loading = NO;
 
 	// parse data
-	self.responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-    
-	if (_debug) ZZLOG(@"json: %@", self.responseString);
-    
-    //SBJsonParser* parser = [[SBJsonParser alloc] init];
-    _response = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:nil];
-	
+    NSError *error = nil;
+    _response = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:&error];
+    self.responseString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+
+    if (error==nil) {
+        if (_debug) {
+            ZZLOG(@"JSON: %@", [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:_response options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+        }
+    } else {
+        ZZLOG(@"JSON parse error: %@", [error localizedDescription]);
+        if (_debug) {
+            ZZLOG(@"got string: %@", self.responseString);
+        }
+    }
+
+
 	if ([_delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
 		[_delegate requestDidFinishLoading:self];
 	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
     if (_debug) ZZLOG(@"connection failed with error: %@", [error localizedDescription]);
 	_loaded = _loading = NO;
 	if ([_delegate respondsToSelector:@selector(request:failedWithError:)]) {
@@ -187,9 +221,11 @@ static NSDictionary* persistentHeaders;
     // http://stackoverflow.com/a/19794564/444966
     if ([authData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
         authValue = [authData base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
-    } else {
+    }/* else {
         authValue = [authData base64Encoding];                              // pre iOS7
-    }
+    }*/
+
+    authValue = [NSString stringWithFormat:@"Basic %@", authValue];
 
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 }

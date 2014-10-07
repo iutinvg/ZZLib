@@ -12,6 +12,12 @@
 #import <Foundation/Foundation.h>
 #import "ZZJSONRequestDelegate.h"
 
+#define ZZ_HTTP_METHOD_GET @"GET"
+#define ZZ_HTTP_METHOD_POST @"POST"
+#define ZZ_HTTP_METHOD_PUT @"PUT"
+#define ZZ_HTTP_METHOD_DELETE @"DELETE"
+#define ZZ_HTTP_METHOD_PATCH @"PATCH"
+
 /**
  Defines global behaviour for caching.
  You can set this variable to NSURLRequestReturnCacheDataDontLoad if you
@@ -26,6 +32,17 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 	NSMutableData* _data;
 	NSURLConnection* _connection;
 }
+
+/**
+ The dictionary we post (put or patch) last time.
+ It is used in `redo` method, but you can use it for your needs too.
+ */
+@property (nonatomic, retain) NSDictionary* lastPostedDictionary;
+
+/** 
+ The request method which was called last time.
+ */
+@property (nonatomic, copy) NSString *lastMethod;
 
 /**
  Request tag.
@@ -52,7 +69,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 */
 @property NSInteger tag;
 
-@property NSString* urlString;
+@property (nonatomic, strong) NSString* urlString;
 
 @property (readonly) id<ZZJSONRequestDelegate> delegate;
 
@@ -80,12 +97,12 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
  @see ZZTableController
  @see ZZJSONRequestDelegate
  */
-@property id response;
+@property (nonatomic, strong) id response;
 
-@property NSString* responseString;
+@property (nonatomic, strong) NSString* responseString;
 
 /** Current connection used for loading. */
-@property NSURLConnection* connection;
+@property (nonatomic, strong) NSURLConnection* connection;
 
 /** Indicates the loading is finished. */
 @property BOOL loaded;
@@ -93,8 +110,8 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 /** Indicates the loading in process. */
 @property BOOL loading;
 
-@property NSString* username;
-@property NSString* password;
+@property (nonatomic, strong) NSString* username;
+@property (nonatomic, strong) NSString* password;
 
 /**
  Enables more output to debug console. Very useful new API
@@ -124,6 +141,8 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 - (void)get:(NSString*)urlstr;
 - (void)post:(NSString*)urlstr params:(NSDictionary*)params;
 - (void)put:(NSString*)urlstr params:(NSDictionary*)params;
+- (void)patch:(NSString*)urlstr params:(NSDictionary*)params;
+- (void)redo;
 
 /**
  Performs real post. It is used for POST and PUT.
