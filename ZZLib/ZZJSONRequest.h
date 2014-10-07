@@ -151,7 +151,7 @@ extern NSURLRequestCachePolicy ZZURLRequestCachePolicy;
 
          [ZZJSONReqeust persistemtHeader:headers]
 
-         [ZZURLHelper startWithBaseURL:@"http://api.flickr.com/services/rest/" persistentParams:nil];
+         [ZZURLHelper startWithBaseURL:@"https://api.flickr.com/services/rest/" persistentParams:nil];
 
          // ...
      }
