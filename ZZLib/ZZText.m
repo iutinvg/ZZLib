@@ -71,4 +71,22 @@
     return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
++ (BOOL)isValidEmail:(NSString *)value
+{
+    value = [ZZText norm:value];
+    NSString* regexString = @"^[+\\w\\.\\-']+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{2,})+$";
+
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionCaseInsensitive error:&error];
+
+    if(!error)
+    {
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, value.length)];
+        return numberOfMatches == 1;
+    }
+
+    return NO;
+}
+
+
 @end
