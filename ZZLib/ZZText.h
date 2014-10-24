@@ -94,6 +94,6 @@
  @param value the email to validate
  @return `YES` is value is valid email address
  */
-+ (BOOL)isValidEmail:(NSString *)value
++ (BOOL)isValidEmail:(NSString *)value;
 
 @end
