@@ -47,7 +47,7 @@
     tmp = [tmp objectForKey:@"photos"];
 	_searchResults = [[NSArray alloc] initWithArray:[tmp objectForKey:@"photo"]];
 	
-	ZZLOG(@"results: %d", [_searchResults count]);
+	ZZLOG(@"results: %lu", (long)[_searchResults count]);
 	
 	// reload table
 	[self.tableView reloadData];
@@ -93,12 +93,26 @@
 	NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = [item objectForKey:@"title"];
-    NSString* imageUrl = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_s.jpg",
+    NSString* imageUrl = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@_s.jpg",
                           [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
                           [item objectForKey:@"secret"]];
     [cell loadImageFromURLStr:imageUrl];
 	
     return cell;
+}
+
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* item = [_searchResults objectAtIndex:indexPath.row];
+
+    NSString* imageUrl = [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@_m.jpg",
+                          [item objectForKey:@"farm"], [item objectForKey:@"server"], [item objectForKey:@"id"],
+                          [item objectForKey:@"secret"]];
+
+    ZZDemoViewController* demoView =
+    [[ZZDemoViewController alloc] initWithImageURLStr:imageUrl];
+    [self.navigationController pushViewController:demoView animated:YES];
 }
 
 @end

@@ -18,7 +18,7 @@
                             @"json", @"format",
                             @"1", @"nojsoncallback",
                             nil];
-    [ZZURLHelper startWithBaseURL:@"http://api.flickr.com/services/rest/" persistentParams:params];
+    [ZZURLHelper startWithBaseURL:@"https://api.flickr.com/services/rest/" persistentParams:params];
     
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 

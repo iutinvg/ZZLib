@@ -21,7 +21,7 @@
 {
 	[super loadView];
     
-    _image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 225)];
+    _image = [[ZZImageView alloc] initWithFrame:CGRectMake(10, 74, 300, 225)];
     _image.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleBottomMargin;
     [_image loadImageFromURLStr:_urlStr];

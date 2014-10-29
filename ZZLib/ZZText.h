@@ -88,4 +88,12 @@
  */
 + (NSString*)trim:(NSString*)string;
 
+/**
+ Return `YES` is given string is a valid email.
+
+ @param value the email to validate
+ @return `YES` is value is valid email address
+ */
++ (BOOL)isValidEmail:(NSString *)value;
+
 @end

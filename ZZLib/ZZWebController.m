@@ -4,6 +4,7 @@
  */
 
 #import "ZZWebController.h"
+#import "ZZDebug.h"
 
 @implementation ZZWebController
 
