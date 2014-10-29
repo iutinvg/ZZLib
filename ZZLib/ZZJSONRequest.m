@@ -185,9 +185,8 @@ static NSDictionary* persistentHeaders;
         }
     } else {
         ZZLOG(@"JSON parse error: %@", [error localizedDescription]);
-        if (_debug) {
-            ZZLOG(@"got string: %@", self.responseString);
-        }
+        ZZLOG(@"for URL: %@", _urlString);
+        ZZLOG(@"got string: %@", self.responseString);
     }
 
 
