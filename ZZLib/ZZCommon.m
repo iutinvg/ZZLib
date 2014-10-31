@@ -20,6 +20,16 @@ BOOL ZZIs5()
     return ([[UIScreen mainScreen] bounds].size.height == HEIGHT_IPHONE_5);
 }
 
+BOOL ZZIs6()
+{
+    return ([[UIScreen mainScreen] bounds].size.height == HEIGHT_IPHONE_6);
+}
+
+BOOL ZZIs6P()
+{
+    return ([UIScreen mainScreen].scale > 2.1);
+}
+
 BOOL ZZIs7()
 {
     return [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0;

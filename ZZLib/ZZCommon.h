@@ -24,12 +24,31 @@ BOOL ZZIsRetina();
  http://stackoverflow.com/questions/12395200/how-to-develop-or-migrate-apps-for-iphone-5-screen-resolution/15631256#15631256
  */
 #define HEIGHT_IPHONE_5 568
+#define HEIGHT_IPHONE_6 667
 
 /**
  Check if current device is iPhone5.
  @return `YES` if it is iPhone5, `NO` otherwise.
  */
 BOOL ZZIs5();
+
+/**
+ Check if current device is iPhone6.
+ @return `YES` if it is iPhone6, `NO` otherwise.
+
+ Idea stolen from
+ http://stackoverflow.com/a/25756117/444966
+ */
+BOOL ZZIs6();
+
+/**
+ Check if current device is iPhone6+.
+ @return `YES` if it is iPhone6+, `NO` otherwise.
+
+ Idea stolen from
+ http://stackoverflow.com/a/25756117/444966
+ */
+BOOL ZZIs6P();
 
 /**
  Check if current iOS is 7 or more.
