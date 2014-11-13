@@ -26,10 +26,20 @@
         return nil;
     }
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'+0000'"];
     [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    return [formatter dateFromString:string];
+    // attempt 1, no fraction part in seconds
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    // [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'+0000'"];
+
+    NSDate *result = [formatter dateFromString:string];
+
+    // attempt 2, fraction part for seconds
+    if (!result) {
+        [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.S'Z'"];
+        // [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.S'+0000'"];
+        result = [formatter dateFromString:string];
+    }
+    return result;
 }
 
 + (NSString*)date2string:(NSDate*)date
